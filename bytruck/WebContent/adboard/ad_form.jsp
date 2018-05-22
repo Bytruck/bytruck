@@ -97,23 +97,13 @@ String root = request.getContextPath();
 									<input type="password" class="form-control" value="asecret">
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="col-md-1 control-label">내용</label>
-								<div class="col-md-11">
-									<textarea class="form-control" placeholder="내용을 입력하세요"
-										rows="15"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="exampleInputFile" class="col-md-1 control-label">첨부파일</label>
-								<div class="col-md-10">
-									<input type="file" id="exampleInputFile">
-									<p class="help-block">
-										<em>첨부파일을 선택하세요.</em>
-									</p>
-								</div>
-							</div>
-						</div>
+							 <div class="form-group">
+       							 <label for="content" class="col-md-1 control-label">내용</label>
+       							 <div class="col-md-11">
+         							 <textarea name="content" id="content" class="summernote"></textarea>
+        						</div>
+     						</div>
+     					</div>	
 						<div class="button-group col-lg-offset-2 col-lg-8">
 							<a class="btn btn-success col-lg-4 col-lg-offset-1" id="register"
 								href="<%=root%>/adboard/normal_ad.jsp">등록</a> <a
