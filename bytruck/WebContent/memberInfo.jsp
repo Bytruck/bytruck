@@ -40,9 +40,6 @@
 
 <title>memberInfo.jsp</title>
 </head>
-<!-- NAVBAR
-================================================== -->
-
 <body>
 	<div class="row">
 		<div class="container-fluid">
@@ -53,8 +50,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- Carousel
-    ================================================== -->
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -65,128 +60,135 @@
 					<li class="active">회원정보</li>
 				</ol>
 				<!-- END BREADCRUMBS -->
-				<div class="col-lg-offset-1 col-lg-10 col-lg-offset-1">
-					<div class="col-lg-10 col-lg-offset-1">
-						<h3>회원 정보 조회</h3>
-						<p>회원정보 조회공간 입니다.</p>
-						<hr>
-						<div align="left" class="col-lg-offset-6 col-lg-6">
-							<select class="col-lg-3 col-lg-offset-1" id="type">
-								<option value="">전체</option>
-								<option value="title">일반</option>
-								<option value="name">이름</option>
-								<option value="detail">사업자</option>
-								<option value="detail">상호명</option>
-							</select> <input type="text" class="col-lg-6">
-							<button class="col-lg-2 btn btn-info">검색</button>
+				<div class="page-header">
+					<div class="row">
+						<div class=col-lg-12">
+							<h1 align="center">
+								<b>회원정보 조회</b>
+							</h1>
+							<p align="center">
+								<b>BYTRUCK의 회원목록입니다.</b>
+							</p>
 						</div>
-						<table class="table table-hover table-condensed">
-							<thead>
-								<tr>
-									<th>분류</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>생년월일</th>
-									<th>휴대번호</th>
-									<th>이메일</th>
-									<th>상호명</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>사업자</td>
-									<td>kitri123</td>
-									<td>김명섭</td>
-									<td>1980.12.11</td>
-									<td>010-1678-5874</td>
-									<td>kmssss@google.com</td>
-									<td>김칫국한사발</td>
-								</tr>
-								<tr>
-									<td>사업자</td>
-									<td>kitri123</td>
-									<td>김명섭</td>
-									<td>1980.11.12</td>
-									<td>010-1234-2344</td>
-									<td>kmddds@google.com</td>
-									<td>차돌된장국드세요</td>
-								</tr>
-								<tr>
-									<td>일반</td>
-									<td>kitri123</td>
-									<td>김명섭</td>
-									<td>1980.11.11</td>
-									<td>010-1234-5874</td>
-									<td>kms@google.com</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>사업자</td>
-									<td>kitri123</td>
-									<td>김명선</td>
-									<td>1944.11.11</td>
-									<td>010-1244-5874</td>
-									<td>km123s@google.com</td>
-									<td>단무지</td>
-								</tr>
-								<tr>
-									<td>일반</td>
-									<td>kitri123</td>
-									<td>김명섭</td>
-									<td>1980.11.11</td>
-									<td>010-1234-5874</td>
-									<td>kms@google.com</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>일반</td>
-									<td>kitri123</td>
-									<td>김명식</td>
-									<td>1950.11.11</td>
-									<td>010-1664-5074</td>
-									<td>kmsik@hanmail.net</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>일반</td>
-									<td>kitri123</td>
-									<td>김명성</td>
-									<td>1960.11.11</td>
-									<td>010-1234-2344</td>
-									<td>kms234@naver.com</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>사업자</td>
-									<td>kitri1</td>
-									<td>김명숙</td>
-									<td>1970.11.11</td>
-									<td>010-1111-5874</td>
-									<td>kmsuk@google.com</td>
-									<td>한신닭발</td>
-								</tr>
-								<tr>
-									<td>사업자</td>
-									<td>kitri333</td>
-									<td>김명석</td>
-									<td>1977.11.11</td>
-									<td>010-4444-5874</td>
-									<td>kms2222@google.com</td>
-									<td>엽기덕복희</td>
-								</tr>
-								<tr>
-									<td>일반</td>
-									<td>kitri133</td>
-									<td>김명순</td>
-									<td>1980.11.12</td>
-									<td>010-1324-3474</td>
-									<td>km123s@google.com</td>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
 					</div>
 				</div>
+				<div align="left" class="col-lg-offset-6 col-lg-6"
+					style="padding-bottom: 10px">
+					<select class="col-lg-3 col-lg-offset-1" id="type"
+						style="height: 25px; vertical-align: top;">
+						<option value="">검색</option>
+						<option value="title">제목</option>
+						<option value="detail">내용</option>
+					</select> <input type="text" class="col-lg-6">
+					<button class="col-lg-2 btn btn-info"
+						style="height: 26px; line-height: 26px; padding: 0 15px;">검색</button>
+				</div>
+				<table class="table table-hover table-condensed">
+					<thead>
+						<tr>
+							<th>분류</th>
+							<th>아이디</th>
+							<th>이름</th>
+							<th>생년월일</th>
+							<th>휴대번호</th>
+							<th>이메일</th>
+							<th>상호명</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>사업자</td>
+							<td>kitri123</td>
+							<td>김명섭</td>
+							<td>1980.12.11</td>
+							<td>010-1678-5874</td>
+							<td>kmssss@google.com</td>
+							<td>김칫국한사발</td>
+						</tr>
+						<tr>
+							<td>사업자</td>
+							<td>kitri123</td>
+							<td>김명섭</td>
+							<td>1980.11.12</td>
+							<td>010-1234-2344</td>
+							<td>kmddds@google.com</td>
+							<td>차돌된장국드세요</td>
+						</tr>
+						<tr>
+							<td>일반</td>
+							<td>kitri123</td>
+							<td>김명섭</td>
+							<td>1980.11.11</td>
+							<td>010-1234-5874</td>
+							<td>kms@google.com</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>사업자</td>
+							<td>kitri123</td>
+							<td>김명선</td>
+							<td>1944.11.11</td>
+							<td>010-1244-5874</td>
+							<td>km123s@google.com</td>
+							<td>단무지</td>
+						</tr>
+						<tr>
+							<td>일반</td>
+							<td>kitri123</td>
+							<td>김명섭</td>
+							<td>1980.11.11</td>
+							<td>010-1234-5874</td>
+							<td>kms@google.com</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>일반</td>
+							<td>kitri123</td>
+							<td>김명식</td>
+							<td>1950.11.11</td>
+							<td>010-1664-5074</td>
+							<td>kmsik@hanmail.net</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>일반</td>
+							<td>kitri123</td>
+							<td>김명성</td>
+							<td>1960.11.11</td>
+							<td>010-1234-2344</td>
+							<td>kms234@naver.com</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>사업자</td>
+							<td>kitri1</td>
+							<td>김명숙</td>
+							<td>1970.11.11</td>
+							<td>010-1111-5874</td>
+							<td>kmsuk@google.com</td>
+							<td>한신닭발</td>
+						</tr>
+						<tr>
+							<td>사업자</td>
+							<td>kitri333</td>
+							<td>김명석</td>
+							<td>1977.11.11</td>
+							<td>010-4444-5874</td>
+							<td>kms2222@google.com</td>
+							<td>엽기덕복희</td>
+						</tr>
+						<tr>
+							<td>일반</td>
+							<td>kitri133</td>
+							<td>김명순</td>
+							<td>1980.11.12</td>
+							<td>010-1324-3474</td>
+							<td>km123s@google.com</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+
 			</div>
 		</div>
 	</div>

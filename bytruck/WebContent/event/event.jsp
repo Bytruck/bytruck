@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<head>	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>	
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <title>event.jsp</title>
 <style>
 .col-lg-12 {
-	padding-top: 50px;
+	padding-top: 5%;
 }
+/* .board {
+	padding-top: 10%;
+} */
 </style>
 </head>
 <body>
@@ -22,6 +26,18 @@
 			</div>
 		</div>
 	</div>
+<%-- 	<div class="board">
+		<div class="row">
+			<div class="container">
+				<ol class="breadcrumb link-accent separator-arrow">
+					<li><a href="<%=root%>/index.jsp" title="Home"><i
+							class="fa fa-home"></i></a></li>
+					<li class="active">푸드트럭 소개</li>
+					<li><a href="<%=root%>/foodtruck/foodboard.jsp">푸드트럭 등록</a></li>
+				</ol>
+			</div>
+		</div>
+	</div> --%>
 	<div class="container">
 		<div class="page-header">
 			<div class="row">
@@ -30,7 +46,7 @@
 						<b>EVENT</b>
 					</h1>
 					<p align="center">
-						<b>Bytruck의 다양한 EVENT를 확인하세요.</b>
+						<b>BYTRUCK의 다양한 EVENT를 확인하세요.</b>
 					</p>
 				</div>
 			</div>
@@ -58,60 +74,60 @@
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트1</h4>
-							<a href="<%=root %>/event/eventdetail.jsp" class="btn">자세히 보기</a>
+							<a href="<%=root%>/event/eventdetail.jsp" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
-							<img src="<%=root %>/images/event1.PNG" height="300" width="250">
+							<img src="<%=root%>/images/event1.PNG" height="300" width="250">
 						</div>
 					</li>
 					<li class="portfolio-item ux">
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트2</h4>
-							<a href="<%=root %>/event/eventdetail.jsp" class="btn">자세히 보기</a>
+							<a href="<%=root%>/event/eventdetail.jsp" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
-							<img src="<%=root %>/images/event2.PNG" height="300" width="250">
+							<img src="<%=root%>/images/event2.PNG" height="300" width="250">
 						</div>
 					</li>
 					<li class="portfolio-item photography">
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트3</h4>
-							<a href="<%=root %>/event/eventdetail.jsp" class="btn">자세히 보기</a>
+							<a href="<%=root%>/event/eventdetail.jsp" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
-							<img src="<%=root %>/images/event3.PNG" height="300" width="250">
+							<img src="<%=root%>/images/event3.PNG" height="300" width="250">
 						</div>
 					</li>
 					<li class="portfolio-item photography ui">
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트4</h4>
-							<a href="<%=root %>/event/eventdetail.jsp" class="btn">자세히 보기</a>
+							<a href="<%=root%>/event/eventdetail.jsp" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
-							<img src="<%=root %>/images/event3.PNG" height="300" width="250">
+							<img src="<%=root%>/images/event3.PNG" height="300" width="250">
 						</div>
 					</li>
 					<li class="portfolio-item photography">
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트5</h4>
-							<a href="<%=root %>/event/eventdetail.jsp" class="btn">자세히 보기</a>
+							<a href="<%=root%>/event/eventdetail.jsp" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
-							<img src="<%=root %>/images/event1.PNG" height="300" width="250">
+							<img src="<%=root%>/images/event1.PNG" height="300" width="250">
 						</div>
 					</li>
 					<li class="portfolio-item ux">
 						<div class="overlay"></div>
 						<div class="info">
 							<h4 class="title">이벤트6</h4>
-							<a href="<%=root %>/event/eventdetail.jsp" class="btn">자세히 보기</a>
+							<a href="<%=root%>/event/eventdetail.jsp" class="btn">자세히 보기</a>
 						</div>
 						<div class="media-wrapper">
-							<img src="<%=root %>/images/event2.PNG" height="300" width="250">
+							<img src="<%=root%>/images/event2.PNG" height="300" width="250">
 						</div>
 					</li>
 				</ul>

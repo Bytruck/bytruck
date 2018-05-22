@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <title>signup21.jsp</title>
-<!-- NAVBAR
-================================================== -->
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("a.tos").click(function() {
-			window.open("http://localhost:8080/TEST/base/tos.jsp","바이트럭 이용약관","width=700, height=600, scrollbars=yes");
-		});
+		$("a.tos").click(
+				function() {
+					window.open("http://localhost:8080/TEST/base/tos.jsp",
+							"바이트럭 이용약관",
+							"width=700, height=600, scrollbars=yes");
+				});
 	})
 </script>
 </head>
@@ -17,8 +19,6 @@
 	<header>
 		<%@include file="/template/header.jsp"%>
 	</header>
-	<!-- Carousel
-    ================================================== -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -28,47 +28,16 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img src="<%=root %>/images/top1.png" alt="First slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>환영합니다.</h1>
-						<p>바이트럭입니다.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-								up today</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_illu.jpg" alt="First slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top2.jpg" alt="Second slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-								more</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_bike.jpg" alt="Second slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top3.jpg" alt="Third slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>One more for good measure.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-								gallery</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_truck.jpg" alt="Third slide">
+				<div class="container"></div>
 			</div>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button"
@@ -85,9 +54,11 @@
 		<div class="container">
 			<!-- BREADCRUMBS -->
 			<ol class="breadcrumb link-accent separator-arrow">
-				<li><a href="<%=root %>/index.jsp" title="Home"><i class="fa fa-home"></i></a></li>
-				<li><a href="<%=root %>/base/signupcover.jsp" title="Home">회원가입</a></li>
-				<li><a href="<%=root %>/base/signup2.jsp" title="Home">사업자 인증</a></li>
+				<li><a href="<%=root%>/index.jsp" title="Home"><i
+						class="fa fa-home"></i></a></li>
+				<li><a href="<%=root%>/base/signupcover.jsp" title="Home">회원가입</a></li>
+				<li><a href="<%=root%>/base/signup2.jsp" title="Home">사업자
+						인증</a></li>
 				<li class="active">사업자 회원가입</li>
 			</ol>
 			<!-- END BREADCRUMBS -->
@@ -256,15 +227,15 @@
 							<div class="form-group">
 								<div class="col-sm-8 col-sm-offset-2">
 									<a type="submit" class="btn btn-success btn-block"
-										href="<%=root %>/base/signupSuccess.jsp"> <i class="fa fa-check-circle"></i>
-										Create Account
+										href="<%=root%>/base/signupSuccess.jsp"> <i
+										class="fa fa-check-circle"></i> Create Account
 									</a>
 								</div>
 							</div>
 						</form>
 						<hr>
 						<p>
-							<em>이미 회원이신가요?</em> <a href="<%=root %>/base/loginform.jsp"><strong>로그인</strong></a>
+							<em>이미 회원이신가요?</em> <a href="<%=root%>/base/loginform.jsp"><strong>로그인</strong></a>
 						</p>
 				</div>
 			</div>

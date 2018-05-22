@@ -8,6 +8,9 @@
 .board {
 	padding-top: 10%;
 }
+.board .page-header {
+	margin-top: 0;
+}
 </style>
 </head>
 <body>
@@ -25,24 +28,34 @@
 			<div class="container">
 				<!-- BREADCRUMBS -->
 				<ol class="breadcrumb link-accent separator-arrow">
-					<li><a href="../index.jsp" title="Home"><i
+					<li><a href=<%=root %>/index.jsp" title="Home"><i
 							class="fa fa-home"></i></a></li>
 					<li><a href="<%=root %>/foodtruck/foodtruck.jsp">푸드트럭 소개</a></li>
 					<li class="active">푸드트럭 등록</li>
 				</ol>
 				<!-- END BREADCRUMBS -->
-				<div class="col-lg-offset-1 col-lg-10 col-lg-offset-1">
-					<div class="col-lg-10 col-lg-offset-1">
-						<h3>푸드트럭 등록</h3>
-						<p>푸드트럭을 등록해주세요.</p>
-						<hr>
-						<div align="left" class="col-lg-offset-6 col-lg-6">
-							<select class="col-lg-3 col-lg-offset-1" id="type">
+						<div class="page-header">
+							<div class="row">
+								<div class=col-lg-12">
+									<h1 align="center">
+										<b>FOOD TRUCK</b>
+									</h1>
+									<p align="center">
+										<b>FOOD TRUCK을 등록해주세요.</b>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div align="left" class="col-lg-offset-6 col-lg-6"
+							style="padding-bottom: 10px">
+							<select class="col-lg-3 col-lg-offset-1" id="type"
+								style="height: 25px; vertical-align: top;">
 								<option value="">검색</option>
 								<option value="title">제목</option>
 								<option value="detail">내용</option>
 							</select> <input type="text" class="col-lg-6">
-							<button class="col-lg-2 btn btn-info">검색</button>
+							<button class="col-lg-2 btn btn-info"
+								style="height: 26px; line-height: 26px; padding: 0 15px;">검색</button>
 						</div>
 						<table class="table table-hover table-condensed">
 							<thead>
@@ -117,8 +130,7 @@
 							</tbody>
 						</table>
 						<a class="btn btn-success pull-right" href="<%=root %>/foodtruck/foodform.jsp">글쓰기</a>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

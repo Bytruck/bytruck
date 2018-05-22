@@ -7,7 +7,9 @@ String root = request.getContextPath();
 .board {
 	padding-top: 5%;
 }
-
+.board .container{
+	padding-left: 90px;
+}
 footer {
 	margin-top: 10%;
 }
@@ -16,16 +18,6 @@ footer {
 } */
 </style>
 <body>
-	<!-- Bread crumb -->
-<div class="row">
-		<div class="container-fluid">
-			<div class="col-lg-12">
-				<header>
-					<jsp:include page ="/template/header.jsp"/>
-				</header>
-			</div>
-		</div>
-		</div>
 	<div class="aside">
 		<jsp:include page ="/template/admin_aside.jsp"/>
 	</div>
@@ -132,17 +124,6 @@ footer {
          <li><a href="#">4</a></li>
          <li><a href="#">5</a></li>
       </ul>
-   </div>
-	   <div class="foot">
-      <div class="row">
-         <div class="container-fluid">
-            <div class="col-lg-12">
-               <footer>
-                 <jsp:include page ="/template/footer.jsp"/>
-               </footer>
-            </div>
-         </div>
-      </div>
    </div>
 </body>
 </html>

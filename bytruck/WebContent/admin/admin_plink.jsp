@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 String root = request.getContextPath();
-%>	
+%>
 <!-- <script>
 	$(document).ready(function() {
 		var navItems = $('.admin-menu li > a');
@@ -28,6 +28,10 @@ String root = request.getContextPath();
 	padding-top: 5%;
 }
 
+.board .container {
+	padding-left: 90px;
+}
+
 footer {
 	margin-top: 10%;
 }
@@ -36,33 +40,24 @@ footer {
 } */
 </style>
 <body>
-	<!-- Bread crumb -->
-<div class="row">
-		<div class="container-fluid">
-			<div class="col-lg-12">
-				<header>
-					<jsp:include page ="/template/header.jsp"/>
-				</header>
-			</div>
-		</div>
-		</div>
 	<div class="aside">
-		<jsp:include page ="/template/admin_aside.jsp"/>
+		<jsp:include page="/template/admin_aside.jsp" />
 	</div>
 	<div class="board">
 		<div class="row">
 			<div class="container">
 				<!-- Start Page Content -->
 				<div class="row">
-					 <div class="checkbox">
-                        <label><input type="checkbox" value="">전체선택</label>&nbsp;
-                           <button class="btn btn-success">승인</button>
-                     </div>
+					<div class="checkbox">
+						<label><input type="checkbox" value="">전체선택</label>&nbsp;
+						<button class="btn btn-success">승인</button>
+					</div>
 					<div class="col-6">
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">파워링크</h4>
-								<table class="table table-hover table-condensed text-align=center; ">
+								<table
+									class="table table-hover table-condensed text-align=center; ">
 									<thead>
 										<tr>
 											<th></th>
@@ -88,53 +83,53 @@ footer {
 											<td>10</td>
 										</tr>
 										<tr>
-                                               <td>
+											<td>
 												<div class="checkbox">
 													<label><input type="checkbox" value=""></label>
 												</div>
-												</td>
-                                                <td>4</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>2018/05/08</td>
-                                                <td>33</td>
-                                            </tr>
-                                            <tr>
-                                               <td>
+											</td>
+											<td>4</td>
+											<td>Accountant</td>
+											<td>Tokyo</td>
+											<td>2018/05/08</td>
+											<td>33</td>
+										</tr>
+										<tr>
+											<td>
 												<div class="checkbox">
 													<label><input type="checkbox" value=""></label>
 												</div>
-												</td>
-                                                <td>3</td>
-                                                <td>Integration Specialist</td>
-                                                <td>New York</td>
-                                                <td>2018/05/02</td>
-                                               <td>61</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
+											</td>
+											<td>3</td>
+											<td>Integration Specialist</td>
+											<td>New York</td>
+											<td>2018/05/02</td>
+											<td>61</td>
+										</tr>
+										<tr>
+											<td>
 												<div class="checkbox">
 													<label><input type="checkbox" value=""></label>
 												</div>
-												</td>
-                                                <td>2</td>
-                                                <td>Sales Assistant</td>
-                                                <td>San Francisco</td>
-                                                <td>2018/05/01</td>
-                                               <td>59</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
+											</td>
+											<td>2</td>
+											<td>Sales Assistant</td>
+											<td>San Francisco</td>
+											<td>2018/05/01</td>
+											<td>59</td>
+										</tr>
+										<tr>
+											<td>
 												<div class="checkbox">
 													<label><input type="checkbox" value=""></label>
 												</div>
-												</td>
-                                                <td>1</td>
-                                                <td>Integration Specialist</td>
-                                                <td>Tokyo</td>
-                                                <td>2010/10/14</td>
-                                                <td>55</td>
-                                            </tr>		
+											</td>
+											<td>1</td>
+											<td>Integration Specialist</td>
+											<td>Tokyo</td>
+											<td>2010/10/14</td>
+											<td>55</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -145,24 +140,13 @@ footer {
 		</div>
 	</div>
 	<div class="text-center">
-      <ul class="pagination">
-         <li class="active"><a href="#">1</a></li>
-         <li><a href="#">2</a></li>
-         <li><a href="#">3</a></li>
-         <li><a href="#">4</a></li>
-         <li><a href="#">5</a></li>
-      </ul>
-   </div>
-	   <div class="foot">
-      <div class="row">
-         <div class="container-fluid">
-            <div class="col-lg-12">
-               <footer>
-                  <jsp:include page ="/template/footer.jsp"/>
-               </footer>
-            </div>
-         </div>
-      </div>
-   </div>
+		<ul class="pagination">
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+		</ul>
+	</div>
 </body>
 </html>

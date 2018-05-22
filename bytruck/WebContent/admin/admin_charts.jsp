@@ -1,47 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-String root = request.getContextPath();
+	String root = request.getContextPath();
 %>
 <style>
-.toplist {
-	margin-top: 10%;
+body {
+	padding-top: 5%;
 }
-footer{
-	
+
+#bo-container.container {
+	padding-left: 90px;
+}
+
+h2, .mem, .likes, .profit {
+	margin-bottom: 5%;
 }
 </style>
 <body>
-	<div class="row">
-		<div class="container">
-			<div class="col-lg-offset-2 col-lg-8 col-lg-offset-2">
-				<header>
-				  <jsp:include page ="/template/header.jsp"/>
-				</header>
+	<div class="aside">
+		<jsp:include page="/template/admin_aside.jsp" />
+	</div>
+	<div class="container" id="bo-container">
+		<div class="row">
+			<h2>CHART</h2>
+			<div class="mem">
+				<div class="card-block">
+					<h4 class="card-title">MEMBER</h4>
+					<img src="<%=root%>/images/mem_money_chart.PNG" alt="member chart">
+				</div>
+			</div>
+			<div class="likes">
+				<div class="card-block">
+					<h4 class="card-title">LIKES</h4>
+					<img src="<%=root%>/images/like_chart.PNG" alt="likes chart">
+				</div>
+			</div>
+			<div class="profit">
+				<div class="card-block">
+					<h4 class="card-title">PROFIT</h4>
+					<img src="<%=root%>/images/mem_money_chart.PNG" alt="profit chart">
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="aside">
-		  <jsp:include page ="/template/admin_aside.jsp"/>
-	</div>
-	<div class="container">
-		<div class="row">
-			     <div class="card-block">
-                                <h4 class="card-title">GAUGE CHART</h4>
-                                <div class="ct-gauge-chart"></div>
-                            </div>
-                        </div>
-                        </div>
-  <div class="foot">
-      <div class="row">
-         <div class="container-fluid">
-            <div class="col-lg-12">
-               <footer>
-                  <jsp:include page ="/template/footer.jsp"/>
-               </footer>
-            </div>
-         </div>
-      </div>
-   </div>                        
 </body>
 </html>

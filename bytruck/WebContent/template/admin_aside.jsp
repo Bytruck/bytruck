@@ -47,7 +47,7 @@ String root = request.getContextPath();%>
 			<nav class="sidebar-nav">
 				<ul id="sidebarnav">
 					<li class="nav-label">회원관리</li>
-					<li><a class="has-arrow  " href="#"
+					<li><a class="has-arrow  " href="<%=root%>/admin/admin_memlist.jsp"
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">회원목록</span></a>
 				</ul>
@@ -63,13 +63,15 @@ String root = request.getContextPath();%>
 					<li><a class="has-arrow  " href="<%=root%>/admin/admin_plink.jsp"
 						aria-expanded="false"><i class="fa fa-table"></i><span
 							class="hide-menu"> 파워링크</span></a>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_promotion.jsp"
-						aria-expanded="false"><i class="fa fa-table"></i><span
-							class="hide-menu"> 홍보</span></a>
 					<li><a class="has-arrow  " href="<%=root%>/admin/admin_normal_ad.jsp"
 						aria-expanded="false"><i class="fa fa-table"></i><span
-							class="hide-menu"> 일반광고</span></a>
+							class="hide-menu"> 배너광고</span></a>	
 				</ul>
+				<span class="go_home" style="display: block;text-align: center;margin-top: 100px;">
+					<a href="<%=root%>" type="button" name="gohome" style="display:inline-block;
+					width:120px;height: 40px;font-size: 20px;line-height: 38px;background-color: #eee;
+					border: 1px solid #ccc;color: #000; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);">Main</a>
+				</span>
 			</nav>
 		</div>
 	</div>	

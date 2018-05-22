@@ -48,7 +48,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="<%=root %>/index.jsp">Bytruck</a>
+					<a class="navbar-brand" href="<%=root %>/index.jsp">BYTRUCK</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
@@ -67,7 +67,7 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=root%>/course/viewcourse.jsp">코스소개</a></li>
 								<li><a href="<%=root%>/course/makecourse.jsp">코스짜기</a></li>
-								<li><a href="<%=root%>/course/reviewboard.jsp">후기</a></li>
+								<li><a href="<%=root%>/course/reviewboard.jsp">코스후기</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false">FOODTRUCK<span
@@ -81,7 +81,6 @@
 								class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=root %>/event/event.jsp">이벤트</a></li>
-								<li><a href="<%=root %>/promotion/promotion.jsp">프로모션</a></li>
 								<li><a href="<%=root%>/adboard/normal_ad.jsp">배너광고신청</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"

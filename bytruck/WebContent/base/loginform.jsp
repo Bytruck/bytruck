@@ -84,21 +84,17 @@
 	}
 }
 </style>
-<!-- NAVBAR
-================================================== -->
 <script>
-$(function(){
-	$("a.ad").click(function(){
-		window.open("http://dunkindonuts.co.kr/");
+	$(function() {
+		$("a.ad").click(function() {
+			window.open("http://dunkindonuts.co.kr/");
+		});
 	});
-});
 </script>
 <body>
 	<header>
 		<%@include file="/template/header.jsp"%>
 	</header>
-	<!-- Carousel
-    ================================================== -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -108,47 +104,16 @@ $(function(){
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img src="<%=root %>/images/top1.png" alt="First slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>환영합니다.</h1>
-						<p>바이트럭입니다.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-								up today</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_illu.jpg" alt="First slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top2.jpg" alt="Second slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-								more</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_bike.jpg" alt="Second slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top3.jpg" alt="Third slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>One more for good measure.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-								gallery</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_truck.jpg" alt="Third slide">
+				<div class="container"></div>
 			</div>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button"
@@ -166,7 +131,8 @@ $(function(){
 		<div class="container">
 			<!-- BREADCRUMBS -->
 			<ol class="breadcrumb link-accent separator-arrow">
-				<li><a href="<%=root %>/index.jsp" title="Home"><i class="fa fa-home"></i></a></li>
+				<li><a href="<%=root%>/index.jsp" title="Home"><i
+						class="fa fa-home"></i></a></li>
 				<li class="active">로그인</li>
 			</ol>
 			<!-- END BREADCRUMBS -->
@@ -210,16 +176,16 @@ $(function(){
 								</div>
 							</div>
 							<div style="text-align: center">
-								<a href="<%=root %>/base/findId.jsp">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-									href="<%=root %>/base/findPwd.jsp">비밀번호 찾기</a>
+								<a href="<%=root%>/base/findId.jsp">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+									href="<%=root%>/base/findPwd.jsp">비밀번호 찾기</a>
 							</div>
 						</div>
 						<p>
-							<em>회원이 아니신가요?</em> <a href="<%=root %>/base/signupcover.jsp">&nbsp;<strong>회원가입</strong></a>
+							<em>회원이 아니신가요?</em> <a href="<%=root%>/base/signupcover.jsp">&nbsp;<strong>회원가입</strong></a>
 						</p>
 					</div>
 					<div>
-						<a class="ad" href="#"><img src="<%=root %>/images/ad.png"></a>
+						<a class="ad" href="#"><img src="<%=root%>/images/ad.png"></a>
 					</div>
 				</form>
 			</div>

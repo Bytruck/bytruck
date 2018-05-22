@@ -5,11 +5,11 @@
 .board {
 	padding-top: 10%;
 }
+.board .page-header {
+	margin-top: 0;
+}
 </style>
 <title>notice.jsp</title>
-<!-- NAVBAR
-================================================== -->
-
 <body>
 	<div class="row">
 		<div class="container-fluid">
@@ -20,31 +20,39 @@
 			</div>
 		</div>
 	</div>
-	<!-- Carousel
-    ================================================== -->
 	<div class="board">
 		<div class="row">
 			<div class="container">
 				<!-- BREADCRUMBS -->
 				<ol class="breadcrumb link-accent separator-arrow">
-					<li><a href="<%=root %>/index.jsp" title="Home"><i
+					<li><a href="<%=root%>/index.jsp" title="Home"><i
 							class="fa fa-home"></i></a></li>
-					<li><a href="<%=root %>/brand/summary.jsp" title="Home">브랜드</a></li>
+					<li><a href="<%=root%>/brand/summary.jsp" title="Home">개요</a></li>
 					<li class="active">공지사항</li>
 				</ol>
 				<!-- END BREADCRUMBS -->
-				<div class="col-lg-offset-1 col-lg-10 col-lg-offset-1">
-					<div class="col-lg-10 col-lg-offset-1">
-						<h3>공지 사항</h3>
-						<p>바이트럭의 새로운 소식을 받아보세요.</p>
-						<hr>
-						<div align="left" class="col-lg-offset-6 col-lg-6">
-							<select class="col-lg-3 col-lg-offset-1" id="type">
+						<div class="page-header">
+							<div class="row">
+								<div class=col-lg-12">
+									<h1 align="center">
+										<b>공지사항</b>
+									</h1>
+									<p align="center">
+										<b>BYTRUCK의 새로운 소식을 받아보세요.</b>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div align="left" class="col-lg-offset-6 col-lg-6"
+							style="padding-bottom: 10px">
+							<select class="col-lg-3 col-lg-offset-1" id="type"
+								style="height: 25px; vertical-align: top;">
 								<option value="">검색</option>
 								<option value="title">제목</option>
 								<option value="detail">내용</option>
 							</select> <input type="text" class="col-lg-6">
-							<button class="col-lg-2 btn btn-info">검색</button>
+							<button class="col-lg-2 btn btn-info"
+								style="height: 26px; line-height: 26px; padding: 0 15px;">검색</button>
 						</div>
 						<table class="table table-hover table-condensed">
 							<thead>
@@ -129,12 +137,11 @@
 								</tr>
 							</tbody>
 						</table>
-						<a class="btn btn-success pull-right" href="<%=root %>/brand/notice_write.jsp">글쓰기</a>
+						<a class="btn btn-success pull-right"
+							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 	<div class="text-center">
 		<ul class="pagination">
 			<li class="active"><a href="#">1</a></li>
