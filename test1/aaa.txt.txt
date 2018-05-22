@@ -1,7 +1,11 @@
 ﻿<html>
 <head>
+<<<<<<< HEAD
 aaa
 마스터
 제애발 되라
+=======
+ MSKim 브런치에만 나타나길...
+>>>>>>> Second/MSKim
 </head>
 </html>
