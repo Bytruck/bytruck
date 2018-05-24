@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<head>
 <style>
 .board {
 	padding-top: 10%;
@@ -9,6 +9,21 @@
 	margin-top: 0;
 }
 </style>
+<script>
+	$(function(){
+		$('.btn delete').click(function(){
+			$.ajax({
+				method:'GET',
+				url:'boarddelete.bt',
+				data:{'no':$('1')},
+				success:function(data){
+					data=data.trim();	
+				}
+			});
+		)};
+	});
+</script>
+</head>
 <title>notice.jsp</title>
 <body>
 	<div class="row">
@@ -139,6 +154,7 @@
 						</table>
 						<a class="btn btn-success pull-right"
 							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
+						<a class='btn_delete' href="boarddelete.bt?no=1">삭제</a>
 					</div>
 				</div>
 			</div>
