@@ -154,7 +154,7 @@
 						</table>
 						<a class="btn btn-success pull-right"
 							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
-						<a class='btn_delete' href="boarddelete.bt?no=1">삭제</a>
+						<a class='btn_delete' href="boarddelete.bt?no=2">삭제</a>
 					</div>
 				</div>
 			</div>
