@@ -4,33 +4,17 @@
 String root = request.getContextPath();
 %>
 <head>
-<!-- include libraries(jQuery, bootstrap) --> 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-<!-- include summernote-ko-KR --> 
-<%-- <script src="<%=root%>/dist/lang/summernote-ko-KR.js"></script> --%>
-<!-- include summernote css/js-->
-<link href="<%=root%>/dist/summernote.css" rel="stylesheet">
-<script src="<%=root%>/dist/summernote.js"></script>
-</head>
 <script>
- $(function() {
-	 $('.summernote').summernote({
-	      height: 300,          // 기본 높이값
-	      minHeight: null,      // 최소 높이값(null은 제한 없음)
-	      maxHeight: null,      // 최대 높이값(null은 제한 없음)
-	      focus: true,          // 페이지가 열릴때 포커스를 지정함
-	      lang: 'ko-KR'         // 한국어 지정(기본값은 en-US)
-	      
-	    });
-	 $('a[id=cancel]').click(function() {
+	$(function() {
+		$('a[id=cancel]').click(function() {
 			alert("취소하시면 작성하신 글이 사라지게 됩니다. \n 정말 작성 취소하시겠습니까?");
 
-		}); 
+		});
 	});
 </script>
+</head>
 <style>
 .board {
 	padding-top: 10%;
@@ -97,13 +81,23 @@ String root = request.getContextPath();
 									<input type="password" class="form-control" value="asecret">
 								</div>
 							</div>
-							 <div class="form-group">
-       							 <label for="content" class="col-md-1 control-label">내용</label>
-       							 <div class="col-md-11">
-         							 <textarea name="content" id="content" class="summernote"></textarea>
-        						</div>
-     						</div>
-     					</div>	
+							<div class="form-group">
+								<label class="col-md-1 control-label">내용</label>
+								<div class="col-md-11">
+									<textarea class="form-control" placeholder="내용을 입력하세요"
+										rows="15"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputFile" class="col-md-1 control-label">첨부파일</label>
+								<div class="col-md-10">
+									<input type="file" id="exampleInputFile">
+									<p class="help-block">
+										<em>첨부파일을 선택하세요.</em>
+									</p>
+								</div>
+							</div>
+						</div>
 						<div class="button-group col-lg-offset-2 col-lg-8">
 							<a class="btn btn-success col-lg-4 col-lg-offset-1" id="register"
 								href="<%=root%>/adboard/normal_ad.jsp">등록</a> <a

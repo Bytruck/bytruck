@@ -17,17 +17,6 @@
 			alert("취소하시면 작성하신 글이 사라지게 됩니다. \n 정말 작성 취소하시겠습니까?");
 
 		});
-		
-		$("button#register").click(function() {
-			$.ajax({
-				url: 'boardwrite.bt',
-				method: 'POST',
-				success:function(data){
-					
-				}
-
-			});
-		});
 	});
 </script>
 <body>
@@ -75,19 +64,18 @@
 							<div class="form-group">
 								<label class="col-md-1 control-label">제목</label>
 								<div class="col-md-11">
-									<input type="text" class="form-control" name="title" placeholder="제목을 입력하세요">
+									<input type="text" class="form-control" placeholder="제목을 입력하세요">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-1 control-label">내용</label>
 								<div class="col-md-11">
-									<textarea class="form-control" name="detail" placeholder="내용을 입력하세요"
+									<textarea class="form-control" placeholder="내용을 입력하세요"
 										rows="15"></textarea>
 								</div>
 							</div>
 						</div>
 						<div class="button-group col-lg-offset-2 col-lg-8">
-							<input type="submit" class="btn btn-success col-lg-4 col-lg-offset-1" value="글쓰기">
 							<a class="btn btn-success col-lg-4 col-lg-offset-1" id="register"
 								href="<%=root %>/brand/notice.jsp">등록</a> <a
 								class="btn btn-danger col-lg-4 col-lg-offset-1" id="cancel"
