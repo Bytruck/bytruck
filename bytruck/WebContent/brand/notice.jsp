@@ -9,18 +9,20 @@
 	margin-top: 0;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 <script>
 	$(function(){
-		$('.btn delete').click(function(){
-			$.ajax({
+		$('button.btndelete').click(function(){
+			console.log("aaa");
+/* 			$.ajax({
 				method:'GET',
 				url:'boarddelete.bt',
-				data:{'no':$('1')},
+				data:{no:'2'},
 				success:function(data){
 					data=data.trim();	
 				}
-			});
-		)};
+			}); */
+		});
 	});
 </script>
 </head>
@@ -154,7 +156,7 @@
 						</table>
 						<a class="btn btn-success pull-right"
 							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
-						<a class='btn_delete' href="boarddelete.bt?no=2">삭제</a>
+						<button class="btndelete">삭제</button>
 					</div>
 				</div>
 			</div>
