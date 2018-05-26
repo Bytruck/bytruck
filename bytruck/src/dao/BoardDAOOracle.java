@@ -21,13 +21,14 @@ public class BoardDAOOracle implements BoardDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		System.out.println(boardNum);
 		try {
 			con = sql.MyConnection.getConnection();
 			String sql = "delete from board\r\n" + 
-					"where no = ? and type =0";
-			pstmt.setInt(1, boardNum);
+					"where no = ? and type = 0";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardNum);
+			pstmt.executeQuery();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

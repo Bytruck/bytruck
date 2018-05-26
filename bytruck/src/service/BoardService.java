@@ -11,5 +11,6 @@ public class BoardService {
 	};
 	public void Delete(int boardNum) throws Exception{
 		dao.deleteBoard(boardNum);
+		System.out.println(boardNum);
 	};
 }

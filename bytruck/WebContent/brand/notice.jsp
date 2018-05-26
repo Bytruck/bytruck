@@ -10,21 +10,6 @@
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
-<script>
-	$(function(){
-		$('button.btndelete').click(function(){
-			console.log("aaa");
-/* 			$.ajax({
-				method:'GET',
-				url:'boarddelete.bt',
-				data:{no:'2'},
-				success:function(data){
-					data=data.trim();	
-				}
-			}); */
-		});
-	});
-</script>
 </head>
 <title>notice.jsp</title>
 <body>
@@ -37,6 +22,21 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(function(){
+		$('button.btndelete').click(function(){
+			console.log("aaa");
+ 			$.ajax({
+				method:'POST',
+				url:'<%=root%>/boarddelete.bt',
+				data:{no:'2'},
+				success:function(data){
+					data=data.trim();	
+				}
+			}); 
+		});
+	});
+	</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">

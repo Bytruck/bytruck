@@ -30,7 +30,7 @@ public class BoardDeleteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd;
-		String forwardURL = "notice.jsp";
+		String forwardURL = "<%=root%>/brand/notice.jsp";
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 		
