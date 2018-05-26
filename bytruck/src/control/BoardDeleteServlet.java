@@ -21,7 +21,7 @@ public class BoardDeleteServlet extends HttpServlet {
 		String noValue = request.getParameter("no");
 		int boardNum = Integer.parseInt(noValue);
 		
-		System.out.println(boardNum);
+		//System.out.println(boardNum);
 		
 		try {
 			service.Delete(boardNum);

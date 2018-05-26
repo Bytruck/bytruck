@@ -29,7 +29,7 @@
  			$.ajax({
 				method:'POST',
 				url:'<%=root%>/boarddelete.bt',
-				data:{no:'2'},
+				data:{no:'1'},
 				success:function(data){
 					data=data.trim();	
 				}

@@ -10,8 +10,7 @@ public class BoardService {
 		dao.insertboard(board);
 	};
 	public void Delete(int boardNum) throws Exception{
-		System.out.print(boardNum);
-		System.out.println(boardNum);
+		//System.out.print(boardNum);
 		dao.deleteBoard(boardNum);
 	};
 }

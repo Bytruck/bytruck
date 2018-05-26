@@ -38,21 +38,21 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="<%=root1 %>/images/with1.jpg" alt="Chania">
+				<a href="../course/reviewdetail.jsp" ><img src="<%=root1 %>/images/with1.jpg" style='height:100%; width:100%;'  alt="top1"></a>
 				<div class="carousel-caption">
 					<h3>TOP1</h3>
 					<p>여기 좋음!!</p>
 				</div>
 			</div>
 			<div class="item">
-				<img src="<%=root1 %>/images/with2.jpg" alt="Chicago">
+				<a href="../course/reviewdetail.jsp" ><img src="<%=root1 %>/images/with2.jpg" style='height:100%; width:100%;'  alt="top2"></a>
 				<div class="carousel-caption">
 					<h3>TOP2</h3>
 					<p>여기 더 좋음!!</p>
 				</div>
 			</div>
 			<div class="item">
-				<img src="<%=root1 %>/images/with3.jpg" alt="New York">
+				<img src="<%=root1 %>/images/with3.jpg" alt="top3">
 				<div class="carousel-caption">
 					<h3>TOP3</h3>
 					<p>여기는 더더더 좋음</p>
