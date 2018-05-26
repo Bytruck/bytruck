@@ -8,17 +8,32 @@
 	$(function() {
 		$("a.tos").click(
 				function() {
-					window.open("http://localhost:8080/TEST/base/tos.jsp",
+					window.open("http://localhost:8080/bytruck/base/tos.jsp",
 							"바이트럭 이용약관",
 							"width=700, height=600, scrollbars=yes");
 				});
 	});
 </script>
+<style>
+.board {
+	padding-top: 0;
+}
+
+.board .page-header {
+	margin-top: 0;
+}
+</style>
 </head>
 <body>
-	<header>
-		<%@include file="/template/header.jsp"%>
-	</header>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-lg-12">
+				<header>
+					<%@include file="/template/header.jsp"%>
+				</header>
+			</div>
+		</div>
+	</div>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -50,7 +65,8 @@
 		</a>
 	</div>
 	<!-- /.carousel -->
-	<div class="shop-main register">
+	<div class="board">
+	<div class="row">
 		<div class="container">
 			<!-- BREADCRUMBS -->
 			<ol class="breadcrumb link-accent separator-arrow">
@@ -60,13 +76,20 @@
 				<li class="active">개인 회원가입</li>
 			</ol>
 			<!-- END BREADCRUMBS -->
-
 			<!-- REGISTER BOX -->
-			<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
 				<div class="account-box register-box">
-					<h3>회원가입(개인)</h3>
-					<p>회원정보를 입력해주세요. 모두 입력하셔야 가입이 가능해집니다.</p>
-					<hr>
+						<div class="page-header">
+							<div class="row">
+								<div class=col-lg-12">
+									<h1 align="center">
+										<b>개인 회원가입</b>
+									</h1>
+									<p align="center">
+										<b>회원정보를 입력해주세요. 모두 입력하셔야 가입이 가능해집니다.</b>
+									</p>
+								</div>
+							</div>
+						</div>
 					<form class="form-horizontal" role="form">
 						<div class="form-group">
 							<label for="id" class="control-label sr-only">ID</label>
@@ -121,7 +144,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label for="birthday" class="control-label sr-only">Birthday</label>
 							<div class="col-sm-8 col-sm-offset-2">
@@ -133,7 +155,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label for="tel" class="control-label sr-only">Tel</label>
 							<div class="col-sm-8 col-sm-offset-2">
@@ -160,13 +181,18 @@
 							</div>
 						</div>
 					</form>
+					<br>
+					<div align="center">
 					<p>
-						<em>이미 회원이신가요?</em> <a href="<%=root%>/base/loginform.jsp"><strong>로그인</strong></a>
+						<em>이미 회원이신가요?</em> <a href="<%=root%>/base/loginform.jsp"><b>로그인</b></a>
 					</p>
+					</div>
+					<br>
 				</div>
-			</div>
+			
 			<!-- END REGISTER BOX -->
 		</div>
+	</div>
 	</div>
 	<!-- END MAIN -->
 	<!-- FOOTER -->

@@ -57,14 +57,14 @@
 				<ol class="breadcrumb link-accent separator-arrow">
 					<li><a href="index.html" title="Home"><i
 							class="fa fa-home"></i></a></li>
-					<li class="active">회원정보</li>
+					<li class="active">회원 정보</li>
 				</ol>
 				<!-- END BREADCRUMBS -->
 				<div class="page-header">
 					<div class="row">
 						<div class=col-lg-12">
 							<h1 align="center">
-								<b>회원정보 조회</b>
+								<b>회원 정보 조회</b>
 							</h1>
 							<p align="center">
 								<b>BYTRUCK의 회원목록입니다.</b>

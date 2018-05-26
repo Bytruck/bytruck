@@ -8,17 +8,32 @@
 	$(function() {
 		$("a.tos").click(
 				function() {
-					window.open("http://localhost:8080/TEST/base/tos.jsp",
+					window.open("http://localhost:8080/bytruck/base/tos.jsp",
 							"바이트럭 이용약관",
 							"width=700, height=600, scrollbars=yes");
 				});
 	})
 </script>
 </head>
+<style>
+.board {
+	padding-top: 0;
+}
+
+.board .page-header {
+	margin-top: 0;
+}
+</style>
 <body>
-	<header>
-		<%@include file="/template/header.jsp"%>
-	</header>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-lg-12">
+				<header>
+					<%@include file="/template/header.jsp"%>
+				</header>
+			</div>
+		</div>
+	</div>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -50,25 +65,38 @@
 		</a>
 	</div>
 	<!-- /.carousel -->
-	<div class="shop-main register">
-		<div class="container">
-			<!-- BREADCRUMBS -->
-			<ol class="breadcrumb link-accent separator-arrow">
-				<li><a href="<%=root%>/index.jsp" title="Home"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="<%=root%>/base/signupcover.jsp" title="Home">회원가입</a></li>
-				<li><a href="<%=root%>/base/signup2.jsp" title="Home">사업자
-						인증</a></li>
-				<li class="active">사업자 회원가입</li>
-			</ol>
-			<!-- END BREADCRUMBS -->
-
-			<!-- REGISTER BOX -->
-			<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
-				<div class="account-box register-box">
-					<h3>회원가입(사업자)</h3>
-					<p>회원정보를 입력해주세요. 모두 입력하셔야 가입이 가능해집니다.</p>
-					<hr>
+	<div class="board">
+		<div class="row">
+			<div class="container">
+				<!-- BREADCRUMBS -->
+				<ol class="breadcrumb link-accent separator-arrow">
+					<li><a href="<%=root%>/index.jsp" title="Home"><i
+							class="fa fa-home"></i></a></li>
+					<li><a href="<%=root%>/base/signupcover.jsp" title="Home">회원가입</a></li>
+					<li><a href="<%=root%>/base/signup2.jsp" title="Home">사업자
+							인증</a></li>
+					<li class="active">사업자 회원가입</li>
+				</ol>
+				<!-- END BREADCRUMBS -->
+				<!-- REGISTER BOX -->
+				<div class="col-lg-12">
+					<div class="page-header">
+						<div class="row">
+							<div class=col-lg-12">
+								<h1 align="center">
+									<b>사업자 회원가입</b>
+								</h1>
+								<p align="center">
+									<b>정보를 입력해주세요. 모두 입력하셔야 가입이 가능해집니다.</b>
+								</p>
+							</div>
+						</div>
+					</div>
+					<h4>
+						<strong>개인 정보</strong>
+					</h4>
+					<p>개인 정보를 정확히 기입해 주세요. 정확한 기입을 하셔야 원할한 서비스가 제공됩니다.</p>
+					<br>
 					<form class="form-horizontal" role="form">
 						<div class="form-group">
 							<label for="id" class="control-label sr-only">ID</label>
@@ -79,7 +107,6 @@
 										readonly="readonly">사업자번호 받아온거 넣기</text>
 								</div>
 							</div>
-
 						</div>
 						<div class="form-group">
 							<label for="id" class="control-label sr-only">ID</label>
@@ -90,7 +117,7 @@
 										placeholder="ID">
 								</div>
 							</div>
-							<button style="align-content: left;">아이디중복확인</button>
+							<button style="align-content: left;">아이디 중복확인</button>
 
 						</div>
 						<div class="form-group">
@@ -134,7 +161,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label for="birthday" class="control-label sr-only">Birthday</label>
 							<div class="col-sm-8 col-sm-offset-2">
@@ -146,7 +172,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label for="tel" class="control-label sr-only">Tel</label>
 							<div class="col-sm-8 col-sm-offset-2">
@@ -166,9 +191,10 @@
 						</div>
 						<hr>
 						<h4>
-							<strong>상호및 상품등록</strong>
+							<strong>상호 및 상품등록</strong>
 						</h4>
 						<p>상호 및 상품 정보를 정확히 기입해 주세요. 정확한 기입을 하셔야 원할한 서비스가 제공됩니다.</p>
+						<br>
 						<form class="form-horizontal" role="form">
 							<div class="form-group">
 								<label for="storename" class="control-label sr-only">상호명</label>
@@ -223,7 +249,6 @@
 									</div>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<div class="col-sm-8 col-sm-offset-2">
 									<a type="submit" class="btn btn-success btn-block"
@@ -234,12 +259,15 @@
 							</div>
 						</form>
 						<hr>
-						<p>
-							<em>이미 회원이신가요?</em> <a href="<%=root%>/base/loginform.jsp"><strong>로그인</strong></a>
-						</p>
+						<div align="center">
+							<p>
+								<em>이미 회원이신가요?</em> <a href="<%=root%>/base/loginform.jsp"><strong>로그인</strong></a>
+							</p>
+						</div>
+						<br>
 				</div>
+				<!-- END REGISTER BOX -->
 			</div>
-			<!-- END REGISTER BOX -->
 		</div>
 	</div>
 	<!-- END MAIN -->
