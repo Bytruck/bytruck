@@ -25,7 +25,7 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="<%=root %>/js/ie-emulation-modes-warning.js"></script>
-<script src="<%=root %>/js/bootstrap.min.js"></script>
+<%-- <script src="<%=root %>/js/bootstrap.min.js"></script> --%>
 <script src="<%=root %>/js/docs.min.js"></script>
 <script src="<%=root %>/js/ie10-viewport-bug-workaround.js"></script>
 </head>
