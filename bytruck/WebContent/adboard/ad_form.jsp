@@ -5,32 +5,15 @@ String root = request.getContextPath();
 %>
 <head>
 <!-- include libraries(jQuery, bootstrap) --> 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <!-- include summernote-ko-KR --> 
 <%-- <script src="<%=root%>/dist/lang/summernote-ko-KR.js"></script> --%>
 <!-- include summernote css/js-->
 <link href="<%=root%>/dist/summernote.css" rel="stylesheet">
 <script src="<%=root%>/dist/summernote.js"></script>
 </head>
-<script>
- $(function() {
-	 $('.summernote').summernote({
-	      height: 300,          // 기본 높이값
-	      minHeight: null,      // 최소 높이값(null은 제한 없음)
-	      maxHeight: null,      // 최대 높이값(null은 제한 없음)
-	      focus: true,          // 페이지가 열릴때 포커스를 지정함
-	      lang: 'ko-KR'         // 한국어 지정(기본값은 en-US)
-	      
-	    });
-	 $('a[id=cancel]').click(function() {
-			alert("취소하시면 작성하신 글이 사라지게 됩니다. \n 정말 작성 취소하시겠습니까?");
-
-		}); 
-	});
-</script>
 <style>
 .board {
 	padding-top: 10%;
@@ -45,6 +28,40 @@ String root = request.getContextPath();
 }
 </style>
 <body>
+<script>
+            $(document).ready(function() {
+                $('.summernote').summernote({ // summernote를 사용하기 위한 선언
+                    height: 400,
+					callbacks: { // 콜백을 사용
+                        // 이미지를 업로드할 경우 이벤트를 발생
+					    onImageUpload: function(files, editor, welEditable) {
+						    sendFile(files[0], this);
+						}
+					}
+				});       
+            /* summernote에서 이미지 업로드시 실행할 함수 */
+    	 	function sendFile(file, editor) {
+                // 파일 전송을 위한 폼생성
+    	 		data = new FormData();
+    	 	    data.append("uploadFile", file);
+    	 	   // alert(data);
+    	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
+    	 	        data : data,
+    	 	        type : "POST",
+    	 	        url : "<%=root%>/adboard/summernote_imageUpload.jsp",
+    	 	        cache : false,
+    	 	        contentType : false,
+    	 	        processData : false,
+    	 	        success : function(data) { // 처리가 성공할 경우
+                        // 에디터에 이미지 출력
+                        alert("성공????")	;
+    	 	        	$(editor).summernote('editor.insertImage', data.url);
+    	 	        }, 
+    	 	        error : function(e) {alert("에러!" + e);}
+    	 	    });
+    	 	}
+          }); 
+ </script>
 	<div class="row">
 		<div class="container-fluid">
 			<div class="col-lg-12">
