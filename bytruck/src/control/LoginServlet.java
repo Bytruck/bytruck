@@ -17,22 +17,23 @@ public class LoginServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("servlet");
 		String idValue = request.getParameter("id");
 		String pwdValue = request.getParameter("pwd");
 
 		String forwardURL = "";
-		System.out.println("LoginServlet start");
 		HttpSession session = request.getSession();
-		session.invalidate();
+		//session.invalidate();
 
 		try {
+			System.out.println("servlet try{}");
 			String result = service.login(idValue, pwdValue);
-			// 세션의 속성으로 "loginInfo", idValue 추가하기
+			System.out.println("result : "+result);
 			if (result.equals("1")) { // 로그인 성공:1, 실패:-1
 				session = request.getSession();
 				session.setAttribute("loginInfo", idValue);
 				String usertype = service.searchtype(idValue);
+				System.out.println("usertype : " + usertype);
 				session.setAttribute("loginInfo_type", usertype);
 				request.setAttribute("result", result);	
 			} else {
@@ -41,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		} catch (Exception e) {
 			request.setAttribute("result", e.getMessage());
 		}
-		forwardURL = "tool/commonResult.jsp";
+		forwardURL = "base/loginResult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 	}

@@ -15,6 +15,18 @@ public class users {
 	}
 
 	public users(String user_id, String user_pwd, String name, String birthday, String phone_number, String email,
+			String type) {
+		super();
+		this.user_id = user_id;
+		this.user_pwd = user_pwd;
+		this.name = name;
+		this.birthday = birthday;
+		this.phone_number = phone_number;
+		this.email = email;
+		this.type = type;
+	}
+	
+	public users(String user_id, String user_pwd, String name, String birthday, String phone_number, String email,
 			String bussiness_number, String type) {
 		super();
 		this.user_id = user_id;

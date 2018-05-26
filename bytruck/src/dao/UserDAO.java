@@ -11,4 +11,6 @@ public interface UserDAO {
 	List<users> selectAll() throws Exception;
 	void update(users u) throws Exception;
 	void delete(String id)  throws Exception;
+	String selectByBusiNum(String busiNumValue) throws Exception;
+	void insert2(users u) throws Exception;
 }
