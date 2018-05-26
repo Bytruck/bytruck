@@ -8,6 +8,7 @@ public class board {
 	private String title;
 	private String detail;
 	private Date  posted;
+	
 	public board() {
 		super();
 		// TODO Auto-generated constructor stub
