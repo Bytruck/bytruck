@@ -21,7 +21,7 @@ public class BoardDAOOracle implements BoardDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		System.out.println(boardNum);
+		//System.out.println(boardNum);
 		try {
 			con = sql.MyConnection.getConnection();
 			String sql = "delete from board\r\n" + 
