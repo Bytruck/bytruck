@@ -1,8 +1,8 @@
-drop table profit; 
+ï»¿drop table profit; 
 drop table detail_course;
 drop table course;
---drop table use_coupon; ÇÑ¹ø¸¸ ½ÇÇà ÈÄ »èÁ¦
---drop table coupon; ÇÑ¹ø¸¸ ½ÇÇà ÈÄ »èÁ¦
+--drop table use_coupon; í•œë²ˆë§Œ ì‹¤í–‰ í›„ ì‚­ì œ
+--drop table coupon; í•œë²ˆë§Œ ì‹¤í–‰ í›„ ì‚­ì œ
 drop table advertisement;
 drop table event;
 drop table foodtruck;
@@ -13,7 +13,7 @@ drop table comments;
 drop table reply;
 drop table board;
 drop table users;
---drop sequence seq_coupon_type; ÇÑ¹ø¸¸ ½ÇÇàÈÄ »èÁ¦
+--drop sequence seq_coupon_type; í•œë²ˆë§Œ ì‹¤í–‰í›„ ì‚­ì œ
 drop sequence seq_advertisementmotion_no;
 drop sequence foodtruck_no_seq;
 drop sequence review_no_seq;
@@ -70,11 +70,11 @@ create table users(
 --);
 ---- insert coupon table data
 --insert into coupon(coupon_type, coupon_name, discount_rate)
---values(SEQ_COUPON_TYPE.NEXTVAL , '»ıÀÏ ÄíÆù', 30);
+--values(SEQ_COUPON_TYPE.NEXTVAL , 'ìƒì¼ ì¿ í°', 30);
 --insert into coupon (coupon_type, coupon_name, discount_rate)
---values (SEQ_COUPON_TYPE.NEXTVAL, 'ÀÌº¥Æ® ÄíÆù', 20); 
+--values (SEQ_COUPON_TYPE.NEXTVAL, 'ì´ë²¤íŠ¸ ì¿ í°', 20); 
 --insert into coupon (coupon_type, coupon_name, discount_rate)
---values (SEQ_COUPON_TYPE.NEXTVAL, '½ÃÁğ ÄíÆù', 30);
+--values (SEQ_COUPON_TYPE.NEXTVAL, 'ì‹œì¦Œ ì¿ í°', 30);
 --select * from coupon;
 
 -- create advertisement table
@@ -85,7 +85,7 @@ create table advertisement(
     start_date                  varchar2(20) not null,
     end_date                    varchar2(20) not null,
     title                       varchar2(100) not null,
-    detail                      varchar2(500) not null,--file ºüÁü
+    detail                      varchar2(500) not null,--file ë¹ ì§
     constraint advertisementmotion_id_no_pk primary key(user_id, no),
     constraint advertisementmotion_id_fk foreign key (user_id) references users(user_id)
 );
@@ -112,7 +112,7 @@ detail      varchar2(1500),
 latitude    varchar2(50),
 longtitude  varchar2(50),                 
 poweryn     number(1) not null, --boolean 
---fileºüÁü
+--fileë¹ ì§
 constraint food_truck_no_pk primary key(no, user_id),
 constraint food_truck_user_id_fk foreign key(user_id)
     references users(user_id)
@@ -123,7 +123,7 @@ create table event(
     no                  number,
     user_id             varchar2(20) not null,
     title               varchar2(50) not null,
-    detail              varchar2(1000) not null,--file ¾øÀ½
+    detail              varchar2(1000) not null,--file ì—†ìŒ
     constraint event_no_user_id_pk primary key(no,user_id),
     constraint event_no_user_id_fk foreign key(no,user_id) references foodtruck_location(no,user_id)
 );
@@ -137,7 +137,7 @@ create table review(
     title           varchar2(100) not null,
     detail          varchar2(500),
     publicyn        number(1)  not null,
-    posted          varchar2(20),--Ã·ºÎÆÄÀÏ ºüÁü,
+    posted          varchar2(20),--ì²¨ë¶€íŒŒì¼ ë¹ ì§,
     views           number not null,
     good            number not null,
     constraint review_no_pk primary key(no),
@@ -280,161 +280,161 @@ select * from users;
 
 --insert , advertisementmotion table data
 insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('CL', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.05.18','YYYY.MM.dd')), to_char(to_date('2018.05.25','YYYY.MM.dd')), '¸ÆÁÖ ÀÌº¥Æ®', '¸ÆÁÖ 1ÀÜÀ» ¹«·á·Î µå¸³´Ï´Ù.');
+values('CL', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.05.18','YYYY.MM.dd')), to_char(to_date('2018.05.25','YYYY.MM.dd')), 'ë§¥ì£¼ ì´ë²¤íŠ¸', 'ë§¥ì£¼ 1ì”ì„ ë¬´ë£Œë¡œ ë“œë¦½ë‹ˆë‹¤.');
 insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('JM', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.06.18','YYYY.MM.dd')), to_char(to_date('2018.06.28','YYYY.MM.dd')), 'Èû³»¶ó Ã»Ãá', '20´ë¸¦ À§ÇÑ Æ¯º° ÀÌº¥Æ®ÀÔ´Ï´Ù.');
+values('JM', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.06.18','YYYY.MM.dd')), to_char(to_date('2018.06.28','YYYY.MM.dd')), 'í˜ë‚´ë¼ ì²­ì¶˜', '20ëŒ€ë¥¼ ìœ„í•œ íŠ¹ë³„ ì´ë²¤íŠ¸ì…ë‹ˆë‹¤.');
 insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('EJ', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.07.01','YYYY.MM.dd')), to_char(to_date('2018.07.08','YYYY.MM.dd')), 'ÇÑ°­ ÀÌº¥Æ®', 'ÀÌ¹øÁÖ¿¡ ÇÑ°­À» ¹æ¹®ÇÏ½Ã´Â ºĞµéÀ» À§ÇÑ ÀÌº¥Æ®ÀÔ´Ï´Ù.');
+values('EJ', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.07.01','YYYY.MM.dd')), to_char(to_date('2018.07.08','YYYY.MM.dd')), 'í•œê°• ì´ë²¤íŠ¸', 'ì´ë²ˆì£¼ì— í•œê°•ì„ ë°©ë¬¸í•˜ì‹œëŠ” ë¶„ë“¤ì„ ìœ„í•œ ì´ë²¤íŠ¸ì…ë‹ˆë‹¤.');
 insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('SB', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.06.18','YYYY.MM.dd')), to_char(to_date('2018.06.20','YYYY.MM.dd')), '¹éÁ¾¿øÀÌ ¶¹´Ù!', 'ÇªµåÆ®·°¿¡ ¹éÁ¾¿øÀÌ ³ªÅ¸³³´Ï´Ù.');
+values('SB', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.06.18','YYYY.MM.dd')), to_char(to_date('2018.06.20','YYYY.MM.dd')), 'ë°±ì¢…ì›ì´ ë–´ë‹¤!', 'í‘¸ë“œíŠ¸ëŸ­ì— ë°±ì¢…ì›ì´ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.');
 insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('MS', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.07.18','YYYY.MM.dd')), to_char(to_date('2018.07.19','YYYY.MM.dd')), '¿ø´õÆ®·°', '¾¿¾¿ÇÏ°í È°±âÂù ¿©¼ºÀÇ ÀÌ¹ÌÁö¸¦ ´ãÀº ÇªµåÆ®·°ÀÔ´Ï´Ù.');
+values('MS', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.07.18','YYYY.MM.dd')), to_char(to_date('2018.07.19','YYYY.MM.dd')), 'ì›ë”íŠ¸ëŸ­', 'ì”©ì”©í•˜ê³  í™œê¸°ì°¬ ì—¬ì„±ì˜ ì´ë¯¸ì§€ë¥¼ ë‹´ì€ í‘¸ë“œíŠ¸ëŸ­ì…ë‹ˆë‹¤.');
 insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('gijang', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.05.20','YYYY.MM.dd')), to_char(to_date('2018.05.25','YYYY.MM.dd')), 'ÇÁ¶û½º ºĞ½Ä', 'ºê¸£Å¸´º Ãâ½ÅÀÌ ¸¸µå´Â Å©·¹Æä¸¦ ¼±º¸ÀÔ´Ï´Ù.');
+values('gijang', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.05.20','YYYY.MM.dd')), to_char(to_date('2018.05.25','YYYY.MM.dd')), 'í”„ë‘ìŠ¤ ë¶„ì‹', 'ë¸Œë¥´íƒ€ë‰´ ì¶œì‹ ì´ ë§Œë“œëŠ” í¬ë ˆí˜ë¥¼ ì„ ë³´ì…ë‹ˆë‹¤.');
 select * from advertisement;
 
 --insert foodtruck table data
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
-values('JM', 'Chu·¯½º', 'Ãò·¯½º', 3000, 1, '»ç¶ûÀ» ¸¸µé¾î ÁÖ´Â Ãò·¯½º');
+values('JM', 'ChuëŸ¬ìŠ¤', 'ì¸„ëŸ¬ìŠ¤', 3000, 1, 'ì‚¬ë‘ì„ ë§Œë“¤ì–´ ì£¼ëŠ” ì¸„ëŸ¬ìŠ¤');
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
-values('EJ', 'StayÅ©À¸~', '½ºÅ×ÀÌÅ© ººÀ½¹ä', 6000, 1, '±¼¼Ò½º Ã¶ÆÇ ººÀ½¹ä°ú ¼®¼è ½ºÅ×ÀÌÅ©' );
+values('EJ', 'Stayí¬ìœ¼~', 'ìŠ¤í…Œì´í¬ ë³¶ìŒë°¥', 6000, 1, 'êµ´ì†ŒìŠ¤ ì² íŒ ë³¶ìŒë°¥ê³¼ ì„ì‡  ìŠ¤í…Œì´í¬' );
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
-values('SB', '´öº¹Èñ¾¾', '¶±ººÀÌ', 3000, 1, '¿ôÀ½ÅÍÁö´Â ´öº¹Èñ');
+values('SB', 'ë•ë³µí¬ì”¨', 'ë–¡ë³¶ì´', 3000, 1, 'ì›ƒìŒí„°ì§€ëŠ” ë•ë³µí¬');
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
-values('MS', '¹®¾î»§', 'Å¸ÄÚ¾ß³¢ 6°³', 2000, 1, 'ÁÖÀÎÀÌ ÁÁ¾ÆÇÏ´Â Å¸ÄÚ¾ß³¢');
+values('MS', 'ë¬¸ì–´ë¹µ', 'íƒ€ì½”ì•¼ë¼ 6ê°œ', 2000, 1, 'ì£¼ì¸ì´ ì¢‹ì•„í•˜ëŠ” íƒ€ì½”ì•¼ë¼');
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
-values('jigak', 'KITRI', 'Áö°¢ 5ºĞ' , 1000, 1, '1~5ºĞ Áö°¢½Ã');
+values('jigak', 'KITRI', 'ì§€ê° 5ë¶„' , 1000, 1, '1~5ë¶„ ì§€ê°ì‹œ');
 select * from foodtruck;
 
 -- insert foodtruck_location table data
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn)
-values (foodtruck_no_seq.nextval,'JM', '¿À´ÃÀº °¨¹Ù»ç ¸Ô´Â ³¯', to_char(to_date('2018.04.18','yyyy.mm.dd')),'ÃáÃµ ÀÚÀü°Å µµ·Î¿¡¼­ ÆÇ¸ÅÇÏ´Â ¾ÆÁÖ ¸ÀÀÖ´Â °¨¹Ù»ç°¡ ÀÖ½À´Ï´Ù. ¿ìÈÄ 2½Ã~4½Ã 10%ÇÒÀÎ Çà»ç ÀÖ¾î¿ä~','À§µµ','°æµµ',1);
+values (foodtruck_no_seq.nextval,'JM', 'ì˜¤ëŠ˜ì€ ê°ë°”ì‚¬ ë¨¹ëŠ” ë‚ ', to_char(to_date('2018.04.18','yyyy.mm.dd')),'ì¶˜ì²œ ìì „ê±° ë„ë¡œì—ì„œ íŒë§¤í•˜ëŠ” ì•„ì£¼ ë§›ìˆëŠ” ê°ë°”ì‚¬ê°€ ìˆìŠµë‹ˆë‹¤. ìš°í›„ 2ì‹œ~4ì‹œ 10%í• ì¸ í–‰ì‚¬ ìˆì–´ìš”~','ìœ„ë„','ê²½ë„',1);
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn)
-values (foodtruck_no_seq.nextval,'EJ', 'ÇÇÀÚ¸¦ ÇÇÀÚ', to_char(to_date('2018.05.18','yyyy.mm.dd')),'°­¿øµµ È¾¼º ¾îµò°¡¿¡¼­ ÆÇ¸ÅÇÏ°í ÀÖ´Â ÇÇÀÚÁı ÀÔ´Ï´Ù.','À§µµ','°æµµ',1);
+values (foodtruck_no_seq.nextval,'EJ', 'í”¼ìë¥¼ í”¼ì', to_char(to_date('2018.05.18','yyyy.mm.dd')),'ê°•ì›ë„ íš¡ì„± ì–´ë”˜ê°€ì—ì„œ íŒë§¤í•˜ê³  ìˆëŠ” í”¼ìì§‘ ì…ë‹ˆë‹¤.','ìœ„ë„','ê²½ë„',1);
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn)
-values (foodtruck_no_seq.nextval,'SB', 'Ä¡Å²¸Ô ´ß', to_char(to_date('2018.05.22','yyyy.mm.dd')),'ºÎ»ê ¾îµò°¡¿¡ ÀÖ´Â ±¤¾È´ë±³ ?? ¿¡ ÀÖ´Â ¸ÀÁı Ä¡Å²Ä¡Å² gogo','À§µµ','°æµµ',1);
+values (foodtruck_no_seq.nextval,'SB', 'ì¹˜í‚¨ë¨¹ ë‹­', to_char(to_date('2018.05.22','yyyy.mm.dd')),'ë¶€ì‚° ì–´ë”˜ê°€ì— ìˆëŠ” ê´‘ì•ˆëŒ€êµ ?? ì— ìˆëŠ” ë§›ì§‘ ì¹˜í‚¨ì¹˜í‚¨ gogo','ìœ„ë„','ê²½ë„',1);
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn)
-values (foodtruck_no_seq.nextval,'MS', '»õ¿ì´Ï´Ï', to_char(to_date('2018.05.25','yyyy.mm.dd')),'½ÇÁ¦»óÈ² ÀÔ´Ï´Ù. ÀÌ·¸°Ô Å« »õ¿ì, ³Ê »õ¿ì´Ï´Ï?','À§µµ','°æµµ',1);
+values (foodtruck_no_seq.nextval,'MS', 'ìƒˆìš°ë‹ˆë‹ˆ', to_char(to_date('2018.05.25','yyyy.mm.dd')),'ì‹¤ì œìƒí™© ì…ë‹ˆë‹¤. ì´ë ‡ê²Œ í° ìƒˆìš°, ë„ˆ ìƒˆìš°ë‹ˆë‹ˆ?','ìœ„ë„','ê²½ë„',1);
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn)
-values (foodtruck_no_seq.nextval,'jigak', '¿ÀÂ¡¾îµû¸®', to_char(to_date('2018.06.02','yyyy.mm.dd')),'¿ÀÂ¡¾î´Ù¸®´Â ÈŞ°Ô¼Ò¾Æ´Ñ ÇÇ½Ã¹æ ¾Æ´Ñ ¿ÀÂ¡¾îµû¸®·Î','À§µµ','°æµµ',1);
+values (foodtruck_no_seq.nextval,'jigak', 'ì˜¤ì§•ì–´ë”°ë¦¬', to_char(to_date('2018.06.02','yyyy.mm.dd')),'ì˜¤ì§•ì–´ë‹¤ë¦¬ëŠ” íœ´ê²Œì†Œì•„ë‹Œ í”¼ì‹œë°© ì•„ë‹Œ ì˜¤ì§•ì–´ë”°ë¦¬ë¡œ','ìœ„ë„','ê²½ë„',1);
 
 --inset event data table
 insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'JM', '¾î¸°ÀÌ³¯ ±â³ä 20% ÇÒÀÎ', 'ÀÌº¥Æ® ÇÕ´Ï´Ù ¸¹ÀÌ ¿À¼Å¼­ Áñ°Ì°Ô ³î´Ù °¡¼¼¿ä');
+values(event_id_seq.nextval, 'JM', 'ì–´ë¦°ì´ë‚  ê¸°ë… 20% í• ì¸', 'ì´ë²¤íŠ¸ í•©ë‹ˆë‹¤ ë§ì´ ì˜¤ì…”ì„œ ì¦ê²ê²Œ ë†€ë‹¤ ê°€ì„¸ìš”');
 insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'EJ', '¾î¹öÀÌ³¯ ±â³ä 20% ÇÒÀÎ', 'ÀÌº¥Æ® ÇÕ´Ï´Ù ¸¹ÀÌ ¿À¼Å¼­ Áñ°Ì°Ô ³î´Ù °¡¼¼¿ä');
+values(event_id_seq.nextval, 'EJ', 'ì–´ë²„ì´ë‚  ê¸°ë… 20% í• ì¸', 'ì´ë²¤íŠ¸ í•©ë‹ˆë‹¤ ë§ì´ ì˜¤ì…”ì„œ ì¦ê²ê²Œ ë†€ë‹¤ ê°€ì„¸ìš”');
 insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'SB', '½º½ÂÀÇ³¯ ±â³ä 20% ÇÒÀÎ', 'ÀÌº¥Æ® ÇÕ´Ï´Ù ¸¹ÀÌ ¿À¼Å¼­ Áñ°Ì°Ô ³î´Ù °¡¼¼¿ä');
+values(event_id_seq.nextval, 'SB', 'ìŠ¤ìŠ¹ì˜ë‚  ê¸°ë… 20% í• ì¸', 'ì´ë²¤íŠ¸ í•©ë‹ˆë‹¤ ë§ì´ ì˜¤ì…”ì„œ ì¦ê²ê²Œ ë†€ë‹¤ ê°€ì„¸ìš”');
 insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'MS', '¹Î¼öÅº½ÅÀÏ ±â³ä 20% ÇÒÀÎ', 'ÀÌº¥Æ® ÇÕ´Ï´Ù ¸¹ÀÌ ¿À¼Å¼­ Áñ°Ì°Ô ³î´Ù °¡¼¼¿ä');
+values(event_id_seq.nextval, 'MS', 'ë¯¼ìˆ˜íƒ„ì‹ ì¼ ê¸°ë… 20% í• ì¸', 'ì´ë²¤íŠ¸ í•©ë‹ˆë‹¤ ë§ì´ ì˜¤ì…”ì„œ ì¦ê²ê²Œ ë†€ë‹¤ ê°€ì„¸ìš”');
 insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'jigak', 'Áö±¸¸ê¸Á ±â³ä 20% ÇÒÀÎ', 'ÀÌº¥Æ® ÇÕ´Ï´Ù ¸¹ÀÌ ¿À¼Å¼­ Áñ°Ì°Ô ³î´Ù °¡¼¼¿ä');
+values(event_id_seq.nextval, 'jigak', 'ì§€êµ¬ë©¸ë§ ê¸°ë… 20% í• ì¸', 'ì´ë²¤íŠ¸ í•©ë‹ˆë‹¤ ë§ì´ ì˜¤ì…”ì„œ ì¦ê²ê²Œ ë†€ë‹¤ ê°€ì„¸ìš”');
 
 -- inset review table data
 insert into review(no, user_id, location, trip_date, title ,detail, publicyn, posted, views, good)
-values (review_no_seq.nextval,'hanzo', '¼­¿ï', to_char(to_date('2018.05.07','YYYY.MM.dd')),
-        'ÇÑ°­¿©Çà °¬´Ù¿Ô¾î¿ä', 'ÀÚÀü°ÅÅ¸°í ÇÑ°­ ÀüÃ¼ µ¹°í¿Ô½À´Ï´Ù. ±ÂÀÌ³×¿ä',
+values (review_no_seq.nextval,'hanzo', 'ì„œìš¸', to_char(to_date('2018.05.07','YYYY.MM.dd')),
+        'í•œê°•ì—¬í–‰ ê°”ë‹¤ì™”ì–´ìš”', 'ìì „ê±°íƒ€ê³  í•œê°• ì „ì²´ ëŒê³ ì™”ìŠµë‹ˆë‹¤. êµ¿ì´ë„¤ìš”',
         1, to_char(to_date('2018.05.09','YYYY.MM.dd')),10,5);
 insert into review(no, user_id, location, trip_date, title, detail ,publicyn, posted, views, good)
-values (review_no_seq.nextval,'genji', 'ÃáÃµ', to_char(to_date('2018.05.07','YYYY.MM.dd')),
-        '´ß°¥ºñ ¸ÀÁıÀ» Ã£¾Æ¼­', '´ß°¥ºñ ¸ÀÁıÀ» Ã£¾Æ¼­', 0, to_char(to_date('2018.05.10','YYYY.MM.dd')),25,10);
+values (review_no_seq.nextval,'genji', 'ì¶˜ì²œ', to_char(to_date('2018.05.07','YYYY.MM.dd')),
+        'ë‹­ê°ˆë¹„ ë§›ì§‘ì„ ì°¾ì•„ì„œ', 'ë‹­ê°ˆë¹„ ë§›ì§‘ì„ ì°¾ì•„ì„œ', 0, to_char(to_date('2018.05.10','YYYY.MM.dd')),25,10);
 insert into review(no, user_id, location, trip_date, title, detail, publicyn, posted, views, good)
-values (review_no_seq.nextval,'saem', 'ºÎ»ê', to_char(to_date('2018.05.10','YYYY.MM.dd')),
-        'ºÎ»ê¸ÀÁı±âÇà', '¿©Çà¿Ô½À´Ï´Ù.',
+values (review_no_seq.nextval,'saem', 'ë¶€ì‚°', to_char(to_date('2018.05.10','YYYY.MM.dd')),
+        'ë¶€ì‚°ë§›ì§‘ê¸°í–‰', 'ì—¬í–‰ì™”ìŠµë‹ˆë‹¤.',
         1, to_char(to_date('2018.05.11','YYYY.MM.dd')),33,15);
 insert into review(no, user_id, location, trip_date, title, detail, publicyn, posted, views, good)
-values (review_no_seq.nextval,'saem2', '´ë±¸', to_char(to_date('2018.05.09','YYYY.MM.dd')),
-        '¸·Ã¢°ñ¸ñ¼ÓÀ¸·Î', 'ÆÈ°ø»ê »êÃ¥',
+values (review_no_seq.nextval,'saem2', 'ëŒ€êµ¬', to_char(to_date('2018.05.09','YYYY.MM.dd')),
+        'ë§‰ì°½ê³¨ëª©ì†ìœ¼ë¡œ', 'íŒ”ê³µì‚° ì‚°ì±…',
         1, to_char(to_date('2018.05.10','YYYY.MM.dd')),50,30);
 insert into review(no, user_id, location, trip_date, title, detail, publicyn, posted, views, good)
-values (review_no_seq.nextval,'gijang', 'Ã»Æò', to_char(to_date('2018.05.10','YYYY.MM.dd')),
-        '¾ÆÄ§°í¿ä¼ö¸ñ¿ø', '¾ß°æÀÌ ÀÌ»Ú³×¿ä.',
+values (review_no_seq.nextval,'gijang', 'ì²­í‰', to_char(to_date('2018.05.10','YYYY.MM.dd')),
+        'ì•„ì¹¨ê³ ìš”ìˆ˜ëª©ì›', 'ì•¼ê²½ì´ ì´ì˜ë„¤ìš”.',
         1, to_char(to_date('2018.05.01','YYYY.MM.dd')), 80,45);
 
 --insert chatting table data
 insert into chatting(no, posted, user_id, message)
 values(chatting_no_seq.nextval,  to_char(to_date('2018.04.28','YYYY.MM.dd')),
-    'gijang', '¿©ÇàÁö ÃßÃµÇØÁÖ¼¼¿ä.'
+    'gijang', 'ì—¬í–‰ì§€ ì¶”ì²œí•´ì£¼ì„¸ìš”.'
 );
 insert into chatting(no, posted, user_id, message)
 values(chatting_no_seq.nextval,  to_char(to_date('2018.04.28','YYYY.MM.dd')),
-    'saem', '´ë±¸ ÃßÃµÇÕ´Ï´Ù.'
+    'saem', 'ëŒ€êµ¬ ì¶”ì²œí•©ë‹ˆë‹¤.'
 );
 insert into chatting(no, posted, user_id, message)
 values(chatting_no_seq.nextval,  to_char(to_date('2018.04.30','YYYY.MM.dd')),
-    'saem2', '¿À´Ã ºñ¸¹ÀÌ ¿Í¼­ ¿©Çà ¸ø°¡°Ú³×¿ä¤Ğ¤Ğ'
+    'saem2', 'ì˜¤ëŠ˜ ë¹„ë§ì´ ì™€ì„œ ì—¬í–‰ ëª»ê°€ê² ë„¤ìš”ã… ã… '
 );
 insert into chatting(no, posted, user_id, message)
 values(chatting_no_seq.nextval,  to_char(to_date('2018.04.30','YYYY.MM.dd')),
-    'genji', 'ºñ¿À´Â³¯¿£ ÁıÀÌ ÃÖ°í!'
+    'genji', 'ë¹„ì˜¤ëŠ”ë‚ ì—” ì§‘ì´ ìµœê³ !'
 );
 
 insert into chatting(no, posted, user_id, message)
 values(chatting_no_seq.nextval,  to_char(to_date('2018.05.02','YYYY.MM.dd')),
-    'hanzo', 'Á¦ ÈÄ±â±Û¿¡ ÁÁ¾Æ¿ä ¸¹ÀÌ ´­·¯ÁÖ¼¼¿ä~'
+    'hanzo', 'ì œ í›„ê¸°ê¸€ì— ì¢‹ì•„ìš” ë§ì´ ëˆŒëŸ¬ì£¼ì„¸ìš”~'
 );
 
 -- insert board table data
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq.nextval, 0, '¹İ°©½À´Ï´Ù. ¹ÙÀÌÆ®·°°ü¸®ÀÚ ÀÔ´Ï´Ù.',
-'¹İ°©½À´Ï´Ù. ¹ÙÀÌÆ®·°°ü¸®ÀÚ ÀÔ´Ï´Ù. Welcome everyone! Thanks', 'CL', 152, to_char(to_date('2018.05.01','YYYY.MM.dd')));
+values (board_no_seq.nextval, 0, 'ë°˜ê°‘ìŠµë‹ˆë‹¤. ë°”ì´íŠ¸ëŸ­ê´€ë¦¬ì ì…ë‹ˆë‹¤.',
+'ë°˜ê°‘ìŠµë‹ˆë‹¤. ë°”ì´íŠ¸ëŸ­ê´€ë¦¬ì ì…ë‹ˆë‹¤. Welcome everyone! Thanks', 'CL', 152, to_char(to_date('2018.05.01','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq.nextval, 0, '   ¹ÙÀÌÆ®·° ÁÖ¿ä ±â´É¼³¸íÀÔ´Ï´Ù.',
-'¹ÙÀÌÆ®·° ÁÖ¿ä ±â´É¼³¸íÀÔ´Ï´Ù. Thanks', 'CL', 180, to_char(to_date('2018.05.02','YYYY.MM.dd')));
+values (board_no_seq.nextval, 0, '   ë°”ì´íŠ¸ëŸ­ ì£¼ìš” ê¸°ëŠ¥ì„¤ëª…ì…ë‹ˆë‹¤.',
+'ë°”ì´íŠ¸ëŸ­ ì£¼ìš” ê¸°ëŠ¥ì„¤ëª…ì…ë‹ˆë‹¤. Thanks', 'CL', 180, to_char(to_date('2018.05.02','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq.nextval, 0, '±¤°í¹®ÀÇ ¹æ¹ı ÀÔ´Ï´Ù.',
-'±¤°í¹®ÀÇ ¹æ¹ı ÀÔ´Ï´Ù. Thanks', 'CL', 67, to_char(to_date('2018.05.02','YYYY.MM.dd')));
+values (board_no_seq.nextval, 0, 'ê´‘ê³ ë¬¸ì˜ ë°©ë²• ì…ë‹ˆë‹¤.',
+'ê´‘ê³ ë¬¸ì˜ ë°©ë²• ì…ë‹ˆë‹¤. Thanks', 'CL', 67, to_char(to_date('2018.05.02','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq.nextval, 0, 'ÇªµåÆ®·° »ç¾÷ÀÚ´Ôµé ÇÊµ¶ÇØÁÖ¼¼¿ä.',
-'ÇªµåÆ®·° »ç¾÷ÀÚ´Ôµé ÇÊµ¶ÇØÁÖ¼¼¿ä! Welcome everyone! Thanks', 'CL', 32, to_char(to_date('2018.05.03','YYYY.MM.dd')));
+values (board_no_seq.nextval, 0, 'í‘¸ë“œíŠ¸ëŸ­ ì‚¬ì—…ìë‹˜ë“¤ í•„ë…í•´ì£¼ì„¸ìš”.',
+'í‘¸ë“œíŠ¸ëŸ­ ì‚¬ì—…ìë‹˜ë“¤ í•„ë…í•´ì£¼ì„¸ìš”! Welcome everyone! Thanks', 'CL', 32, to_char(to_date('2018.05.03','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq.nextval, 0, '   °ü½ÉÄÚ½º (Âò)±â´ÉÀÌ Ãß°¡ µÇ¾ú½À´Ï´Ù.',
-'°ü½ÉÄÚ½º (Âò)±â´ÉÀÌ Ãß°¡ µÇ¾ú½À´Ï´Ù. Thanks', 'CL', 52, to_char(to_date('2018.05.05','YYYY.MM.dd')));
+values (board_no_seq.nextval, 0, '   ê´€ì‹¬ì½”ìŠ¤ (ì°œ)ê¸°ëŠ¥ì´ ì¶”ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤.',
+'ê´€ì‹¬ì½”ìŠ¤ (ì°œ)ê¸°ëŠ¥ì´ ì¶”ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤. Thanks', 'CL', 52, to_char(to_date('2018.05.05','YYYY.MM.dd')));
 
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq1.nextval, 1, 'ÄÚ½ºÂ¥±â ÀÌ¿ë ¾î¶»°Ô ÇÏÁÒ?',
-'ÄÚ½ºÂ¥±â ÀÌ¿ë¹æ¹ı ¼³¸í ºÎÅ¹µå·Á¿ä¤Ğ¤Ğ', 'genji', 152, to_char(to_date('2017.12.31','YYYY.MM.dd')));
+values (board_no_seq1.nextval, 1, 'ì½”ìŠ¤ì§œê¸° ì´ìš© ì–´ë–»ê²Œ í•˜ì£ ?',
+'ì½”ìŠ¤ì§œê¸° ì´ìš©ë°©ë²• ì„¤ëª… ë¶€íƒë“œë ¤ìš”ã… ã… ', 'genji', 152, to_char(to_date('2017.12.31','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq1.nextval, 1, '°³ÀÎÁ¤º¸ Á¶È¸ ¾î¶»°Ô ÇÏ³ª¿ä',
-'°¡ÀÔÇßÀ»¶§ Á¦ Á¤º¸¸¦ ¾îµğ¼­ º¼ ¼ö ÀÖ³ª¿©? º¯°æÀº °¡´ÉÇÑ°¡¿ä?', 'EJ', 180, to_char(to_date('2018.05.02','YYYY.MM.dd')));
+values (board_no_seq1.nextval, 1, 'ê°œì¸ì •ë³´ ì¡°íšŒ ì–´ë–»ê²Œ í•˜ë‚˜ìš”',
+'ê°€ì…í–ˆì„ë•Œ ì œ ì •ë³´ë¥¼ ì–´ë””ì„œ ë³¼ ìˆ˜ ìˆë‚˜ì—¬? ë³€ê²½ì€ ê°€ëŠ¥í•œê°€ìš”?', 'EJ', 180, to_char(to_date('2018.05.02','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq1.nextval, 1, 'ÇÁµåÆ®·° È«º¸ Á¾·ù ¾Ë°í ½Í½À´Ï´Ù.',
-'ÇÁµåÆ®·° È«º¸ Á¾·ù ¾Ë°í ½Í½À´Ï´Ù.', 'JM', 77, to_char(to_date('2018.05.02','YYYY.MM.dd')));
+values (board_no_seq1.nextval, 1, 'í”„ë“œíŠ¸ëŸ­ í™ë³´ ì¢…ë¥˜ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.',
+'í”„ë“œíŠ¸ëŸ­ í™ë³´ ì¢…ë¥˜ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.', 'JM', 77, to_char(to_date('2018.05.02','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq1.nextval, 1, 'Å»Åğ½Ã Áú¹®ÀÔ´Ï´Ù.',
-'Å»Åğ ÈÄ ¸¶À½ÀÌº¯ÇÏ¿´À» ¶§ Àç°¡ÀÔ °¡´ÉÇÑ°¡¿ä?', 'SB', 32, to_char(to_date('2018.05.09','YYYY.MM.dd')));
+values (board_no_seq1.nextval, 1, 'íƒˆí‡´ì‹œ ì§ˆë¬¸ì…ë‹ˆë‹¤.',
+'íƒˆí‡´ í›„ ë§ˆìŒì´ë³€í•˜ì˜€ì„ ë•Œ ì¬ê°€ì… ê°€ëŠ¥í•œê°€ìš”?', 'SB', 32, to_char(to_date('2018.05.09','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq1.nextval, 1, '   Âò±â´É °¹¼ö Á¦ÇÑ',
-'Âò±â´É °¹¼ö Á¦ÇÑÀÖ³ª¿©? ÀÖÀ¸¸é ¸î °³ ÀÌÀÎ°¡¿ä?', 'saem2', 52, to_char(to_date('2018.05.10','YYYY.MM.dd')));
+values (board_no_seq1.nextval, 1, '   ì°œê¸°ëŠ¥ ê°¯ìˆ˜ ì œí•œ',
+'ì°œê¸°ëŠ¥ ê°¯ìˆ˜ ì œí•œìˆë‚˜ì—¬? ìˆìœ¼ë©´ ëª‡ ê°œ ì´ì¸ê°€ìš”?', 'saem2', 52, to_char(to_date('2018.05.10','YYYY.MM.dd')));
 
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq2.nextval, 2, '·Î±×ÀÎ½Ã ÁÖÀÇ»çÇ×',
-'ÀÏ¹İ È¸¿øÀº ÀÏ¹İ È¸¿ø°¡ÀÔ ¹æ½ÄÀ» µû¸£¸é µÇ¸ç, »ç¾÷ÀÚ È¸¿ø°¡ÀÔ½Ã »ç¾÷ÀÚ µî·Ï¹øÈ£¸¦ ÇÊ¼ö ÀÔ·ÂÇØ¾ß ¿øÇÒÇÑ È¸¿ø°¡ÀÔ ÀıÂ÷°¡ ÁøÇàµË´Ï´Ù.^^', 'CL', 152, to_char(to_date('2018.05.01','YYYY.MM.dd')));
+values (board_no_seq2.nextval, 2, 'ë¡œê·¸ì¸ì‹œ ì£¼ì˜ì‚¬í•­',
+'ì¼ë°˜ íšŒì›ì€ ì¼ë°˜ íšŒì›ê°€ì… ë°©ì‹ì„ ë”°ë¥´ë©´ ë˜ë©°, ì‚¬ì—…ì íšŒì›ê°€ì…ì‹œ ì‚¬ì—…ì ë“±ë¡ë²ˆí˜¸ë¥¼ í•„ìˆ˜ ì…ë ¥í•´ì•¼ ì›í• í•œ íšŒì›ê°€ì… ì ˆì°¨ê°€ ì§„í–‰ë©ë‹ˆë‹¤.^^', 'CL', 152, to_char(to_date('2018.05.01','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq2.nextval, 2, 'ÄÚ½ºÂ¥±â ¹®ÀÇ',
-'ÄÚ½ºÂ¥±â´Â ÄÚ½ºÂ¥±â °Ô½ÃÆÇ¿¡¼­  ¿øÇÏ´Â ¿©ÇàÁö¿ª ¼±ÅÃ ÈÄ °¢°¢ÀÇ ¼¼ºÎ ÄÚ½º ¿©ÇàÁö¸¦ ¼±Á¤ ÇÒ ¼ö ÀÖÀ¸¸ç, »ó¼¼ ¼³¸íÀ» ±âÀÔÇÏ½Ç¼ö ÀÖ½À´Ï´Ù.', 'CL', 180, to_char(to_date('2018.05.02','YYYY.MM.dd')));
+values (board_no_seq2.nextval, 2, 'ì½”ìŠ¤ì§œê¸° ë¬¸ì˜',
+'ì½”ìŠ¤ì§œê¸°ëŠ” ì½”ìŠ¤ì§œê¸° ê²Œì‹œíŒì—ì„œ  ì›í•˜ëŠ” ì—¬í–‰ì§€ì—­ ì„ íƒ í›„ ê°ê°ì˜ ì„¸ë¶€ ì½”ìŠ¤ ì—¬í–‰ì§€ë¥¼ ì„ ì • í•  ìˆ˜ ìˆìœ¼ë©°, ìƒì„¸ ì„¤ëª…ì„ ê¸°ì…í•˜ì‹¤ìˆ˜ ìˆìŠµë‹ˆë‹¤.', 'CL', 180, to_char(to_date('2018.05.02','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq2.nextval, 2, '±¤°í¹®ÀÇ ¹æ¹ı',
-'ÆÄ¿ö¸µÅ© ±¤°í, ÇÁ·Î¸ğ¼Ç ±¤°í°¡ ÀÖ½À´Ï´Ù.  ÆÄ¿ö¸µÅ© ±¤°í´Â ÇªµåÆ®·°Çà»ç°Ô½Ã¹° ÀÛ¼º½Ã ¿É¼Ç±â´ÉÀ¸·Î ÇÏ½Ç¼ö ÀÖÀ¸¸ç, ÇÁ·Î¸ğ¼Ç±â´ÉÀº °ü¸®ÀÚ¿¡°Ô µû·Î ¹®ÀÇ ÇÏ¼Å¾ßÇÕ´Ï´Ù. °³º° °¡°İÀº °ü¸®ÀÚ¿¡°Ô µû·Î ¹®ÀÇ ¹Ù¶ø´Ï´Ù.^^', 'CL', 67, to_char(to_date('2018.05.05','YYYY.MM.dd')));
+values (board_no_seq2.nextval, 2, 'ê´‘ê³ ë¬¸ì˜ ë°©ë²•',
+'íŒŒì›Œë§í¬ ê´‘ê³ , í”„ë¡œëª¨ì…˜ ê´‘ê³ ê°€ ìˆìŠµë‹ˆë‹¤.  íŒŒì›Œë§í¬ ê´‘ê³ ëŠ” í‘¸ë“œíŠ¸ëŸ­í–‰ì‚¬ê²Œì‹œë¬¼ ì‘ì„±ì‹œ ì˜µì…˜ê¸°ëŠ¥ìœ¼ë¡œ í•˜ì‹¤ìˆ˜ ìˆìœ¼ë©°, í”„ë¡œëª¨ì…˜ê¸°ëŠ¥ì€ ê´€ë¦¬ìì—ê²Œ ë”°ë¡œ ë¬¸ì˜ í•˜ì…”ì•¼í•©ë‹ˆë‹¤. ê°œë³„ ê°€ê²©ì€ ê´€ë¦¬ìì—ê²Œ ë”°ë¡œ ë¬¸ì˜ ë°”ëë‹ˆë‹¤.^^', 'CL', 67, to_char(to_date('2018.05.05','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq2.nextval, 2, 'ÇªµåÆ®·° Á¤º¸ º¯°æ',
-'»ç¾÷ÀÚºĞµé °³ÀÎÁ¤º¸ º¯°æ»Ó¾Æ´Ï¶ó ÇªµåÆ®·° Á¤º¸µµ º¯°æ °¡´ÉÇÕ´Ï´Ù. Á¤º¸°¡ º¯°æµÇ¾úÀ» ½Ã,¸¶ÀÌÆäÀÌÁöÀÇ Á¤º¸¼öÁ¤ Ç×¸ñÀ» Ã£¾Æ ¼öÁ¤ÇØÁÖ¼¼¿ä^^', 'CL', 32, to_char(to_date('2018.05.11','YYYY.MM.dd')));
+values (board_no_seq2.nextval, 2, 'í‘¸ë“œíŠ¸ëŸ­ ì •ë³´ ë³€ê²½',
+'ì‚¬ì—…ìë¶„ë“¤ ê°œì¸ì •ë³´ ë³€ê²½ë¿ì•„ë‹ˆë¼ í‘¸ë“œíŠ¸ëŸ­ ì •ë³´ë„ ë³€ê²½ ê°€ëŠ¥í•©ë‹ˆë‹¤. ì •ë³´ê°€ ë³€ê²½ë˜ì—ˆì„ ì‹œ,ë§ˆì´í˜ì´ì§€ì˜ ì •ë³´ìˆ˜ì • í•­ëª©ì„ ì°¾ì•„ ìˆ˜ì •í•´ì£¼ì„¸ìš”^^', 'CL', 32, to_char(to_date('2018.05.11','YYYY.MM.dd')));
 insert into board(no, type, title, detail, user_id, views, posted)
-values (board_no_seq2.nextval, 2, '   °ü½ÉÄÚ½º (Âò)±â´É',
-'°ø°³µÈ ÄÚ½º¸¦ º¸¸é¼­ °ü½ÉÀÖ´Â ÄÚ½º´Â ÇÏÆ® ¾ÆÀÌÄÜÀ» ´­·¯ Âò À»  ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù. ÂòÀ» ÇÏ½Ã¸é ¸¶ÀÌÆäÀÌÁöÀÇ °ü½ÉÄÚ½º Ç×¸ñ¿¡¼­ ¹Ù·Î Ã£¾Æ º¸½Ç ¼ö ÀÖ½À´Ï´Ù. ¸¹Àº ÀÌ¿ë ºÎÅ¹µå¸³´Ï´Ù^^', 'CL', 52, to_char(to_date('2018.05.14','YYYY.MM.dd')));
+values (board_no_seq2.nextval, 2, '   ê´€ì‹¬ì½”ìŠ¤ (ì°œ)ê¸°ëŠ¥',
+'ê³µê°œëœ ì½”ìŠ¤ë¥¼ ë³´ë©´ì„œ ê´€ì‹¬ìˆëŠ” ì½”ìŠ¤ëŠ” í•˜íŠ¸ ì•„ì´ì½˜ì„ ëˆŒëŸ¬ ì°œ ì„  í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì°œì„ í•˜ì‹œë©´ ë§ˆì´í˜ì´ì§€ì˜ ê´€ì‹¬ì½”ìŠ¤ í•­ëª©ì—ì„œ ë°”ë¡œ ì°¾ì•„ ë³´ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ë§ì€ ì´ìš© ë¶€íƒë“œë¦½ë‹ˆë‹¤^^', 'CL', 52, to_char(to_date('2018.05.14','YYYY.MM.dd')));
 select * from board;
 
 --insert comments table data
 insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'genji', 1, 1, '°í°´´Ô ¾È³çÇÏ½Ê´Ï±î^^ ÄÚ½ºÂ¥±â´Â ÄÚ½ºÂ¥±â °Ô½ÃÆÇ¿¡¼­  ¿øÇÏ´Â ¿©ÇàÁö¿ª ¼±ÅÃ ÈÄ °¢°¢ÀÇ ¼¼ºÎ ÄÚ½º ¿©ÇàÁö¸¦ ¼±Á¤ ÇÒ ¼ö ÀÖÀ¸¸ç, »ó¼¼ ¼³¸íÀ» ±âÀÔÇÏ½Ç¼ö ÀÖ½À´Ï´Ù.^^');
+values (comments_com_seq.nextval, 'genji', 1, 1, 'ê³ ê°ë‹˜ ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ^^ ì½”ìŠ¤ì§œê¸°ëŠ” ì½”ìŠ¤ì§œê¸° ê²Œì‹œíŒì—ì„œ  ì›í•˜ëŠ” ì—¬í–‰ì§€ì—­ ì„ íƒ í›„ ê°ê°ì˜ ì„¸ë¶€ ì½”ìŠ¤ ì—¬í–‰ì§€ë¥¼ ì„ ì • í•  ìˆ˜ ìˆìœ¼ë©°, ìƒì„¸ ì„¤ëª…ì„ ê¸°ì…í•˜ì‹¤ìˆ˜ ìˆìŠµë‹ˆë‹¤.^^');
 insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'EJ', 2, 1, '°í°´´Ô ¾È³çÇÏ½Ê´Ï±î^^ °³ÀÎÁ¤º¸ Á¶È¸´Â ¸¶ÀÌÆäÀÌÁö¿¡¼­ Á¶È¸ °¡´ÉÇÕ´Ï´Ù^^ ÀÏ¹İÈ¸¿ø´ÔÀÏ°æ¿ì  °ü½ÉÄÚ½º, È¸¿øÁ¤º¸, ÄíÆù³»¿ªµîÀ» º¼ ¼ö ÀÖÀ¸¸ç, »ç¾÷ÀÚºĞµéÀº °³ÀÎÁ¤º¸ º¯°æ»Ó¾Æ´Ï¶ó ÇªµåÆ®·° Á¤º¸µµ º¯°æ °¡´ÉÇÕ´Ï´Ù. Á¤º¸°¡ º¯°æµÇ¾úÀ» ½Ã,¸¶ÀÌÆäÀÌÁöÀÇ Á¤º¸¼öÁ¤ Ç×¸ñÀ» Ã£¾Æ ¼öÁ¤ÇØÁÖ¼¼¿ä^^');
+values (comments_com_seq.nextval, 'EJ', 2, 1, 'ê³ ê°ë‹˜ ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ^^ ê°œì¸ì •ë³´ ì¡°íšŒëŠ” ë§ˆì´í˜ì´ì§€ì—ì„œ ì¡°íšŒ ê°€ëŠ¥í•©ë‹ˆë‹¤^^ ì¼ë°˜íšŒì›ë‹˜ì¼ê²½ìš°  ê´€ì‹¬ì½”ìŠ¤, íšŒì›ì •ë³´, ì¿ í°ë‚´ì—­ë“±ì„ ë³¼ ìˆ˜ ìˆìœ¼ë©°, ì‚¬ì—…ìë¶„ë“¤ì€ ê°œì¸ì •ë³´ ë³€ê²½ë¿ì•„ë‹ˆë¼ í‘¸ë“œíŠ¸ëŸ­ ì •ë³´ë„ ë³€ê²½ ê°€ëŠ¥í•©ë‹ˆë‹¤. ì •ë³´ê°€ ë³€ê²½ë˜ì—ˆì„ ì‹œ,ë§ˆì´í˜ì´ì§€ì˜ ì •ë³´ìˆ˜ì • í•­ëª©ì„ ì°¾ì•„ ìˆ˜ì •í•´ì£¼ì„¸ìš”^^');
 insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'JM', 3, 1, '°í°´´Ô ¾È³çÇÏ½Ê´Ï±î^^ ÆÄ¿ö¸µÅ© ±¤°í, ÇÁ·Î¸ğ¼Ç ±¤°í°¡ ÀÖ½À´Ï´Ù.  ÆÄ¿ö¸µÅ© ±¤°í´Â ÇªµåÆ®·°Çà»ç°Ô½Ã¹° ÀÛ¼º½Ã ¿É¼Ç±â´ÉÀ¸·Î ÇÏ½Ç¼ö ÀÖÀ¸¸ç, ÇÁ·Î¸ğ¼Ç±â´ÉÀº °ü¸®ÀÚ¿¡°Ô µû·Î ¹®ÀÇ ÇÏ¼Å¾ßÇÕ´Ï´Ù. °³º° °¡°İÀº °ü¸®ÀÚ¿¡°Ô µû·Î ¹®ÀÇ ¹Ù¶ø´Ï´Ù.^^');
+values (comments_com_seq.nextval, 'JM', 3, 1, 'ê³ ê°ë‹˜ ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ^^ íŒŒì›Œë§í¬ ê´‘ê³ , í”„ë¡œëª¨ì…˜ ê´‘ê³ ê°€ ìˆìŠµë‹ˆë‹¤.  íŒŒì›Œë§í¬ ê´‘ê³ ëŠ” í‘¸ë“œíŠ¸ëŸ­í–‰ì‚¬ê²Œì‹œë¬¼ ì‘ì„±ì‹œ ì˜µì…˜ê¸°ëŠ¥ìœ¼ë¡œ í•˜ì‹¤ìˆ˜ ìˆìœ¼ë©°, í”„ë¡œëª¨ì…˜ê¸°ëŠ¥ì€ ê´€ë¦¬ìì—ê²Œ ë”°ë¡œ ë¬¸ì˜ í•˜ì…”ì•¼í•©ë‹ˆë‹¤. ê°œë³„ ê°€ê²©ì€ ê´€ë¦¬ìì—ê²Œ ë”°ë¡œ ë¬¸ì˜ ë°”ëë‹ˆë‹¤.^^');
 insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'SB', 4, 1, '°í°´´Ô ¾È³çÇÏ½Ê´Ï±î^^ ÁË¼ÛÇÏÁö¸¸ °°Àº ¾ÆÀÌµğ·Î Àç°¡ÀÔÀº ºÒ°¡´É ÇÏ½Ê´Ï´Ù ½ÅÁßÈ÷ »ı°¢ÇÏ½Å ÈÄ °áÁ¤ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù^^');
+values (comments_com_seq.nextval, 'SB', 4, 1, 'ê³ ê°ë‹˜ ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ^^ ì£„ì†¡í•˜ì§€ë§Œ ê°™ì€ ì•„ì´ë””ë¡œ ì¬ê°€ì…ì€ ë¶ˆê°€ëŠ¥ í•˜ì‹­ë‹ˆë‹¤ ì‹ ì¤‘íˆ ìƒê°í•˜ì‹  í›„ ê²°ì •í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤^^');
 insert into comments(com_no, user_id, no, type, comments)
-values  (comments_com_seq.nextval, 'saem2', 5, 0, '°í°´´Ô ¾È³çÇÏ½Ê´Ï±î^^ Âò±â´ÉÀº °¹¼ö Á¦ÇÑÀÌ ¾ø½À´Ï´Ù~ ¸¹Àº ÀÌ¿ë ºÎÅ¹µå¸³´Ï´Ù^^');
+values  (comments_com_seq.nextval, 'saem2', 5, 0, 'ê³ ê°ë‹˜ ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ^^ ì°œê¸°ëŠ¥ì€ ê°¯ìˆ˜ ì œí•œì´ ì—†ìŠµë‹ˆë‹¤~ ë§ì€ ì´ìš© ë¶€íƒë“œë¦½ë‹ˆë‹¤^^');
 select * from comments;
 --insert reply table data
 --insert into reply()
@@ -451,15 +451,15 @@ select * from comments;
 
 --insert comments talbe data
 insert into course(no, user_id, trip_date, withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, 'xx °°ÀÌ °¡½ÇºĞ','¿©ÇàÀÏÁ¤ ºÎ»êÂï°í Á¦ÁÖÂï°í ¼­¿ï±îÁö', 10, 5);
+values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, 'xx ê°™ì´ ê°€ì‹¤ë¶„','ì—¬í–‰ì¼ì • ë¶€ì‚°ì°ê³  ì œì£¼ì°ê³  ì„œìš¸ê¹Œì§€', 10, 5);
 insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, ' ¶°³ª¿ä µÑÀÌ¼­', '¿©ÇàÀÏÁ¤ ºÎ»êÂï°í Á¦ÁÖÂï°í ¼­¿ï±îÁö', 20, 10);
+values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, ' ë– ë‚˜ìš” ë‘˜ì´ì„œ', 'ì—¬í–‰ì¼ì • ë¶€ì‚°ì°ê³  ì œì£¼ì°ê³  ì„œìš¸ê¹Œì§€', 20, 10);
 insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, ' ¼Õ¿¡ ¼ÕÀâ°í ³ª¸¦ ³Ñ¾î¼­', '¿©ÇàÀÏÁ¤ ºÎ»êÂï°í Á¦ÁÖÂï°í ¼­¿ï±îÁö',15, 7) ;
+values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, ' ì†ì— ì†ì¡ê³  ë‚˜ë¥¼ ë„˜ì–´ì„œ', 'ì—¬í–‰ì¼ì • ë¶€ì‚°ì°ê³  ì œì£¼ì°ê³  ì„œìš¸ê¹Œì§€',15, 7) ;
 insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 0, 'ÀÎ»ıÀº È¥ÀÚ¿©Çà', '¿©ÇàÀÏÁ¤ ºÎ»êÂï°í Á¦ÁÖÂï°í ¼­¿ï±îÁö',3, 2);
+values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 0, 'ì¸ìƒì€ í˜¼ìì—¬í–‰', 'ì—¬í–‰ì¼ì • ë¶€ì‚°ì°ê³  ì œì£¼ì°ê³  ì„œìš¸ê¹Œì§€',3, 2);
 insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 0, ' ³ªÈ¦·Î ¹è³¶¿©Çà', '¿©ÇàÀÏÁ¤ ºÎ»êÂï°í Á¦ÁÖÂï°í ¼­¿ï±îÁö',4, 5);
+values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 0, ' ë‚˜í™€ë¡œ ë°°ë‚­ì—¬í–‰', 'ì—¬í–‰ì¼ì • ë¶€ì‚°ì°ê³  ì œì£¼ì°ê³  ì„œìš¸ê¹Œì§€',4, 5);
 
 --insert comments talbe data
 insert into detail_course(no, step, trip_date, latitude, longtitude)
@@ -483,13 +483,13 @@ values(5, 1, to_char(to_date('2018.05.11', 'yyyy.mm.dd')), 37.59, 126.99);
 
 --insert profit table data
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'PL' ,300000,  to_char(to_date('2018.05.11', 'yyyy.mm.dd')),  to_char(to_date('2018.06.11', 'yyyy.mm.dd')), 'ÆÄ¿ö¸µÅ©', '´öº¹Èñ¾¾');
+values(ad_id_seq.nextval, 'PL' ,300000,  to_char(to_date('2018.05.11', 'yyyy.mm.dd')),  to_char(to_date('2018.06.11', 'yyyy.mm.dd')), 'íŒŒì›Œë§í¬', 'ë•ë³µí¬ì”¨');
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'PL' ,300000,  to_char(to_date('2018.05.12', 'yyyy.mm.dd')),  to_char(to_date('2018.06.12', 'yyyy.mm.dd')), 'ÆÄ¿ö¸µÅ©', 'Chu·¯½º~');
+values(ad_id_seq.nextval, 'PL' ,300000,  to_char(to_date('2018.05.12', 'yyyy.mm.dd')),  to_char(to_date('2018.06.12', 'yyyy.mm.dd')), 'íŒŒì›Œë§í¬', 'ChuëŸ¬ìŠ¤~');
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'AD' ,1000000,  to_char(to_date('2018.05.13', 'yyyy.mm.dd')),  to_char(to_date('2018.07.13', 'yyyy.mm.dd')), '±¤°í', '´øÅ²');
+values(ad_id_seq.nextval, 'AD' ,1000000,  to_char(to_date('2018.05.13', 'yyyy.mm.dd')),  to_char(to_date('2018.07.13', 'yyyy.mm.dd')), 'ê´‘ê³ ', 'ë˜í‚¨');
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'AD' ,1000000,  to_char(to_date('2018.05.14', 'yyyy.mm.dd')),  to_char(to_date('2018.08.14', 'yyyy.mm.dd')), '±¤°í', '·ÎÁöÅØ');
+values(ad_id_seq.nextval, 'AD' ,1000000,  to_char(to_date('2018.05.14', 'yyyy.mm.dd')),  to_char(to_date('2018.08.14', 'yyyy.mm.dd')), 'ê´‘ê³ ', 'ë¡œì§€í…');
 
 commit;
 
