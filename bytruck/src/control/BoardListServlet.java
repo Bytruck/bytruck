@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import dao.BoardDAO;
+import service.BoardService;
 
 import javax.activation.ActivationDataFlavor;
 import javax.servlet.RequestDispatcher;
@@ -15,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vo.PageBean;
-import vo.board_list;
+import vo.board;
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private BoardService service = new BoardService();
 
     public BoardListServlet() {
         super();
@@ -32,12 +33,11 @@ public class BoardListServlet extends HttpServlet {
 		if(page != null) {
 			intPage = Integer.parseInt(page);
 		}
-		BoardDAO dao = new BoardDAO();
 		List<board> list;
 		
 		
 		try {
-			int totalCount = dao.selectCount();//게시물 총목록수
+			int totalCount = service.findCount();//게시물 총목록수
 			//총 페이지수 계산
 			int totalPage = 0;
 			int cntPerPage = 10;
@@ -49,7 +49,7 @@ public class BoardListServlet extends HttpServlet {
 			if(endPage > totalPage) {
 				endPage = totalPage;
 			}
-			list = dao.getBoardList(intPage);
+			list = service.findAll(intPage);
 			vo.PageBean<board> pb = new PageBean<>();
 			pb.setCurrentPage(intPage);
 			pb.setTotalPage(totalPage);
@@ -65,12 +65,11 @@ public class BoardListServlet extends HttpServlet {
 			
 			String forwardURL = "board/qna.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
-			rd.forward(request, response);
-			System.out.println("jsp로 전달");
-			
+			rd.forward(request, response);			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			e.getMessage();
 		}
 	
 		

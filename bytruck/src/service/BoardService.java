@@ -13,4 +13,10 @@ public class BoardService {
 		dao.deleteBoard(boardNum);
 		System.out.println(boardNum);
 	};
+	public int findCount() throws Exception{
+		return dao.selectCount();
+	}
+	public List<board> findAll(int page) throws Exception{
+		return dao.getBoardList(page);
+	}
 }
