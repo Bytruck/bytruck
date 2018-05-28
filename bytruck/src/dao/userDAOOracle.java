@@ -158,4 +158,56 @@ public class userDAOOracle implements UserDAO {
 			sql.MyConnection.close(rs, pstmt, con);
 		}
 	}
+	@Override
+	public String selectbyIdTel(String name, String tel)throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = sql.MyConnection.getConnection();
+			String findidSQL = "SELECT user_id FROM users WHERE name=? and phone_number=?";
+			pstmt = con.prepareStatement(findidSQL);
+			pstmt.setString(1, name);
+			pstmt.setString(2, tel);
+			rs = pstmt.executeQuery();
+			if (!rs.next()) { // 없는경우
+				return null;
+			} else {
+				return rs.getString("user_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			sql.MyConnection.close(rs, pstmt, con);
+		}
+	}
+	
+	@Override
+	public String selectbyIdEmail(String name, String email) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = sql.MyConnection.getConnection();
+			String findidSQL = "SELECT user_id FROM users WHERE name=? and email=?";
+			pstmt = con.prepareStatement(findidSQL);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			System.out.println("daoOracle()");
+			if (!rs.next()) { // 없는경우
+				return null;
+			} else {
+				return rs.getString("user_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			sql.MyConnection.close(rs, pstmt, con);
+		}
+	}
 }

@@ -10,21 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.UserService;
 
-public class DupChekBusiServlet extends HttpServlet{
+public class FindIdServlet extends HttpServlet {
 	private UserService service = new UserService();
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String busiNumValue = request.getParameter("bussiness_number");
-		response.setContentType("text/html;charset=utf-8");
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
+		String email = request.getParameter("email");
+		
 		PrintWriter out = response.getWriter();
+		String result="";
 		try {
-			String result = service.dupChkBusi(busiNumValue);
-			System.out.println(result);
+			if(tel!=null) 
+				result = service.findIdbyTel(name, tel);
+			if(email!=null)
+				result = service.findIdbyEmail(name, email);
 			out.print(result);
-		}catch(Exception e) {
-			out.print(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}	
 	}
 
