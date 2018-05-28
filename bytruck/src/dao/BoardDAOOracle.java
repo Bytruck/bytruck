@@ -16,7 +16,7 @@ public class BoardDAOOracle implements BoardDAO {
 	public void insertboard(Board board) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String insertSQL = "insert into board(no, type, title, detail, posted) values(SEQ_MENU_ID.nextval, 0, ?, ?, sysdate)";
+		String insertSQL = "insert into board(no, type, title, detail, posted) values(board_no_seq.nextval, 0, ?, ?, sysdate)";
 		try {
 			con = sql.MyConnection.getConnection();
 			pstmt = con.prepareStatement(insertSQL);
