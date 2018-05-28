@@ -6,9 +6,6 @@ import vo.board;
 
 public class BoardService {
 	private BoardDAO dao = new BoardDAOOracle();
-	public void addWrite(board board) throws Exception{
-		dao.insertboard(board);
-	};
 	public void Delete(int boardNum) throws Exception{
 		//System.out.print(boardNum);
 		dao.deleteBoard(boardNum);

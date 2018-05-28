@@ -12,11 +12,6 @@ import vo.board;
 public class BoardDAOOracle implements BoardDAO {
 
 	@Override
-	public void insertboard(board board) throws Exception {
-
-	}
-
-	@Override
 	public void deleteBoard(int boardNum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
