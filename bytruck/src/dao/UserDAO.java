@@ -13,4 +13,6 @@ public interface UserDAO {
 	void delete(String id)  throws Exception;
 	String selectByBusiNum(String busiNumValue) throws Exception;
 	void insert2(users u) throws Exception;
+	String selectbyIdTel(String name, String tel) throws Exception;
+	String selectbyIdEmail(String name, String email) throws Exception;
 }

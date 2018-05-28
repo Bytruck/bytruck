@@ -15,8 +15,7 @@ public class DupChekBusiServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("servlet");
-		
+
 		String busiNumValue = request.getParameter("bussiness_number");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();

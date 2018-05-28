@@ -48,4 +48,23 @@ public class UserService {
 	public void signup2(users u) throws Exception {
 		dao.insert2(u);
 	}
+
+	public String findIdbyTel(String name, String tel) throws Exception {
+		String id = dao.selectbyIdTel(name, tel);
+		if(id==null) {
+			return "-1";
+		}else {
+			return id;
+		}
+	}
+
+	public String findIdbyEmail(String name, String email) throws Exception {
+		String id = dao.selectbyIdEmail(name, email);
+		System.out.println("id : "+id);
+		if(id==null) {
+			return "-1";
+		}else {
+			return id;
+		}
+	}
 }

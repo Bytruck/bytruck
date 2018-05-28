@@ -1,67 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%String root = request.getContextPath();%>
-<!DOCTYPE html>
-  <header>
- 	<jsp:include page = "/template/header.jsp"/>
-  </header>
+<style>
+.board {
+	padding-top: 10%;
+}
+
+.board .page-header {
+	margin-top: 0;
+}
+</style>
+<title>qna_write.jsp</title>
+</head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container" style="margin-left: 20%;margin-top: 5%;">
-	<div style="margin-bottom: 3%;">
-		<h2>문의사항</h2>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-lg-12">
+				<header>
+					<%@include file="/template/header.jsp"%>
+				</header>
+			</div>
+		</div>
 	</div>
-	<table class="table table-bordered">
-	<form>	
-	<div class="col-xs-8">
-	<div class="form-group">
-      <label for="inputsm" >제목</label>
-      <input class="form-control input-sm" id="inputsm" type="text" >
-    </div>
-    </div>
-    <div class="col-xs-8">
-    <label for="sel1">문의 사항 종류</label>
-      <select class="form-control" id="sel1" style="width:auto;">
-        <option>길을 잃었습니다.</option>
-        <option>감사합니다.</option>
-        <option>새우푸드트럭이 맛있어요</option>
-        <option>짱짱</option>
-      </select>
-      </div>
-      <div class="col-xs-8" style="margin-top: 2%;">
-      <div class="checkbox">
-      <label><input type="checkbox" value="" >공개</label>
-      <label><input type="checkbox" value="">비공개</label>
-    </div>
-    </div>
-    <div>
-     <div class="col-xs-8">
-     	<div class="form-group" style="margin-top: 5%;">
-     		<label for="inputsm" >내용</label>
-     			<textarea class="form-control" rows="5" id="comment" style="height:350px"></textarea>			
-      	</div>
-     </div>
-    </div>
-       
-    </form>
-    </table>
-    <div style="margin-left: 30%;">
-    	<button type="button" class="btn btn-default"><a href="<%=root%>/qna.jsp">저장</a></button>  
-    	<button type="button" class="btn btn-default" style="margin-left: 2%;"><a href="<%=root%>/qna.jsp">취소</a></button>
+		<div class="board">
+		<div class="row">
+			<div class="container">
+				<!-- BREADCRUMBS -->
+				<ol class="breadcrumb link-accent separator-arrow">
+					<li><a href="<%=root%>/index.jsp" title="Home"><i
+							class="fa fa-home"></i></a></li>
+					<li class="active">Q&A</li>
+					<li><a href="<%=root%>/board/faq.jsp" title="Home">FAQ</a></li>
+					<li><a href="<%=root%>/chatting/chat.jsp" title="Home">타임라인</a></li>
+				</ol>
+				<br>
+				<!-- END BREADCRUMBS -->
+				<!-- BASIC INPUT -->
+				<div class="page-header">
+					<div class="row">
+						<div class=col-lg-12">
+							<h1 align="center">
+								<b>Q&A</b>
+							</h1>
+							<p align="center">
+								<b>Q&A를 작성하세요.</b>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title section-heading no-margin">Q&A 작성</h2>
+					</div>
+					<div class="panel-body">
+						<form id="formwrite">
+							<div class="form-horizontal">
+								<div class="form-group">
+								<label class="col-md-1 control-label">분류</label>
+									<div class="col-md-11">
+									<select class="form-control"
+										id="sel1" style="width: auto;">
+										<option>관리자</option>
+										<option>여행자</option>
+										<option>푸드트럭</option>
+									</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-1 control-label">제목</label>
+									<div class="col-md-11">
+										<input type="text" class="form-control" name="title"
+											placeholder="제목을 입력하세요">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-1 control-label">내용</label>
+									<div class="col-md-11">
+										<textarea class="form-control" name="detail"
+											placeholder="내용을 입력하세요" rows="15"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-1 control-label">공개여부</label>
+									<div class="col-md-11">
+									<div class="checkbox">
+										<label><input type="checkbox" value="">공개</label>&nbsp;&nbsp; <label><input
+											type="checkbox" value="">비공개</label>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="button-group col-lg-offset-2 col-lg-8">
+								<!-- <input type="submit" class="btn btn-success col-lg-4 col-lg-offset-1" value="글쓰기"> -->
+								 <a class="btn btn-success col-lg-4 col-lg-offset-1"
+									id="register" href="<%=root%>/board/qna.jsp">등록</a> <a
+									class="btn btn-danger col-lg-4 col-lg-offset-1" id="cancel"
+									href="<%=root%>/board/qna.jsp">취소</a> 
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	
-    </div>
-    <!-- FOOTER -->
-	<div style="margin-top: 5%;">
-      <footer>
-      		<jsp:include page = "/template/header.jsp"/>
-      </footer>
-     </div>
+	<div class="foot">
+		<div class="row">
+			<div class="container-fluid">
+				<div class="col-lg-12">
+					<footer>
+						<%@include file="/template/footer.jsp"%>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-
-
-
+</html>

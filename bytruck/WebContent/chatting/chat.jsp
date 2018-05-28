@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-String root = request.getContextPath();%>
 <style>
-.foot{
- position:absolute;
-left:0px;
-padding-top: 0%;
-width: 100%;
-text-align: center;
+.board {
+	padding-top: 10%;
+}
+
+.board .page-header {
+	margin-top: 0;
 }
 .posted {
 	padding-top: 10%;
@@ -58,22 +56,34 @@ text-align: center;
 		<div class="container-fluid">
 			<div class="col-lg-12">
 				<header>
-					  <jsp:include page ="/template/header.jsp"/>
+					  <%@include file="/template/header.jsp"%>
 				</header>
 			</div>
 		</div>
 	</div>
-	<div class="posted">
+	<div class="board">
+		<div class="row">
 		<div class="container">
 			<ol class="breadcrumb link-accent separator-arrow">
-               <li><a href="<%=root%>/index.jsp" title="Home"><i
-                     class="fa fa-home"></i></a></li>
-               <li class="active">채팅</li>
-            </ol>
+					<li><a href="<%=root%>/index.jsp" title="Home"><i
+							class="fa fa-home"></i></a></li>
+					<li><a href="<%=root%>/board/qna.jsp" title="Home">Q&A</a></li>
+					<li><a href="<%=root%>/board/faq.jsp" title="Home">FAQ</a></li>
+					<li class="active">타임라인</li>
+				</ol>
+				<div class="page-header">
+					<div class="row">
+						<div class=col-lg-12">
+							<h1 align="center">
+								<b>타임라인</b>
+							</h1>
+							<p align="center">
+								<b>자유롭게 이야기를 나누는 공간입니다.</b>
+							</p>
+						</div>
+					</div>
+				</div>
 			 <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3"> 
-			<h3>채팅</h3>
-                  <p>자유롭게 이야기를 나누는 공간</p>
-                  <hr>
 				<form action="chat.jsp" method="post" encType="multiplart/form-data">
 					<div class="id">
 						<div class="form-group">
@@ -82,7 +92,7 @@ text-align: center;
 						</div>
 					</div>
 					<div class="content">
-						<textarea cols="10" placeholder="내용을 입력하세요. " name="content"
+						<textarea cols="20" placeholder="내용을 입력하세요. " name="content"
 							class="form-control"></textarea>
 					</div>
 					<div class="bt">
@@ -91,6 +101,7 @@ text-align: center;
 				</form>
 			</div>
 		</div>
+	</div>
 	</div>
 	<div class="container">
 		<div class= "row">
@@ -208,16 +219,17 @@ text-align: center;
          <li><a href="#">5</a></li>
       </ul>
    </div>
-   <div class="foot">
-      <div class="row">
-         <div class="container-fluid">
-            <div class="col-lg-12">
-               <footer>
-                  <jsp:include page ="/template/footer.jsp"/>
-               </footer>
-            </div>
-         </div>
-      </div>
-   </div>
+	<!-- FOOTER -->
+	<div class="foot">
+		<div class="row">
+			<div class="container-fluid">
+				<div class="col-lg-12">
+					<footer>
+						<%@include file="/template/footer.jsp"%>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

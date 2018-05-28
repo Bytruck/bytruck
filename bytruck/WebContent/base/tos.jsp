@@ -33,8 +33,8 @@
 </head>
 <body>
 	<div class="col-sm-10 col-sm-offset-1">
-		<h1>
-			<strong>이용약관</strong>
+		<h1 align="center">
+			<b>이용약관</b>
 		</h1>
 		<hr>
 		<div class="jumbotron">

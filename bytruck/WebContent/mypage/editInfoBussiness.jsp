@@ -4,11 +4,11 @@
 .board {
 	padding-top: 10%;
 }
+.board .page-header {
+	margin-top: 0;
+}
 </style>
 <title>editInfoBussiness.jsp</title>
-
-<!-- NAVBAR
-================================================== -->
 <script>
 	$(function() {
 		$('div>div>input[type=radio]').click(function() {
@@ -32,8 +32,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- Carousel
-    ================================================== -->
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -41,15 +39,22 @@
 				<ol class="breadcrumb link-accent separator-arrow">
 					<li><a href="<%=root %>/index.jsp" title="Home"><i
 							class="fa fa-home"></i></a></li>
-					<li><a href="<%=root %>/mypage/mypage_bussiness.jsp" title="Home">마이페이지</a></li>
-					<li class="active">정보 수정</li>
+					<li><a href="<%=root %>/mypage/mypage_bussiness.jsp" title="Home">My page</a></li>
+					<li class="active">회원 정보 수정</li>
 				</ol>
 				<!-- END BREADCRUMBS -->
-				<div class="col-lg-offset-1 col-lg-10 col-lg-offset-1">
-					<div class="col-lg-10 col-lg-offset-1">
-						<h3>정보 수정</h3>
-						<p>회원님의 정보를 수정하실 수 있습니다.(개인정보, 푸드트럭정보)</p>
-						<hr>
+						<div class="page-header">
+							<div class="row">
+								<div class=col-lg-12">
+									<h1 align="center">
+										<b>회원 정보 수정</b>
+									</h1>
+									<p align="center">
+										<b>회원님의 정보를 수정하실 수 있습니다.<br>(개인정보/푸드트럭정보)</b>
+									</p>
+								</div>
+							</div>
+						</div>
 						<div class="section section_find">
 							<!-- [D] 선택시 selected 클래스 추가 -->
 							<div class="col-md-6" align="center">
@@ -221,7 +226,7 @@
 											<div class="col-sm-8 col-sm-offset-2">
 												<a type="submit" class="btn btn-success btn-block"
 													href="<%=root %>/mypage/mypageBussiness.jsp"> <i
-													class="fa fa-check-circle"></i> 수 정 완 료
+													class="fa fa-check-circle"></i> 수정완료
 												</a>
 											</div>
 										</div>
@@ -230,9 +235,7 @@
 							</div>
 							<!-- 푸드트럭 정보 영역 -->
 						</div>
-					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 	<!-- END MAIN -->
