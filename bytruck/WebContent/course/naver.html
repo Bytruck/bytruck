@@ -8,12 +8,19 @@
 <body>
 	<div id="map" style="width: 100%; height: 400px;"></div>
 	<script>
+	var position = new naver.maps.LatLng(37.3595704, 127.105399);
+	
 	var map = new naver.maps.Map('map', {
 	    center: new naver.maps.LatLng(37.3595704, 127.105399),
 	    mapTypeControl: true,
 	    mapTypeControlOptions: {
 	        style: naver.maps.MapTypeControlStyle.DROPDOWN
 	    }
+	});
+	
+	var marker = new naver.maps.Marker({
+	    position: position,
+	    map: map
 	});
 
 	var bicycleLayer = new naver.maps.BicycleLayer();
@@ -26,6 +33,10 @@
 	    } else {
 	        btn.removeClass('control-on');
 	    }
+	});
+	
+	naver.maps.Event.addListener(map, 'click', function(e) {
+	    marker.setPosition(e.coord);
 	});
 
 	bicycleLayer.setMap(map);
