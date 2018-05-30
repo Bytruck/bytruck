@@ -3,8 +3,10 @@
 <head>
 <title>makecourse.jsp</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+src="../js/bootstrap.min.js"></script>
 </head>
 <style>
 .board {
@@ -52,50 +54,22 @@
 					<div class="row">
 						<div class="col-sm-2 sidenav">
 							<h5>지역을 선택해주세요</h5>
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						data-toggle="dropdown">
-						지역 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">서울</a></li>
-						<li><a href="#">경기도</a></li>
-						<li><a href="#">강원도</a></li>
-						<li><a href="#">충청도</a></li>
-						<li><a href="#">경상도</a></li>
-						<li><a href="#">전라도</a></li>
-					</ul>
-				</div>
-				<h5>출발일을 선택해 주세요</h5>
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						data-toggle="dropdown">
-						지역 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">서울</a></li>
-						<li><a href="#">경기도</a></li>
-						<li><a href="#">강원도</a></li>
-						<li><a href="#">충청도</a></li>
-						<li><a href="#">경상도</a></li>
-						<li><a href="#">전라도</a></li>
-					</ul>
-				</div>
-				<h5>마지막일을 선택해 주세요</h5>
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						data-toggle="dropdown">
-						지역 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">서울</a></li>
-						<li><a href="#">경기도</a></li>
-						<li><a href="#">강원도</a></li>
-						<li><a href="#">충청도</a></li>
-						<li><a href="#">경상도</a></li>
-						<li><a href="#">전라도</a></li>
-					</ul>
-				</div>
+							<select class="form-control">
+								<option value="cheese">서울시</option>
+								<option value="tomatoes">경기도</option>
+								<option value="mozarella">강원도</option>
+								<option value="mushrooms">충청도</option>
+								<option value="pepperoni">전라도</option>
+								<option value="onions">경상도</option>
+								<option value="onions">제주도</option>
+							</select><br>
+							<div class="result"></div>
+							<h5>출발일을 선택해 주세요</h5>
+							<div class="dropdown">
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								<input type="date" class="form-control" name="opendate"
+									id="opendate" placeholder="Openday(ex.YYYY/MM/DD)">
+							</div>
 						</div>
 						<div class="col-sm-10">
 							<div class="col-md-9">
@@ -110,8 +84,8 @@
 									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">후기등록</button>
 							</div>
 							<div class="col-md-3">
-								<img src="<%=root%>/images/weather.png" alt="Weather" width="200"
-									height="250"><br> <br>
+								<img src="<%=root%>/images/weather.png" alt="Weather"
+									width="200" height="250"><br> <br>
 								<%@include file="/template/top123.jsp"%>
 							</div>
 						</div>

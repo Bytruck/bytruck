@@ -23,7 +23,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
+<script>
  $(function(){
 	 $('#detail').click(function(){
 		 console.log("클릭");
@@ -36,8 +36,23 @@
 					$('.board').html(data);
 				}
 			});
-		});
+	});
 });
+ $(function(){
+     $('button.btndelete').click(function(){
+         console.log("aaa");
+/*             $.ajax({
+             method:'GET',
+             url:'boarddelete.bt',
+             data:{no:'2'},
+             success:function(data){
+                 data=data.trim();    
+             }
+         }); */
+     });
+ });
+
+
 </script>
 	<div class="board">
 		<div class="row">
@@ -134,6 +149,7 @@
 						</table>
 						<a class="btn btn-success pull-right"
 							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
+							<button class="btndelete">삭제</button>
 					</div>
 				</div>
 			</div>
