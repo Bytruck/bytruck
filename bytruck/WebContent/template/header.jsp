@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%String root = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -10,29 +10,29 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<%=root %>/js/ie-emulation-modes-warning.js"></script>
+<script src="<%=root %>/js/bootstrap.min.js"></script>
+<script src="<%=root %>/js/docs.min.js"></script>
+<script src="<%=root %>/js/ie10-viewport-bug-workaround.js"></script>
 <link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
+   href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+   rel="stylesheet" id="bootstrap-css">
 <link
-	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
-	rel="stylesheet">
+   href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+   rel="stylesheet">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="<%=root %>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<%=root %>/css/carousel.css" rel="stylesheet">
 <link href="<%=root %>/css/main-one-page.css" rel="stylesheet" type="text/css">
 <link href="<%=root %>/css/bootstrap.css" rel="stylesheet" type="text/css">
 <script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="<%=root %>/js/ie-emulation-modes-warning.js"></script>
-<script src="<%=root %>/js/bootstrap.min.js"></script>
-<script src="<%=root %>/js/docs.min.js"></script>
-<script src="<%=root %>/js/ie10-viewport-bug-workaround.js"></script>
+   src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="navbar-wrapper">
@@ -91,31 +91,36 @@
 								<li><a href="<%=root%>/board/faq.jsp">FAQ</a></li>
 								<li><a href="<%=root%>/chatting/chat.jsp">타임라인</a></li>
 							</ul></li>
-							<li class="admin"><a href="<%=root%>/admin/admin_main.jsp">ADMIN</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">ceopage<span
-								class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="<%=root %>/memberInfo.jsp">회원정보조회</a></li>
-								<li><a href="#">수익통계</a></li>
-							</ul></li>
-
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">FMypage<span
-								class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="<%=root %>/mypage/mypageBussiness.jsp">마이페이지</a></li>
-								<li><a href="<%=root %>/mypage/writingList.jsp">내가쓴글</a></li>
-								<li><a href="<%=root %>/mypage/editInfoBussiness.jsp">정보수정</a></li>
-								<li><a href="<%=root %>/mypage/bye.jsp">탈퇴</a></li>
-							</ul></li>
-
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">cusMypage<span
+							<%String loginInfo = (String) session.getAttribute("loginInfo");
+							if (loginInfo == null) {//로그인 안했을 때%>
+							<li id="nav-signup-btn"><a
+								href="<%=root%>/base/signupcover.jsp">SignUp</a></li>
+							<li class='login' id="nav-login-btn"><a
+								href="<%=root%>/base/loginform.jsp">Login</a></li>
+							<%} else {//로그인 했을 때
+							String userInfo = (String) session.getAttribute("loginInfo_type");
+							if (userInfo.equals("AD")) {//관리자분류번호%>
+							<li class="admin"><a href="<%=root%>/admin/admin_main.jsp">ADMIN</a></li>
+							<li class='logout' id="nav-logout-btn"><a
+								href="<%=root%>/logout.bt">Logout</a></li>
+							<%} else if(userInfo.equals("TR")){//사업자분류번호%>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-expanded="false">Mypage<span
+									class="caret"></span>
+							</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="<%=root %>/mypage/mypageBussiness.jsp">마이페이지</a></li>
+									<li><a href="<%=root %>/mypage/writingList.jsp">내가쓴글</a></li>
+									<li><a href="<%=root %>/mypage/editInfoBussiness.jsp">정보수정</a></li>
+									<li><a href="<%=root %>/mypage/bye.jsp">탈퇴</a></li>
+								</ul></li>
+							<li class='logout' id="nav-logout-btn"><a
+								href="<%=root%>/logout.bt">Logout</a></li>
+							<%}else if(userInfo.equals("BK")){//일반회원일 때%>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-expanded="false">Mypage<span
 								class="caret"></span>
 						</a>
 							<ul class="dropdown-menu" role="menu">
@@ -126,46 +131,10 @@
 								<li><a href="<%=root %>/mypage/editInfoCustom.jsp">정보수정</a></li>
 								<li><a href="<%=root %>/mypage/bye.jsp">탈퇴</a></li>
 							</ul></li>
-						<li id="nav-signup-btn"><a href="<%=root %>/base/signupcover.jsp">SignUp</a></li>
-						<li class='login' id="nav-login-btn"><a href="<%=root %>/base/loginform.jsp">Login</a></li>
-						<li class='logout' id="nav-logout-btn"><a href="<%=root %>/index.jsp">Logout</a></li>
-					</ul>
-					<%-- <ul class="nav navbar-nav navbar-right">
-						<%String loginInfo = (String) session.getAttribute("loginInfo");
-							if (loginInfo == null) {//로그인 안했을 때%>
-						<li id="nav-signup-btn"><a href="signupcover.jsp">SignUp</a></li>
-						<li class='login' id="nav-login-btn"><a href="loginform.jsp">Login</a></li>
-						<%} else {//로그인 했을 때
-							String userInfo = (String) session.getAttribute("loginInfo");
-							if (userInfo.equals("0")) {//관리자분류번호%>
-								<li id="nav-signup-btn"><a href="signupcover.jsp">SignUp</a></li><!-- 고치기 -->
-								<li class='login' id="nav-login-btn"><a href="loginform.jsp">Login</a></li>
-								<%} else if(userInfo.equals("1")){//사업자분류번호%>
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown" role="button" aria-expanded="false">Mypage<span
-										class="caret"></span>
-								</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">내가쓴글</a></li>
-										<li><a href="#">정보수정</a></li>
-										<li><a href="#">탈퇴</a></li>
-									</ul></li>
-								<li class='logout' id="nav-logout-btn"><a href="index.jsp">Logout</a></li>
-						<%}else{//일반회원일 때%>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">Mypage<span
-								class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">내 쿠폰</a></li>
-								<li><a href="#">관심코스</a></li>
-								<li><a href="#">내가쓴글</a></li>
-								<li><a href="#">정보수정</a></li>
-								<li><a href="#">탈퇴</a></li>
-							</ul></li>
-						<li class='logout' id="nav-logout-btn"><a href="index.jsp">Logout</a></li>
-						<%}}%>
-					</ul> --%>
+							<li class='logout' id="nav-logout-btn"><a
+								href="<%=root%>/logout.bt">Logout</a></li>
+							<%}}%>
+						</ul>
 				</div>
 			</div>
 		</nav>

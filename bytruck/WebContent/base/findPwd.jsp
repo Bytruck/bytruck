@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <title>findPwd.jsp</title>
 <head>
+<style>
+.board {
+	padding-top: 0;
+}
+
+.board .page-header {
+	margin-top: 0;
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -14,14 +23,16 @@
 	});
 </script>
 </head>
-<!-- NAVBAR
-================================================== -->
 <body>
-	<header>
-		<%@include file="/template/header.jsp"%>
-	</header>
-	<!-- Carousel
-    ================================================== -->
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-lg-12">
+				<header>
+					<%@include file="/template/header.jsp"%>
+				</header>
+			</div>
+		</div>
+	</div>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -31,47 +42,16 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img src="<%=root %>/images/top1.png" alt="First slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>환영합니다.</h1>
-						<p>바이트럭입니다.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-								up today</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_illu.jpg" alt="First slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top2.jpg" alt="Second slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-								more</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_bike.jpg" alt="Second slide">
+				<div class="container"></div>
 			</div>
 			<div class="item">
-				<img src="<%=root %>/images/top3.jpg" alt="Third slide">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>One more for good measure.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-								gallery</a>
-						</p>
-					</div>
-				</div>
+				<img src="<%=root%>/images/main_truck.jpg" alt="Third slide">
+				<div class="container"></div>
 			</div>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button"
@@ -84,24 +64,29 @@
 		</a>
 	</div>
 	<!-- /.carousel -->
-	<div class="shop-main register">
+	<div class="board">
+		<div class="row">
 		<div class="container">
 			<!-- BREADCRUMBS -->
 			<ol class="breadcrumb link-accent separator-arrow">
 				<li><a href="<%=root %>/index.jsp" title="Home"><i class="fa fa-home"></i></a></li>
-				<li class="active">아이디 찾기</li>
+				<li class="active">비밀번호 찾기</li>
 			</ol>
 			<!-- END BREADCRUMBS -->
 			<!-- CONTENTS -->
-
-			<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
-				<div class="content_header">
-					<h1>
-						<strong>비밀번호 찾기</strong>
-					</h1>
-					<p class="content_summary">회원님의 이름, 아이디, 휴대번호를 기입해 주시기 바랍니다.</p>
-				</div>
-				<hr>
+			<div class="col-lg-12">
+					<div class="page-header">
+						<div class="row">
+							<div class=col-lg-12">
+								<h1 align="center">
+									<b>비밀번호 찾기</b>
+								</h1>
+								<p align="center">
+									<b>회원님의 이름, 아이디, 휴대폰 번호를 기입해 주시기 바랍니다.</b>
+								</p>
+							</div>
+						</div>
+					</div>
 				<!-- 비밀번호 찾기 영역 -->
 				<div class="box_inn_sub jumbotron">
 					<form class="form-horizontal" role="form">
@@ -145,7 +130,6 @@
 						</span>
 					</div>
 				</div>
-				<br>
 				<div align="center">
 					<a id="find" class="btn btn-success col-sm-4 col-sm-offset-4">비밀번호
 						찾기</a> <a id="home" class="btn btn-success col-sm-4 col-sm-offset-4"
@@ -156,6 +140,7 @@
 		<br>
 		<br>
 	</div>
+</div>	
 	<!-- END MAIN -->
 	<!-- FOOTER -->
 	<div class="foot">

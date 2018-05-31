@@ -1,6 +1,8 @@
+<%@page import="vo.PageBean"%>
+<%@page import="vo.Board"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<head>
 <style>
 .board {
 	padding-top: 10%;
@@ -9,10 +11,9 @@
 	margin-top: 0;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
-</head>
 <title>notice.jsp</title>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<div class="row">
 		<div class="container-fluid">
 			<div class="col-lg-12">
@@ -23,20 +24,21 @@
 		</div>
 	</div>
 	<script>
-	$(function(){
-		$('button.btndelete').click(function(){
-			console.log("aaa");
- 			$.ajax({
+ $(function(){
+	 $('#detail').click(function(){
+		 console.log("클릭");
+			$.ajax({
 				method:'POST',
-				url:'<%=root%>/boarddelete.bt',
-				data:{no:'2'},
-				success:function(data){
-					data=data.trim();	
+				url:'<%=root%>/boarddetail.bt',
+				data:{num:'2'},
+				success: function(data){
+					alert("성공");
+					$('.board').html(data);
 				}
-			}); 
+			});
 		});
-	});
-	</script>
+});
+</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -72,7 +74,7 @@
 								style="height: 26px; line-height: 26px; padding: 0 15px;">검색</button>
 						</div>
 						<table class="table table-hover table-condensed">
-							<thead>
+							
 								<tr>
 									<th>글번호</th>
 									<th>글제목</th>
@@ -80,11 +82,27 @@
 									<th>게시일</th>
 									<th>조회수</th>
 								</tr>
-							</thead>
+								
 							<tbody>
-								<tr>
-									<td>10</td>
-									<td><a href="#">바이트럭 홈페이지 리뉴얼</a></td>
+							<%-- <%
+							 for(int i=0; i < list.size(); i++) {
+							 Board blist = list.get(i);
+							 int no = blist.getNo();
+							 String title = blist.getTitle();
+							 Date posted = blist.getPosted();
+							 %>
+							<tr>
+							 	<td><%=no%></td>
+							 	<td><%=title%>></td>
+							 	<td>관리자</td>
+							 	<td><%=posted%></td>
+								<td>1</td>
+							 </tr>
+							 <% } %> --%>
+							<tr>
+									<td>2</td>
+									<td><a href="#" id = detail >바이트럭 홈페이지 리뉴얼</a>
+									</td>
 									<td>관리자</td>
 									<td>2018.05.11</td>
 									<td>1</td>
@@ -103,70 +121,35 @@
 									<td>2018.05.09</td>
 									<td>29</td>
 								</tr>
-								<tr>
-									<td>7</td>
-									<td><a href="#">관심코스 (찜)기능이 추가 되었습니다.</a></td>
+									<%-- <c:set var="list" value="${pb.list}"/>
+									<c:forEach var="board" items="${list}"> --%>
+									<%-- <td>${board.no}</td>
+									<td><a href="<%=root %>/brand/notice_detail.jsp">${board.title}</a></td>
 									<td>관리자</td>
-									<td>2018.05.08</td>
-									<td>18</td>
-								</tr>
-								<tr>
-									<td>6</td>
-									<td><a href="#">어린이날 맞이 당일치기 여행 어떠신가요~</a></td>
-									<td>관리자</td>
-									<td>2018.05.05</td>
-									<td>52</td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td><a href="#">Best여행코스 선정 방법 입니다.</a></td>
-									<td>관리자</td>
-									<td>2018.05.04</td>
-									<td>58</td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td><a href="#">푸드트럭 사업자님들 필독해주세요.</a></td>
-									<td>관리자</td>
-									<td>2018.05.03</td>
-									<td>32</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td><a href="#">광고문의 방법 입니다.</a></td>
-									<td>관리자</td>
-									<td>2018.05.02</td>
-									<td>67</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td><a href="#">바이트럭 주요 기능설명입니다.</a></td>
-									<td>관리자</td>
-									<td>2018.05.02</td>
-									<td>180</td>
-								</tr>
-								<tr>
+									<td></td> <!-- ${board.posted} -->
 									<td>1</td>
-									<td><a href="#">반갑습니다. 바이트럭관리자 입니다.</a></td>
-									<td>관리자</td>
-									<td>2018.05.01</td>
-									<td>152</td>
 								</tr>
+								</c:forEach> --%>
 							</tbody>
 						</table>
 						<a class="btn btn-success pull-right"
 							href="<%=root%>/brand/notice_write.jsp">글쓰기</a>
-						<button class="btndelete">삭제</button>
 					</div>
 				</div>
 			</div>
 	<div class="text-center">
 		<ul class="pagination">
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
+			<%-- <c:set var="startPage" value="${pb.startPage}"/>
+			<c:set var="endPage" value="${pb.endPage}"/>
+			<c:if test="${startPage > 1}">
+			<a href="#">&laquo;</a>
+			</c:if>
+			<c:forEach begin="${startPage}" end="${endPage}" var = "i">
+				<a href="#">${i}</a>
+			</c:forEach>
+			<c:if test="${endPage < pb.totalPage}">
+				<a href="#">&raquo;</a>
+			</c:if>	 --%>
 		</ul>
 	</div>
 	<!-- END MAIN -->

@@ -21,7 +21,7 @@ public class BoardDeleteServlet extends HttpServlet {
 		String noValue = request.getParameter("no");
 		int boardNum = Integer.parseInt(noValue);
 		
-		System.out.println(boardNum);
+		//System.out.println(boardNum);
 		
 		try {
 			service.Delete(boardNum);
@@ -30,7 +30,7 @@ public class BoardDeleteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd;
-		String forwardURL = "<%=root%>/brand/notice.jsp";
+		String forwardURL = "/brand/notice.jsp";
 		rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 		

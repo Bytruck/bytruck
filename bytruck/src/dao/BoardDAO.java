@@ -1,19 +1,13 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import java.util.List;
 
-import sql.MyConnection;
-import vo.board;
+import vo.Board;
 
 public interface BoardDAO {
-
-	public int selectCount() throws Exception;
-	public List<board> getBoardList(int page) throws Exception;
-	
+	public void insertboard(Board board) throws Exception;
+	public List<Board> getBoardList(int page) throws Exception;
+	int selectCount() throws Exception;
+	public Board selectDetail(int boardNo) throws Exception;
+	public void deleteBoard(int boardNum) throws Exception;
 }

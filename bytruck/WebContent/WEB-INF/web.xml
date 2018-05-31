@@ -41,16 +41,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>DupchkServlet</display-name>
-    <servlet-name>DupchkServlet</servlet-name>
-    <servlet-class>control.DupchkServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DupchkServlet</servlet-name>
-    <url-pattern>/dupchk.bt</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>UserdropServlet</display-name>
     <servlet-name>UserdropServlet</servlet-name>
     <servlet-class>control.UserdropServlet</servlet-class>
@@ -458,5 +448,45 @@
   <servlet-mapping>
     <servlet-name>ReviewUpdateServlet</servlet-name>
     <url-pattern>/reviewupdate.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DupChkServlet</display-name>
+    <servlet-name>DupChkServlet</servlet-name>
+    <servlet-class>control.DupChkServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DupChkServlet</servlet-name>
+    <url-pattern>/dupchk.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DupChekBusiServlet</display-name>
+    <servlet-name>DupChekBusiServlet</servlet-name>
+    <servlet-class>control.DupChekBusiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DupChekBusiServlet</servlet-name>
+    <url-pattern>/dupchekbusi.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignupBusiServlet</display-name>
+    <servlet-name>SignupBusiServlet</servlet-name>
+    <servlet-class>control.SignupBusiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignupBusiServlet</servlet-name>
+    <url-pattern>/signupbusi.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FindIdServlet</display-name>
+    <servlet-name>FindIdServlet</servlet-name>
+    <servlet-class>control.FindIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindIdServlet</servlet-name>
+    <url-pattern>/findid.bt</url-pattern>
   </servlet-mapping>
 </web-app>

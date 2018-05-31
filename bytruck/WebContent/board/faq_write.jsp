@@ -50,8 +50,8 @@
     </form>
     </table>
     <div style="margin-left: 30%;">
-    	<button type="button" class="btn btn-default"><a href="faq.jsp">저장</a></button>  
-    	<button type="button" class="btn btn-default" style="margin-left: 2%;"><a href="faq.jsp">취소</a></button>
+    	<button type="button" class="btn btn-default"><a href="<%=root %>/board/faq.jsp">저장</a></button>  
+    	<button type="button" class="btn btn-default" style="margin-left: 2%;"><a href="<%=root %>/board/faq.jsp">취소</a></button>
 	</div>
 	
     </div>

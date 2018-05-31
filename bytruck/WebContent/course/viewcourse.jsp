@@ -66,7 +66,7 @@
 					<div class="row">
 						<div class="col-lg-3">
 							<div class="product-item">
-								<a href="#"><img src="../images/with1.jpg"
+								<a href="<%=root%>/course/reviewdetail.jsp"><img src="../images/with1.jpg"
 									class="img-rounded" alt="Product Item" height="220" width="250"></a>
 								<div class="info">
 									<h3 class="title">

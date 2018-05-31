@@ -9,6 +9,10 @@ public class PageBean<T> {
 	private int startPage;
 	private int endPage;
 	
+	public PageBean() {
+		super();
+	}
+	
 	public PageBean(int currentPage, int totalPage, List<T> list, int startPage, int endPage) {
 		super();
 		this.currentPage = currentPage;
@@ -16,10 +20,6 @@ public class PageBean<T> {
 		this.list = list;
 		this.startPage = startPage;
 		this.endPage = endPage;
-	}
-	public PageBean() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	public int getCurrentPage() {
 		return currentPage;
@@ -50,6 +50,11 @@ public class PageBean<T> {
 	}
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
+	}
+	@Override
+	public String toString() {
+		return "PageBean [currentPage=" + currentPage + ", totalPage=" + totalPage + ", list=" + list + ", startPage="
+				+ startPage + ", endPage=" + endPage + "]";
 	}
 	
 }

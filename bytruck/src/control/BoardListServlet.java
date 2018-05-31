@@ -1,78 +1,87 @@
 package control;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import dao.BoardDAO;
-import service.BoardService;
-
-import javax.activation.ActivationDataFlavor;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vo.PageBean;
-import vo.board;
+import service.BoardService;
+import vo.Board;
+
+
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private BoardService service = new BoardService();
 
     public BoardListServlet() {
         super();
-      
+     
     }
-
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = request.getParameter("page");
-		int intPage = 1;
+		int intPage=1;
 		if(page != null) {
 			intPage = Integer.parseInt(page);
+			
 		}
-		List<board> list;
-		
-		
 		try {
-			int totalCount = service.findCount();//게시물 총목록수
-			//총 페이지수 계산
+			int totalCount = service.findCount();
 			int totalPage = 0;
 			int cntPerPage = 10;
-			totalPage = (int)Math.ceil((double)totalCount / cntPerPage);
+			totalPage = (int)Math.ceil((double)totalCount/cntPerPage);
 			
-			int cntPerPageGroup = 10;
-			int startPage = (int)Math.floor((double)(intPage)/(cntPerPageGroup+1))*cntPerPageGroup + 1;
-			int endPage = startPage + cntPerPageGroup - 1 ;
+			int cntPerPageGroup=10;
+			int startPage = (int)Math.floor((double)(intPage)/(cntPerPageGroup+1))*cntPerPageGroup+1;
+			int endPage = startPage + cntPerPageGroup-1;
 			if(endPage > totalPage) {
-				endPage = totalPage;
+				endPage=totalPage;
 			}
-			list = service.findAll(intPage);
-			vo.PageBean<board> pb = new PageBean<>();
+			List<Board> list = service.findAll(intPage);
+			vo.PageBean<Board> pb = new vo.PageBean<>();
 			pb.setCurrentPage(intPage);
-			pb.setTotalPage(totalPage);
+			pb.setEndPage(endPage);
 			pb.setList(list);
 			pb.setStartPage(startPage);
-			pb.setEndPage(endPage);
+			pb.setTotalPage(totalPage);
+			request.setAttribute("PageBean", pb);
 			
-			request.setAttribute("pagebean", pb);
-			System.out.println(pb.getList() + "list에 값이 없다");
 
 			
-//			request.setAttribute("list", list);
-			
-			String forwardURL = "board/qna.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
-			rd.forward(request, response);			
-		} catch (Exception e) {
-			
+		}catch (Exception e) {
 			e.printStackTrace();
-			e.getMessage();
+			request.setAttribute("result", e.getMessage());
 		}
-	
+		RequestDispatcher rd;
+		String forwardURL = "board/qna.jsp";
+		rd = request.getRequestDispatcher(forwardURL);
+		rd.forward(request, response);
 		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
