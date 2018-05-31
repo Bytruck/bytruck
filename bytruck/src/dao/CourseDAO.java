@@ -1,5 +1,8 @@
 package dao;
 
-public interface CourseDAO {
+import vo.Board;
+import vo.Tripcourse;
 
+public interface CourseDAO {
+	public void insertcourse(Tripcourse course) throws Exception;
 }

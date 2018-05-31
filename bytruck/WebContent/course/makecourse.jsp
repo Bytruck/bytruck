@@ -29,15 +29,15 @@
 	 $(function(){
 		 $('button.btnapply').click(function(){
 			 console.log("일정등록 클릭확인");
- 				$.ajax({
+<%--  				$.ajax({
 					method:'POST',
-					url:'<%=root%>/boarddetail.bt',
+					url:'<%=%>/boarddetail.bt',
 					data:{num:'2'},
 					success: function(data){
 						alert("성공");
 						$('.board').html(data);
 					}
-				});	 
+				}); --%>	 
 		});
 	});
 	</script>
@@ -68,7 +68,7 @@
 						<div class="col-sm-2 sidenav">
 							<div class="trip">
 								<h5>지역을 선택해주세요</h5>
-								<select class="form-control">
+								<select class="form-control" name = "region">
 									<option value="SU">서울시</option>
 									<option value="GG">경기도</option>
 									<option value="GY">강원도</option>
@@ -79,10 +79,10 @@
 								</select><br>
 								<div class="result"></div>
 								<h5>출발일을 선택해 주세요</h5>
-								<div class="dropdown">
-									<span class="input-group-addon"><i
-										class="fa fa-calendar"></i></span> <input type="date"
-										class="form-control" name="opendate" id="opendate"
+								<div class="dropdown" >
+									<span class="input-group-addon">
+									<i class="fa fa-calendar"></i></span> 
+									<input type="date" class="form-control" name="opendate" id="opendate"
 										placeholder="Openday(ex.YYYY/MM/DD)">
 								</div>
 							</div>
@@ -100,9 +100,9 @@
 								<label>제목 :</label>&nbsp;&nbsp;<input type="text"
 									class="form-control" required><br> <label>일정
 									:</label><br>
-								<textarea class="form-control" rows="8   "></textarea>
-								<br> <label><input type="radio" name="optradio">나만보기</label>
-								<label><input type="radio" name="optradio">전체공개</label><br>
+								<textarea class="form-control" rows="8   "></textarea><br> 
+								<label><input type="radio" name="openradio">나만보기</label>
+								<label><input type="radio" name="openradio">전체공개</label><br>
 								<button type="submit" class="btnapply"
 									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">
 									일정등록</button>

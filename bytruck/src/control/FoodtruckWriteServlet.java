@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.FoodtruckService;
-import vo.foodtruck_location;
+import vo.Foodtruck_Location;
 
 public class FoodtruckWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class FoodtruckWriteServlet extends HttpServlet {
   		String detail = request.getParameter("detail");
   		String powerlink_s = request.getParameter("powerlink");
   		
-  		foodtruck_location fc = new foodtruck_location();
+  		Foodtruck_Location fc = new Foodtruck_Location();
   		int powerlink = Integer.parseInt(powerlink_s);
   		fc.setTitle(title);
   		fc.setOpendate(opendate);

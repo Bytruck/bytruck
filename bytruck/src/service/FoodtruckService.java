@@ -2,17 +2,17 @@ package service;
 
 import dao.FoodtruckDAO;
 import dao.FoodtruckDAOOracle;
-import vo.foodtruck;
-import vo.foodtruck_location;
+import vo.Foodtruck;
+import vo.Foodtruck_Location;
 
 public class FoodtruckService {
 	private FoodtruckDAO dao = new FoodtruckDAOOracle();
 
-	public void signup(foodtruck ft) throws Exception {
+	public void signup(Foodtruck ft) throws Exception {
 		dao.insert(ft);
 	}
 
-	public void foodtruckwrite(foodtruck_location fc) throws Exception{
+	public void foodtruckwrite(Foodtruck_Location fc) throws Exception{
 		dao.insertfoodtruck(fc);
 	}
 }

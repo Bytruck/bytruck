@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import vo.users;
+import vo.Users;
 
 public class userDAOOracle implements UserDAO {
 
 	@Override
-	public void insert(users u) throws Exception {
+	public void insert(Users u) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -39,7 +39,7 @@ public class userDAOOracle implements UserDAO {
 	}
 	
 	@Override
-	public void insert2(users u) throws Exception{
+	public void insert2(Users u) throws Exception{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -68,7 +68,7 @@ public class userDAOOracle implements UserDAO {
 	}
 
 	@Override
-	public users selectById(String id) throws Exception {
+	public Users selectById(String id) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -82,7 +82,7 @@ public class userDAOOracle implements UserDAO {
 			if (!rs.next()) { // 아이디가 없는경우
 				return null;
 			} else {
-				return new users(id, rs.getString("user_pwd"), rs.getString("name"), rs.getString("birthday"),
+				return new Users(id, rs.getString("user_pwd"), rs.getString("name"), rs.getString("birthday"),
 						rs.getString("phone_number"), rs.getString("email"), rs.getString("bnum"),
 						rs.getString("type"));
 			}
@@ -95,12 +95,12 @@ public class userDAOOracle implements UserDAO {
 	}
 
 	@Override
-	public List<users> selectAll() throws Exception {
+	public List<Users> selectAll() throws Exception {
 		return null;
 	}
 
 	@Override
-	public void update(users u) throws Exception {
+	public void update(Users u) throws Exception {
 	}
 
 	@Override

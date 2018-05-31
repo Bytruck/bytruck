@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Date;
 
-public class foodtruck_location {
+public class Foodtruck_Location {
 	private int no;
 	private String user_id;
 	private String title;
@@ -10,11 +10,11 @@ public class foodtruck_location {
 	private String detail;
 	private int poweryn;
 	
-	public foodtruck_location() {
+	public Foodtruck_Location() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public foodtruck_location(int no, String user_id, String title, String opendate, String detail, int poweryn) {
+	public Foodtruck_Location(int no, String user_id, String title, String opendate, String detail, int poweryn) {
 		super();
 		this.no = no;
 		this.user_id = user_id;

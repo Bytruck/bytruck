@@ -6,25 +6,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.CourseService;
+import vo.Tripcourse;
+
 /**
  * Servlet implementation class CourseWriteServlet
  */
 public class CourseWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CourseWriteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
+    private CourseService service =  new CourseService();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		String title = request.getParameter("title");
+		String detail = request.getParameter("detail");
+		String with = request.getParameter("withradio");
+		String open = request.getParameter("openradio");
+		String region = request.getParameter("region");
+		String date = request.getParameter("opendate");
+		
+		Tripcourse course = new Tripcourse();
+		
+		course.setDate(date);
+		course.setDetail(detail);
+		course.setOpen(open);
+		course.setRegion(region);
+		course.setTitle(title);
+		course.setWith(with);
+		
+		service.
+		
+		
 	}
 
 }

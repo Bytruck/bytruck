@@ -1,6 +1,6 @@
 package vo;
 
-public class foodtruck {
+public class Foodtruck {
 	private String user_id;
 	private String bussiness_name;
 	private String menu_name;
@@ -8,11 +8,11 @@ public class foodtruck {
 	private int menu_type;
 	private String detail;
 
-	public foodtruck() {
+	public Foodtruck() {
 		super();
 	}
 
-	public foodtruck(String user_id, String bussiness_name, String menu_name, int price, int menu_type, String detail) {
+	public Foodtruck(String user_id, String bussiness_name, String menu_name, int price, int menu_type, String detail) {
 		super();
 		this.user_id = user_id;
 		this.bussiness_name = bussiness_name;

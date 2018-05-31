@@ -1,9 +1,9 @@
 package dao;
 
-import vo.foodtruck;
-import vo.foodtruck_location;
+import vo.Foodtruck;
+import vo.Foodtruck_Location;
 
 public interface FoodtruckDAO {
-	public void insertfoodtruck(foodtruck_location fc) throws Exception;
-	void insert(foodtruck ft) throws Exception;
+	public void insertfoodtruck(Foodtruck_Location fc) throws Exception;
+	void insert(Foodtruck ft) throws Exception;
 }

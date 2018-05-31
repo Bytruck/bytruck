@@ -1,6 +1,6 @@
 package vo;
 
-public class users {
+public class Users {
 	private String user_id;
 	private String user_pwd;
 	private String name;
@@ -10,11 +10,11 @@ public class users {
 	private String bussiness_number;
 	private String type;
 	
-	public users() {
+	public Users() {
 		super();
 	}
 
-	public users(String user_id, String user_pwd, String name, String birthday, String phone_number, String email,
+	public Users(String user_id, String user_pwd, String name, String birthday, String phone_number, String email,
 			String type) {
 		super();
 		this.user_id = user_id;
@@ -26,7 +26,7 @@ public class users {
 		this.type = type;
 	}
 	
-	public users(String user_id, String user_pwd, String name, String birthday, String phone_number, String email,
+	public Users(String user_id, String user_pwd, String name, String birthday, String phone_number, String email,
 			String bussiness_number, String type) {
 		super();
 		this.user_id = user_id;

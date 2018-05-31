@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.UserService;
-import vo.users;
+import vo.Users;
 
 public class SignupServlet extends HttpServlet {
 	 private UserService service = new UserService();   
@@ -24,7 +24,7 @@ public class SignupServlet extends HttpServlet {
 		String birthday = request.getParameter("birthday");
 		String tel = request.getParameter("tel");
 
-		users u = new users(id, pwd, name, birthday, tel, email, "BK");
+		Users u = new Users(id, pwd, name, birthday, tel, email, "BK");
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

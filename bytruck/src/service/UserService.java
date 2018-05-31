@@ -2,13 +2,13 @@ package service;
 
 import dao.UserDAO;
 import dao.userDAOOracle;
-import vo.users;
+import vo.Users;
 
 public class UserService {
 	private UserDAO dao = new userDAOOracle();
 
 	public String login(String id, String pwd) throws Exception {//로그인메소드
-		users u = dao.selectById(id);
+		Users u = dao.selectById(id);
 		if (u != null) { // 아이디가 있는 경우
 			if (u.getUser_pwd().equals(pwd)) {// 비밀번호일치
 				return "1";// 유저정보 리턴시키기
@@ -23,7 +23,7 @@ public class UserService {
 	}
 	
 	public String dupChk(String id) throws Exception{
-		users c =  dao.selectById(id);
+		Users c =  dao.selectById(id);
 		if(c==null) {
 			return "1"; 	//아이디가 없는경우(회원가입 가능)
 		}else {
@@ -31,7 +31,7 @@ public class UserService {
 		}
 	}
 	
-	public void signup(users u) throws Exception{
+	public void signup(Users u) throws Exception{
 		dao.insert(u);
 	}
 
@@ -45,7 +45,7 @@ public class UserService {
 		}
 	}
 
-	public void signup2(users u) throws Exception {
+	public void signup2(Users u) throws Exception {
 		dao.insert2(u);
 	}
 

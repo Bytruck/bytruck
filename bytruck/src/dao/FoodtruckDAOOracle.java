@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import sql.MyConnection;
-import vo.foodtruck;
-import vo.foodtruck_location;
+import vo.Foodtruck;
+import vo.Foodtruck_Location;
 
 public class FoodtruckDAOOracle implements FoodtruckDAO {
 
 	@Override
-	public void insertfoodtruck(foodtruck_location fc) throws Exception {
+	public void insertfoodtruck(Foodtruck_Location fc) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String insertSQL = "insert into foodtruck_location(no, user_id, title, opendate, detail, poweryn) values(foodtruck_no_seq.nextval, 'EJ', ?, to_date(?,'yyyy-mm-dd'), ?, ?)";
@@ -29,7 +29,7 @@ public class FoodtruckDAOOracle implements FoodtruckDAO {
 	}
 	
 	@Override
-	public void insert(foodtruck ft) throws Exception {
+	public void insert(Foodtruck ft) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
