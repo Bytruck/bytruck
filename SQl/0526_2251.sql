@@ -198,11 +198,13 @@ create table course(
     no          number not null,
     user_id     varchar2(20) not null,
     trip_date   varchar2(20) not null,
-    withyn      number(1) not null,
+    withyn      varchar2(6) default 'y' not null,
+    openyn      varchar2(6) default 'y' not null,
     title       varchar2(100) not null,
     detail      varchar2(500),
     views       number not null,
     good       number not null,
+    
     CONSTRAINT course_no_pk primary key(no),
     CONSTRAINT course_user_id_fk foreign key(user_id) references users(user_id)
 );
@@ -452,16 +454,22 @@ select * from comments;
 
 
 --insert comments talbe data
-insert into course(no, user_id, trip_date, withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
-insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);
-insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 1, ' 손에 손잡고 나를 넘어서', '여행일정 부산찍고 제주찍고 서울까지',15, 7) ;
-insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 0, '인생은 혼자여행', '여행일정 부산찍고 제주찍고 서울까지',3, 2);
-insert into course(no, user_id, trip_date,  withyn, title, detail, views, good)
-values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 0, ' 나홀로 배낭여행', '여행일정 부산찍고 제주찍고 서울까지',4, 5);
+insert into course(no, user_id, trip_date, title, detail, views, good)
+values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
+insert into course(no, user_id, trip_date, title, detail, views, good)
+values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);
+insert into course(no, user_id, trip_date, title, detail, views, good)
+values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 손에 손잡고 나를 넘어서', '여행일정 부산찍고 제주찍고 서울까지',15, 7) ;
+insert into course(no, user_id, trip_date, title, detail, views, good)
+values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), '인생은 혼자여행', '여행일정 부산찍고 제주찍고 서울까지',3, 2);
+insert into course(no, user_id, trip_date, title, detail, views, good)
+values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 나홀로 배낭여행', '여행일정 부산찍고 제주찍고 서울까지',4, 5);
+
+--insert into course(no, user_id, trip_date, withyn, openyn, title, detail, views, good)
+--values (course_no_seq.nextval, ?,to_char(to_date('?', 'yyyy.mm.dd')),?,?,?,?,?,?);
+
+select * from course;
+
 
 --insert comments talbe data
 insert into detail_course(no, step, trip_date, latitude, longtitude)

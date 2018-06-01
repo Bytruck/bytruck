@@ -1,26 +1,36 @@
 package vo;
 
 public class Tripcourse {
+	private String user;
 	private String title;
 	private String detail;
 	private String with;
 	private String open;
-	private String region;
-	private String date;	
+	private String date;
+	private String good;
 	
 	public Tripcourse() {
 		super();
 		// TODO Auto-generated constructor stub
-	} 
-	
-	public Tripcourse(String title, String detail, String with, String open, String region, String date) {
+	}
+
+	public Tripcourse(String user, String title, String detail, String with, String open, String date, String good) {
 		super();
+		this.user = user;
 		this.title = title;
 		this.detail = detail;
 		this.with = with;
 		this.open = open;
-		this.region = region;
 		this.date = date;
+		this.good = good;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 	public String getTitle() {
@@ -55,14 +65,6 @@ public class Tripcourse {
 		this.open = open;
 	}
 
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
 	public String getDate() {
 		return date;
 	}
@@ -71,10 +73,18 @@ public class Tripcourse {
 		this.date = date;
 	}
 
+	public String getGood() {
+		return good;
+	}
+
+	public void setGood(String good) {
+		this.good = good;
+	}
+
 	@Override
 	public String toString() {
-		return "Tripcourse [title=" + title + ", detail=" + detail + ", with=" + with + ", open=" + open + ", region="
-				+ region + ", date=" + date + "]";
-	}
+		return "Tripcourse [user=" + user + ", title=" + title + ", detail=" + detail + ", with=" + with + ", open="
+				+ open + ", region=" + ", date=" + date + ", good=" + good + "]";
+	} 
 		
 }

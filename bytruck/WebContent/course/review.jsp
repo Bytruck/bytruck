@@ -73,7 +73,7 @@ src="../js/bootstrap.min.js"></script>
 						</div>
 						<div class="col-sm-10">
 							<div class="col-md-9">
-								<%@include file="naver.html"%><br>
+								<%@include file="naver.jsp"%><br>
 								<label>제목 :</label>&nbsp;&nbsp;<input type="text"
 									class="form-control" required><br> <label>일정
 									:</label><br>

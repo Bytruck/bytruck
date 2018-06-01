@@ -27,29 +27,45 @@
 	</div>
 	<script>
 	 $(function(){
-		 $('button.btnapply').click(function(){
-			 console.log("일정등록 클릭확인");
-<%--  				$.ajax({
-					method:'POST',
-					url:'<%=%>/boarddetail.bt',
-					data:{num:'2'},
-					success: function(data){
-						alert("성공");
-						$('.board').html(data);
+			$('form#result').submit(function() {
+		        var x = $('textarea#xlocation').html();
+		        var y = $('textarea#ylocation').html();
+		        var xL=x.split('/');//xL[]:위도배열
+		        var yL=y.split('/');//yL[]:경도배열
+		        
+		        for(var i in xL){
+		           console.log(xL[i] + ", " + yL[i] + "\n");
+		        } 
+				$.ajax({
+					url : '<%=request.getContextPath()%>/coursewrite.bt',
+					method : 'post',
+					data : $('form').serialize(),
+					success : function(data) {
+						data = data.trim();
+						if (data == '1') { //글쓰기 성공
+							alert('글쓰기 성공');
+						} else if (data == '0') { //글쓰기 실패
+							alert('글쓰기 실패');
+						}
 					}
-				}); --%>	 
+				});
+				return false;
+			});
 		});
-	});
 	</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">
 				<ol class="breadcrumb link-accent separator-arrow">
-					<li><a href="<%= request.getContextPath() %>/index.jsp" title="Home"><i
-							class="fa fa-home"></i></a></li>
-					<li><a href="<%= request.getContextPath() %>/course/viewcourse.jsp" title="Home">코스소개</a></li>
+					<li><a href="<%=request.getContextPath()%>/index.jsp"
+						title="Home"><i class="fa fa-home"></i></a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/course/viewcourse.jsp"
+						title="Home">코스소개</a></li>
 					<li class="active">코스짜기</li>
-					<li><a href="<%= request.getContextPath() %>/course/reviewboard.jsp" title="Home">코스후기</a></li>
+					<li><a
+						href="<%=request.getContextPath()%>/course/reviewboard.jsp"
+						title="Home">코스후기</a></li>
 				</ol>
 				<div class="page-header">
 					<div class="row">
@@ -63,58 +79,50 @@
 						</div>
 					</div>
 				</div>
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-2 sidenav">
-							<div class="trip">
-								<h5>지역을 선택해주세요</h5>
-								<select class="form-control" name = "region">
-									<option value="SU">서울시</option>
-									<option value="GG">경기도</option>
-									<option value="GY">강원도</option>
-									<option value="CC">충청도</option>
-									<option value="JL">전라도</option>
-									<option value="KS">경상도</option>
-									<option value="JJ">제주도</option>
-								</select><br>
-								<div class="result"></div>
-								<h5>출발일을 선택해 주세요</h5>
-								<div class="dropdown" >
-									<span class="input-group-addon">
-									<i class="fa fa-calendar"></i></span> 
-									<input type="date" class="form-control" name="opendate" id="opendate"
-										placeholder="Openday(ex.YYYY/MM/DD)">
+				<form id="result">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-2 sidenav">
+								<div class="trip">
+									<h5>출발일을 선택해 주세요</h5>
+									<div class="dropdown">
+										<span class="input-group-addon"> <i
+											class="fa fa-calendar"></i></span> <input type="date"
+											class="form-control" name="opendate" id="opendate"
+											placeholder="Openday(ex.YYYY/MM/DD)">
+									</div>
 								</div>
-							</div>
-							<div class="option">
-								<h3>
-									<b>세부옵션사항</b>
-								</h3>
+								<div class="option">
+									<h3>
+										<b>세부옵션사항</b>
+									</h3>
 									<label><input type="radio" name="withradio" value="solo">나만보기</label><br>
 									<label><input type="radio" name="withradio" value="couple">동행가능</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-sm-10">
-							<div class="col-md-9">
-								<%@include file="naver.html"%><br>
-								<label>제목 :</label>&nbsp;&nbsp;<input type="text"
-									class="form-control" required><br> <label>일정
-									:</label><br>
-								<textarea class="form-control" rows="8   "></textarea><br> 
-								<label><input type="radio" name="openradio">나만보기</label>
-								<label><input type="radio" name="openradio">전체공개</label><br>
-								<button type="submit" class="btnapply"
-									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">
-									일정등록</button>
-							</div>
-							<div class="col-md-3">
-								<img src="<%=root%>/images/weather.png" alt="Weather"
-									width="200" height="250"><br> <br>
-								<%@include file="/template/top123.jsp"%>
+							<div class="col-sm-10">
+								<div class="col-md-9">
+									<%@include file="naver.jsp"%><br>
+									<label>제목 :</label>&nbsp;&nbsp;<input type="text" class="form-control" name="title" required><br> 
+									<label>일정:</label><br>
+									<textarea class="form-control" rows="8" name="detail" required></textarea>
+									<textarea style="display: none" id="xlocation"></textarea>
+									<textarea style="display: none" id="ylocation"></textarea>
+									<label><input type="radio" name="openradio" value="open">전체공개</label>
+									<label><input type="radio" name="openradio" value="close">나만보기</label>
+									<button type="submit" class="btnapply"
+										style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">
+										일정등록</button>
+								</div>
+								<div class="col-md-3">
+									<img src="<%=root%>/images/weather.png" alt="Weather"
+										width="200" height="250"><br> <br>
+									<%@include file="/template/top123.jsp"%>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

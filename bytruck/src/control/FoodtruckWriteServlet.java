@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import service.FoodtruckService;
 import vo.Foodtruck_Location;
 
+
 public class FoodtruckWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private FoodtruckService service = new FoodtruckService();
