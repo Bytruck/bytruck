@@ -202,8 +202,8 @@ create table course(
     openyn      varchar2(6) default 'y' not null,
     title       varchar2(100) not null,
     detail      varchar2(500),
-    views       number not null,
-    good       number not null,
+    views       number ,
+    good        number,
     
     CONSTRAINT course_no_pk primary key(no),
     CONSTRAINT course_user_id_fk foreign key(user_id) references users(user_id)
