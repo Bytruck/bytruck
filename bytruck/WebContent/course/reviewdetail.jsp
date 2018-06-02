@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
 <title>makecourse.jsp</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+	var good=0;</script>
 <script src="../js/bootstrap.min.js"></script>
 </head>
 <style>
@@ -25,6 +25,21 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$(function(){
+			$('button.good').click(function(){
+				console.log("aaa");
+				$.ajax({
+					url: '<%=request.getContextPath()%>/courselist.bt',
+					method: 'post',
+					data: 'good='+(good+1),
+					success : function(data){
+						data = data.trim();
+					}
+				});
+			});
+		});
+	</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -58,8 +73,10 @@
 									class="form-control" required><br> <label>일정
 									:</label><br>
 								<textarea class="form-control" rows="8	"></textarea><br> 
-								<a href="viewcourse.jsp"><button type="submit" class="btn btn-default"
-									style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">뒤로가기</button></a>
+								<a href="viewcourse.jsp">
+								<button type="submit" class="btn btn-default" style="margin: 10px auto 0; 
+										display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">뒤로가기</button></a>
+								<button class="good" value ="0">좋아요</button>
 							</div>
 							<div class="col-md-3">
 								<img src="<%=root%>/images/weather.png" alt="Weather"

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="vo.Tripcourse"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <head>
 <title>viewcourse.jsp</title>
 <head>
@@ -63,17 +67,20 @@
 						</h3>
 					</div>
 					<br>
+ 					<%
+					List<Tripcourse> list = (List<Tripcourse>)request.getAttribute("list");
+					%> 
 					<div class="row">
 						<div class="col-lg-3">
 							<div class="product-item">
-								<a href="<%=root%>/course/reviewdetail.jsp"><img src="../images/with1.jpg"
-									class="img-rounded" alt="Product Item" height="220" width="250"></a>
+								<a href="<%=root%>/course/reviewdetail.jsp"><img
+									src="../images/with1.jpg" class="img-rounded"
+									alt="Product Item" height="220" width="250"></a>
 								<div class="info">
 									<h3 class="title">
-										<a href="naver.html" title="Colorful Abstract Cushion">제주도
-											꽃길2박3일</a>
+										<a href="naver.html" title="Colorful Abstract Cushion">제주도 꽃길2박3일</a>
 									</h3>
-									<img src="../images/good.png" height="10" width="10"> <label>31</label>
+									<img src="../images/good.png" height="10" width="10"> <label><%=list.get(0).getTitle() %></label>
 								</div>
 							</div>
 						</div>
@@ -85,7 +92,7 @@
 									<h3 class="title">
 										<a href="single-product-page.html" title="Reading Table Sets">경복궁길</a>
 									</h3>
-									<img src="../images/good.png" height="10" width="10"> <label>27</label>
+									<img src="../images/good.png" height="10" width="10"> <label>1</label>
 								</div>
 							</div>
 						</div>
@@ -97,7 +104,7 @@
 									<h3 class="title">
 										<a href="single-product-page.html" title="Wooden Working Desk">경로1</a>
 									</h3>
-									<img src="../images/good.png" height="10" width="10"> <label>23</label>
+									<img src="../images/good.png" height="10" width="10"> <label>2</label>
 								</div>
 							</div>
 						</div>

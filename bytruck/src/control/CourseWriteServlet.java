@@ -20,26 +20,25 @@ public class CourseWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private CourseService service =  new CourseService();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
+		String idValue = session.getAttribute("loginInfo").toString();
 		String title = request.getParameter("title");
 		String detail = request.getParameter("detail");
 		String with = request.getParameter("withradio");
 		String open = request.getParameter("openradio");
 		String date = request.getParameter("opendate");
 		
-		Tripcourse course = new Tripcourse();
 		System.out.println("servelt");
 		
-		HttpSession session = request.getSession();
-	    String idValue = session.getAttribute("loginInfo").toString();
-	    
+		Tripcourse course = new Tripcourse();
+		
 	    System.out.println(title);
 	    System.out.println(detail);
 	    System.out.println(open);
 	    System.out.println(with);
 	    System.out.println(date);
 	    
-		
 	    course.setUser(idValue);
 		course.setDate(date);
 		course.setDetail(detail);

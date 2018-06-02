@@ -150,7 +150,7 @@ create table review(
 -- create chatting table
 create table chatting (
     no          number,
-    posted      varchar2(20) not null,
+    posted      varchar2(100) not null,
     user_id     varchar2(20) not null,
     message     varchar2(500) not null,
     constraint chatting_no_pk primary key(no),
@@ -202,13 +202,15 @@ create table course(
     openyn      varchar2(6) default 'y' not null,
     title       varchar2(100) not null,
     detail      varchar2(500),
-    views       number ,
+    views       number  ,
     good        number,
     
     CONSTRAINT course_no_pk primary key(no),
     CONSTRAINT course_user_id_fk foreign key(user_id) references users(user_id)
 );
 
+select title, good
+from course;
 --create detail_course
 create table detail_course(
     no          number not null,
@@ -468,7 +470,7 @@ values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.d
 --insert into course(no, user_id, trip_date, withyn, openyn, title, detail, views, good)
 --values (course_no_seq.nextval, ?,to_char(to_date('?', 'yyyy.mm.dd')),?,?,?,?,?,?);
 
-select * from course;
+select title,good from course;
 
 
 --insert comments talbe data

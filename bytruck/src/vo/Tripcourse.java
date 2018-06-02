@@ -5,16 +5,16 @@ public class Tripcourse {
 	private String title;
 	private String detail;
 	private String with;
-	private String open;
+	private int open;
 	private String date;
-	private String good;
+	private int good;
 	
 	public Tripcourse() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tripcourse(String user, String title, String detail, String with, String open, String date, String good) {
+	public Tripcourse(String user, String title, String detail, String with, int open, String date, int good) {
 		super();
 		this.user = user;
 		this.title = title;
@@ -57,11 +57,11 @@ public class Tripcourse {
 		this.with = with;
 	}
 
-	public String getOpen() {
+	public int getOpen() {
 		return open;
 	}
 
-	public void setOpen(String open) {
+	public void setOpen(int open) {
 		this.open = open;
 	}
 
@@ -73,11 +73,11 @@ public class Tripcourse {
 		this.date = date;
 	}
 
-	public String getGood() {
+	public int getGood() {
 		return good;
 	}
 
-	public void setGood(String good) {
+	public void setGood(int good) {
 		this.good = good;
 	}
 
