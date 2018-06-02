@@ -58,7 +58,7 @@
 						</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=root %>/brand/summary.jsp">개요</a></li>
-								<li><a href="<%=root %>/brand/notice.jsp">공지사항</a></li>
+								<li><a href="<%=root %>/boardlist.bt?pagetype=0">공지사항</a></li>
 
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -87,7 +87,7 @@
 							data-toggle="dropdown" role="button" aria-expanded="false">BOARD<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="<%=root%>/board/qna.jsp">Q&A</a></li>
+								<li><a href="<%=root%>/boardlist.bt?pagetype=1">Q&A</a></li>
 								<li><a href="<%=root%>/board/faq.jsp">FAQ</a></li>
 								<li><a href="<%=root%>/chatting/chat.jsp">타임라인</a></li>
 							</ul></li>

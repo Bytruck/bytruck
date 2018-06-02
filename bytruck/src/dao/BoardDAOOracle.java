@@ -5,8 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import control.BoardListServlet;
 import sql.MyConnection;
 import vo.Board;
 
@@ -61,33 +68,44 @@ public List<Board> getBoardList(int page) throws Exception {
 			
 		con = MyConnection.getConnection();
 		
-		String sql ="SELECT b.* \r\n" + 
-				"FROM    (  SELECT rownum rnum, a.type, a.no, a.title, a.views, a.posted\r\n" + 
-				"            FROM(   SELECT * \r\n" + 
-				"                    FROM board \r\n" +
-				"					 where type = 1" + 
-				"                    order by no desc) a \r\n" + 
-				"        )b\r\n" + 
-				"where rnum>= ? and rnum <= ?";
+		String sql = "SELECT b.*\r\n" + 
+				"FROM  ( SELECT rownum r, no, type, title, detail, posted, user_id, views\r\n" + 
+				"            FROM ( SELECT * \r\n" + 
+				"                    FROM board\r\n" + 
+				"                    where type =? \r\n" + 
+				"                    order by no desc\r\n" + 
+				"                    )a \r\n" + 
+				"WHERE rownum >=? and rownum <=? \r\n" + 
+				"       )b";
 			
 		pstmt = con.prepareStatement(sql);
 		int cntPerpage=10;
 		int endRow=cntPerpage * page;
 		int startRow = endRow - cntPerpage + 1;
-		pstmt.setInt(1, startRow);
-		pstmt.setInt(2, endRow);
-		rs=pstmt.executeQuery();
-		System.out.println("executeQuery 실행");
+		
+		// type을 가져와야한다.
+//		BoardListServlet bls = new BoardListServlet();
+//		int pagesss = 0;
+//		bls.pagetyp(pagesss);
+//		int type = bls.pagetyp(pagesss);
+		
+//		int type = 0;
+	
+		pstmt.setInt(1, 1);
+		pstmt.setInt(2, startRow);
+		pstmt.setInt(3, endRow);		
+		rs = pstmt.executeQuery();	
 		while(rs.next()) {
 			Board bl = new Board();
 			bl.setNo(rs.getInt("no"));
+			bl.setType(rs.getInt("type"));
 			bl.setTitle(rs.getString("title"));
+			bl.setDetail(rs.getString("detail"));
+			bl.setUser_id(rs.getString("user_id"));
 			bl.setViews(rs.getInt("views"));
 			bl.setPosted(rs.getString("posted"));
-			list.add(bl);
-			System.out.println("DAOOracle 작동 됨");
+			list.add(bl);			
 		}
-
 		}catch(Exception e) {
 			e.getMessage();
 		}finally {

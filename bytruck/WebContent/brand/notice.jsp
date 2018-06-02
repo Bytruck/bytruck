@@ -3,6 +3,9 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="p" uri="http://java.sun.com/jsp/jstl/core" %>
+<p:set var="pb" value="${requestScope.pageBean }"/>
+
 <style>
 .board {
 	padding-top: 10%;
@@ -25,6 +28,29 @@
 	</div>
 	<script>
  $(function(){
+	 
+	 $('.pagination a').click(function(){
+			console.log("asdf");
+			var page;
+			if($(this).text() == '«'){
+				page=${pb.startPage}-1;
+			}else if($(this).text() =='»'){
+				page=${pb.endPage}+1;	
+			}else{
+				page=$(this).text();
+			}		
+			$.ajax({
+				url:"boardlist.bt",
+				method:'get',
+				data:'page='+page,
+				success:function(data){
+					$('#ccc').empty();
+					$('#ccc').html(data);
+				}
+			});
+			return false;
+		});
+	 
 	 $('#detail').click(function(){
 		 console.log("클릭");
 			$.ajax({
@@ -99,28 +125,18 @@
 								<td>1</td>
 							 </tr>
 							 <% } %> --%>
+							<p:set var="list" value="${pb.list }"/>
+							<p:forEach var="b" items="${list }">
+							
 							<tr>
-									<td>2</td>
-									<td><a href="#" id = detail >바이트럭 홈페이지 리뉴얼</a>
-									</td>
-									<td>관리자</td>
-									<td>2018.05.11</td>
-									<td>1</td>
-								</tr>
-								<tr>
-									<td>9</td>
-									<td><a href="#">욕설/비방 할시 계정 삭제가 될 수 있으니 유의바랍니다.</a></td>
-									<td>관리자</td>
-									<td>2018.05.10</td>
-									<td>11</td>
-								</tr>
-								<tr>
-									<td>8</td>
-									<td><a href="#">좋아요 기능 많은 이용 부탁드립니다.</a></td>
-									<td>관리자</td>
-									<td>2018.05.09</td>
-									<td>29</td>
-								</tr>
+								<td>${b.no}</td>
+								<td>${b.title}</td>
+								<td>${b.user_id}</td>
+								<td>${b.posted}</td>
+								<td>${b.views}</td>
+							</tr>
+							</p:forEach>
+							
 									<%-- <c:set var="list" value="${pb.list}"/>
 									<c:forEach var="board" items="${list}"> --%>
 									<%-- <td>${board.no}</td>
@@ -138,19 +154,23 @@
 				</div>
 			</div>
 	<div class="text-center">
-		<ul class="pagination">
-			<%-- <c:set var="startPage" value="${pb.startPage}"/>
-			<c:set var="endPage" value="${pb.endPage}"/>
-			<c:if test="${startPage > 1}">
-			<a href="#">&laquo;</a>
-			</c:if>
-			<c:forEach begin="${startPage}" end="${endPage}" var = "i">
-				<a href="#">${i}</a>
-			</c:forEach>
-			<c:if test="${endPage < pb.totalPage}">
+	<div class="pagination" style="width: 400px;margin-left: 30%;">
+			<p:set var="startPage" value="${pb.startPage }"/>
+			<p:set var="endPage" value="${pb.endPage }"/>
+		
+			<p:if test="${startPage > 1 }">
+				 <a href="#">&laquo;</a>
+			</p:if>
+			<!-- 페이지 이동 처리, 클릭 이벤트 처리만 하면 된다. -->
+			<p:forEach begin="${startPage}" end="${endPage}" var="i">
+				 <a href="#">${i}</a>
+			</p:forEach>
+			
+			<p:if test="${endPage < pb.totalPage }">
 				<a href="#">&raquo;</a>
-			</c:if>	 --%>
-		</ul>
+			</p:if>
+	</div>
+
 	</div>
 	<!-- END MAIN -->
 	<!-- FOOTER -->

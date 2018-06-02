@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.BoardDAOOracle;
 import service.BoardService;
 import vo.Board;
 
@@ -23,11 +25,12 @@ public class BoardListServlet extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = request.getParameter("page");
-		int intPage=1;
+		String page = request.getParameter("page");		
+		String pagetype = request.getParameter("pagetype");	
+		int intPage = 1;
+		
 		if(page != null) {
-			intPage = Integer.parseInt(page);
-			
+			intPage = Integer.parseInt(page);	
 		}
 		try {
 			int totalCount = service.findCount();
@@ -56,10 +59,29 @@ public class BoardListServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("result", e.getMessage());
 		}
+				
+		int pagety =0;
+		pagety = Integer.parseInt(pagetype);
 		RequestDispatcher rd;
-		String forwardURL = "board/qna.jsp";
-		rd = request.getRequestDispatcher(forwardURL);
-		rd.forward(request, response);
+		if(pagety == 0) {		
+			String forwardURL = "brand/notice.jsp";
+			rd = request.getRequestDispatcher(forwardURL);
+			rd.forward(request, response);
+		}else if(pagety == 1) {
+		
+			String forwardURL = "board/qna.jsp";
+			rd = request.getRequestDispatcher(forwardURL);
+			rd.forward(request, response);
+		}
+		
+		
+
+		
+	}
+
+	public int pagetyp(int pagety) {
+		this.pagetyp(pagety);
+		return pagety;
 		
 	}
 
