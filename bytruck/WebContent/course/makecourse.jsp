@@ -28,14 +28,14 @@
 	<script>
 	 $(function(){
 			$('form#result').submit(function() {
-		        var x = $('textarea#xlocation').html();
+/* 		        var x = $('textarea#xlocation').html();
 		        var y = $('textarea#ylocation').html();
 		        var xL=x.split('/');//xL[]:위도배열
 		        var yL=y.split('/');//yL[]:경도배열
 		        
-		        for(var i in xL){
+  		        for(var i in xL){
 		           console.log(xL[i] + ", " + yL[i] + "\n");
-		        } 
+		        }   */ 
 				$.ajax({
 					url : '<%=request.getContextPath()%>/coursewrite.bt',
 					method : 'post',
@@ -106,8 +106,8 @@
 									<label>제목 :</label>&nbsp;&nbsp;<input type="text" class="form-control" name="title" required><br> 
 									<label>일정:</label><br>
 									<textarea class="form-control" rows="8" name="detail" required></textarea>
-									<textarea style="display: none" id="xlocation"></textarea>
-									<textarea style="display: none" id="ylocation"></textarea>
+									<textarea style="display: none" id="xlocation" name ="xlocation"></textarea>
+									<textarea style="display: none" id="ylocation" name ="ylocation"></textarea>
 									<label><input type="radio" name="openradio" value="open">전체공개</label>
 									<label><input type="radio" name="openradio" value="close">나만보기</label>
 									<button type="submit" class="btnapply"

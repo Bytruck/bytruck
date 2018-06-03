@@ -13,9 +13,6 @@ import javax.websocket.Session;
 import service.CourseService;
 import vo.Tripcourse;
 
-/**
- * Servlet implementation class CourseWriteServlet
- */
 public class CourseWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private CourseService service =  new CourseService();
@@ -28,23 +25,32 @@ public class CourseWriteServlet extends HttpServlet {
 		String with = request.getParameter("withradio");
 		String open = request.getParameter("openradio");
 		String date = request.getParameter("opendate");
+		String xlocation = request.getParameter("xlocation");
+		String ylocation = request.getParameter("ylocation");
+		
+		double xloc = Double.parseDouble(xlocation);
+		double yloc = Double.parseDouble(ylocation);
 		
 		System.out.println("servelt");
+		System.out.println(idValue);
+		System.out.println(title);
+		System.out.println(detail);
+		System.out.println(with);
+		System.out.println(open);
+		System.out.println(date);
+		System.out.println(xloc);
+		System.out.println(yloc);
 		
 		Tripcourse course = new Tripcourse();
-		
-	    System.out.println(title);
-	    System.out.println(detail);
-	    System.out.println(open);
-	    System.out.println(with);
-	    System.out.println(date);
-	    
+	   
 	    course.setUser(idValue);
+	    course.setTitle(title);
+	    course.setDetail(detail);
+	    course.setWith(with);
+	    course.setOpen(open);
 		course.setDate(date);
-		course.setDetail(detail);
-		course.setOpen(open);
-		course.setTitle(title);
-		course.setWith(with);
+		course.setXlocation(xloc);
+		course.setYlocation(yloc);
 		
 		try {
 			service.write(course);
@@ -57,5 +63,6 @@ public class CourseWriteServlet extends HttpServlet {
 		String forwardURL = "/couse/courseWriteResult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
+		
 	}
 }

@@ -5,16 +5,19 @@ public class Tripcourse {
 	private String title;
 	private String detail;
 	private String with;
-	private int open;
+	private String open;
 	private String date;
 	private int good;
+	private double xlocation;
+	private double ylocation;
 	
 	public Tripcourse() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tripcourse(String user, String title, String detail, String with, int open, String date, int good) {
+	public Tripcourse(String user, String title, String detail, String with, String open, String date, int good,
+			double xlocation, double ylocation) {
 		super();
 		this.user = user;
 		this.title = title;
@@ -23,6 +26,8 @@ public class Tripcourse {
 		this.open = open;
 		this.date = date;
 		this.good = good;
+		this.xlocation = xlocation;
+		this.ylocation = ylocation;
 	}
 
 	public String getUser() {
@@ -57,11 +62,11 @@ public class Tripcourse {
 		this.with = with;
 	}
 
-	public int getOpen() {
+	public String getOpen() {
 		return open;
 	}
 
-	public void setOpen(int open) {
+	public void setOpen(String open) {
 		this.open = open;
 	}
 
@@ -81,10 +86,27 @@ public class Tripcourse {
 		this.good = good;
 	}
 
+	public double getXlocation() {
+		return xlocation;
+	}
+
+	public void setXlocation(double xlocation) {
+		this.xlocation = xlocation;
+	}
+
+	public double getYlocation() {
+		return ylocation;
+	}
+
+	public void setYlocation(double ylocation) {
+		this.ylocation = ylocation;
+	}
+
 	@Override
 	public String toString() {
 		return "Tripcourse [user=" + user + ", title=" + title + ", detail=" + detail + ", with=" + with + ", open="
-				+ open + ", region=" + ", date=" + date + ", good=" + good + "]";
-	} 
-		
+				+ open + ", date=" + date + ", good=" + good + ", xlocation=" + xlocation + ", ylocation=" + ylocation
+				+ "]";
+	}
+			
 }

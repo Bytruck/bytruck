@@ -80,7 +80,7 @@
 									<h3 class="title">
 										<a href="naver.html" title="Colorful Abstract Cushion">제주도 꽃길2박3일</a>
 									</h3>
-									<img src="../images/good.png" height="10" width="10"> <label><%=list.get(0).getTitle() %></label>
+									<img src="../images/good.png" height="10" width="10"> <label>2</label>
 								</div>
 							</div>
 						</div>

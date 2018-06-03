@@ -9,6 +9,11 @@
 <body>
    <div id="map" style="width: 100%; height: 400px;"></div>
    <script>
+   $(function(){
+	   $()	
+   })
+   </script>
+   <script>
    var position = new naver.maps.LatLng(37.3595704, 127.105399);
    var markerList = [];
    var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
@@ -63,8 +68,8 @@
        y[ marker.getZIndex()] = e.coord.y;
        var data=marker.getZIndex()+'st marker --> x : ' + x[ marker.getZIndex()] +', y : ' + y[ marker.getZIndex()];
        console.log(data);
-       $('textarea#xlocation').append(e.coord.x+"/").hide();
-       $('textarea#ylocation').append(e.coord.y+"/").hide();
+       $('textarea#xlocation').append(e.coord.x).hide();
+       $('textarea#ylocation').append(e.coord.y).hide();
    });
 
    var bicycleLayer = new naver.maps.BicycleLayer();

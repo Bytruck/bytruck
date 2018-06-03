@@ -202,9 +202,8 @@ create table course(
     openyn      varchar2(6) default 'y' not null,
     title       varchar2(100) not null,
     detail      varchar2(500),
-    views       number  ,
+    views       number,
     good        number,
-    
     CONSTRAINT course_no_pk primary key(no),
     CONSTRAINT course_user_id_fk foreign key(user_id) references users(user_id)
 );
@@ -215,9 +214,8 @@ from course;
 create table detail_course(
     no          number not null,
     step        number not null,
-    trip_date   varchar2(20) not null,
-    latitude    varchar2(50) not null,
-    longtitude  varchar2(50) not null,
+    latitude    number not null,
+    longtitude  number not null,
      CONSTRAINT detail_course_no_step_pk primary key(no,step)
 );
 
@@ -253,6 +251,8 @@ start with 0 increment by 1 maxvalue 999 cycle nocache;
 create sequence comments_com_seq minvalue 0
 start with 0 increment by 1 maxvalue 999 cycle nocache;
 create sequence course_no_seq minvalue 0
+start with 0 increment by 1 maxvalue 999 cycle nocache;
+create sequence detailcourse_no_seq minvalue 0
 start with 0 increment by 1 maxvalue 999 cycle nocache;
 create sequence ad_id_seq minvalue 0
 start with 0 increment by 1 maxvalue 999 cycle nocache;
@@ -455,43 +455,53 @@ select * from comments;
 --values();
 
 
---insert comments talbe data
-insert into course(no, user_id, trip_date, title, detail, views, good)
-values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
-insert into course(no, user_id, trip_date, title, detail, views, good)
-values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);
-insert into course(no, user_id, trip_date, title, detail, views, good)
-values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 손에 손잡고 나를 넘어서', '여행일정 부산찍고 제주찍고 서울까지',15, 7) ;
-insert into course(no, user_id, trip_date, title, detail, views, good)
-values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), '인생은 혼자여행', '여행일정 부산찍고 제주찍고 서울까지',3, 2);
-insert into course(no, user_id, trip_date, title, detail, views, good)
-values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 나홀로 배낭여행', '여행일정 부산찍고 제주찍고 서울까지',4, 5);
+--insert comments table data
+--insert into course(no, user_id, trip_date, title, detail, views, good)
+--values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
+--insert into detail_course(no, step, latitude, longtitude)
+--values(course_no_seq.currval, detailcourse_no_seq.nextval, 37.51, 126.91);
+--insert into detail_course(no, step, trip_date, ylocation, xlocation)
+--values(course_no_seq.currval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+
+--insert into course(no, user_id, trip_date, title, detail, views, good)
+--values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);
+--insert into course(no, user_id, trip_date, title, detail, views, good)
+--values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 손에 손잡고 나를 넘어서', '여행일정 부산찍고 제주찍고 서울까지',15, 7) ;
+--insert into course(no, user_id, trip_date, title, detail, views, good)
+--values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), '인생은 혼자여행', '여행일정 부산찍고 제주찍고 서울까지',3, 2);
+--insert into course(no, user_id, trip_date, title, detail, views, good)
+--values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 나홀로 배낭여행', '여행일정 부산찍고 제주찍고 서울까지',4, 5);
 
 --insert into course(no, user_id, trip_date, withyn, openyn, title, detail, views, good)
 --values (course_no_seq.nextval, ?,to_char(to_date('?', 'yyyy.mm.dd')),?,?,?,?,?,?);
 
-select title,good from course;
+select * from course;
 
 
 --insert comments talbe data
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(1, 1, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(1, 2, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.52, 126.92);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(2, 1, to_char(to_date('2018.05.08', 'yyyy.mm.dd')), 37.53, 126.93);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(2, 2, to_char(to_date('2018.05.08', 'yyyy.mm.dd')), 37.54, 126.94);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(3, 1, to_char(to_date('2018.05.09', 'yyyy.mm.dd')), 37.55, 126.95);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(3, 2, to_char(to_date('2018.05.09', 'yyyy.mm.dd')), 37.56, 126.96);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(4, 1, to_char(to_date('2018.05.10', 'yyyy.mm.dd')), 37.57, 126.97);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(4, 2, to_char(to_date('2018.05.10', 'yyyy.mm.dd')), 37.58, 126.98);
-insert into detail_course(no, step, trip_date, latitude, longtitude)
-values(5, 1, to_char(to_date('2018.05.11', 'yyyy.mm.dd')), 37.59, 126.99);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(detailcourse_no_seq.nexval, 1, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(detailcourse_no_seq.currval, 2, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.52, 126.92);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(2, 1, to_char(to_date('2018.05.08', 'yyyy.mm.dd')), 37.53, 126.93);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(2, 2, to_char(to_date('2018.05.08', 'yyyy.mm.dd')), 37.54, 126.94);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(3, 1, to_char(to_date('2018.05.09', 'yyyy.mm.dd')), 37.55, 126.95);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(3, 2, to_char(to_date('2018.05.09', 'yyyy.mm.dd')), 37.56, 126.96);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(4, 1, to_char(to_date('2018.05.10', 'yyyy.mm.dd')), 37.57, 126.97);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(4, 2, to_char(to_date('2018.05.10', 'yyyy.mm.dd')), 37.58, 126.98);
+--insert into detail_course(no, step, trip_date, latitude, longtitude)
+--values(5, 1, to_char(to_date('2018.05.11', 'yyyy.mm.dd')), 37.59, 126.99);
+    
+select * 
+from course c join detail_course dc
+on c.no = dc.no;    
+
 
 --insert profit table data
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
