@@ -14,7 +14,11 @@ public class CourseService {
 	}
 	
 	public List<Tripcourse> list() throws Exception{
-		System.out.println("service");
 		return dao.listcourse(); 
+	}
+	
+	public List<Tripcourse> detail() throws Exception{
+		System.out.println("service");
+		return dao.detailcourse();
 	}
 }

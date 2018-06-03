@@ -110,9 +110,8 @@
 									<textarea style="display: none" id="ylocation" name ="ylocation"></textarea>
 									<label><input type="radio" name="openradio" value="open">전체공개</label>
 									<label><input type="radio" name="openradio" value="close">나만보기</label>
-									<button type="submit" class="btnapply"
-										style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; padding: 0; line-height: 32px;">
-										일정등록</button>
+									<a href = "<%=request.getContextPath()%>/course/makecourse.jsp"><button type="submit" class="btnapply" style="margin: 10px auto 0; display: block; width: 150px; font-weight: bold; 
+										padding: 0; line-height: 32px;">일정등록</button></a>
 								</div>
 								<div class="col-md-3">
 									<img src="<%=root%>/images/weather.png" alt="Weather"

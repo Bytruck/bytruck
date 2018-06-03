@@ -489,4 +489,14 @@
     <servlet-name>FindIdServlet</servlet-name>
     <url-pattern>/findid.bt</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FoodtruckMapServelt</display-name>
+    <servlet-name>FoodtruckMapServelt</servlet-name>
+    <servlet-class>control.FoodtruckMapServelt</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodtruckMapServelt</servlet-name>
+    <url-pattern>/foodtruckmap.bt</url-pattern>
+  </servlet-mapping>
 </web-app>

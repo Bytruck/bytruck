@@ -30,6 +30,12 @@ public class Tripcourse {
 		this.ylocation = ylocation;
 	}
 
+	public Tripcourse(double xlocation, double ylocation) {
+		super();
+		this.xlocation = xlocation;
+		this.ylocation = ylocation;
+	}
+
 	public String getUser() {
 		return user;
 	}

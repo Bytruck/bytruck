@@ -77,4 +77,33 @@ public class CourseDAOOracle implements CourseDAO
 		System.out.println(list);
 		return list;
 	}
+
+	@Override
+	public List<Tripcourse> detailcourse() throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<Tripcourse> list = new ArrayList<Tripcourse>();
+		
+		String selectSQL = "select dc.LATITUDE, dc.LONGTITUDE\r\n" + 
+				"from course c join detail_course dc\r\n" + 
+				"on c.no = dc.no";
+		try {
+			con=MyConnection.getConnection();
+			pstmt = con.prepareStatement(selectSQL);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new Tripcourse(
+							rs.getDouble("latitude"),
+							rs.getDouble("longtitude")
+						));
+			}
+			return list;
+		}
+		finally {
+			MyConnection.close(rs, pstmt, con);			
+		}
+		
+	}
 }
