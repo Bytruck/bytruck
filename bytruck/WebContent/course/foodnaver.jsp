@@ -11,24 +11,31 @@
 <body>
 <div id="map" style="width:100%;height:400px;"></div>
 <script>
+	var xlocation;
+	var ylocation;
 $(function(){
 	console.log("aaa");
 	$.ajax({
 		url: '<%=request.getContextPath()%>/coursedetail.bt',
-		dataType: 'json',
+		dataType: 'JSON',
 		success: function(data){
 			console.log(data);
-		}	
-	});
+			console.log(data.location[0].xlocation);
+			xlocation = data.location[0].xlocation;
+			
+			var map = new naver.maps.Map('map', {
+			    center: new naver.maps.LatLng(xlocation, 127.105399),
+			    zoom: 10
+			});
+			
+			var marker = new naver.maps.Marker({
+			    position: new naver.maps.LatLng(xlocation, 127.105399),
+			    map: map
+			
+			});
+		}
+	});	
 });
-</script>
-<script>
-var mapOptions = {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10
-};
-
-var map = new naver.maps.Map('map', mapOptions);
 </script>
 </body>
 </html>
