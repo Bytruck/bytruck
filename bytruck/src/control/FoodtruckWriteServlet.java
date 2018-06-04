@@ -22,13 +22,21 @@ public class FoodtruckWriteServlet extends HttpServlet {
   		String opendate = request.getParameter("opendate");
   		String detail = request.getParameter("detail");
   		String powerlink_s = request.getParameter("powerlink");
+		String xlocation = request.getParameter("xlocation");
+		String ylocation = request.getParameter("ylocation");
   		
   		Foodtruck_Location fc = new Foodtruck_Location();
   		int powerlink = Integer.parseInt(powerlink_s);
+		double xloc = Double.parseDouble(xlocation);
+		double yloc = Double.parseDouble(ylocation);
+		
   		fc.setTitle(title);
   		fc.setOpendate(opendate);
   		fc.setDetail(detail);
   		fc.setPoweryn(powerlink);
+  		fc.setXlocation(xloc);
+  		fc.setYlocation(yloc);
+  		
   		try {
 			service.foodtruckwrite(fc);
 			request.setAttribute("result", 1);

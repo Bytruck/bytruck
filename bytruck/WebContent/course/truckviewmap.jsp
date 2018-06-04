@@ -22,14 +22,15 @@ $(function(){
 			console.log(data);
 			console.log(data.location[0].xlocation);
 			xlocation = data.location[0].xlocation;
+			ylocation = data.location[0].ylocation;
 			
 			var map = new naver.maps.Map('map', {
-			    center: new naver.maps.LatLng(xlocation, 127.105399),
+			    center: new naver.maps.LatLng(xlocation,ylocation),
 			    zoom: 10
 			});
 			
 			var marker = new naver.maps.Marker({
-			    position: new naver.maps.LatLng(xlocation, 127.105399),
+			    position: new naver.maps.LatLng(xlocation, ylocation),
 			    map: map
 			
 			});

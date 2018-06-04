@@ -27,15 +27,15 @@
 	</div>
 	<script>
 	 $(function(){
-			$('form#result').submit(function() {
-/* 		        var x = $('textarea#xlocation').html();
+/* 			$('form#result').submit(function() {
+ 		        var x = $('textarea#xlocation').html();
 		        var y = $('textarea#ylocation').html();
 		        var xL=x.split('/');//xL[]:위도배열
 		        var yL=y.split('/');//yL[]:경도배열
 		        
   		        for(var i in xL){
 		           console.log(xL[i] + ", " + yL[i] + "\n");
-		        }   */ 
+		        }     */
 				$.ajax({
 					url : '<%=request.getContextPath()%>/coursewrite.bt',
 					method : 'post',

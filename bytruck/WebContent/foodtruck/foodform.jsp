@@ -114,11 +114,14 @@
 											class="form-control" name="opendate" id="opendate"
 											placeholder="Openday(ex.YYYY/MM/DD)">
 									</div>
+									<div><%@include file="../course/test.jsp"%></div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-2 control-label">비밀번호</label>
 									<div class="col-md-10">
 										<input type="password" class="form-control">
+										<textarea style="display: none" id="xlocation" name ="xlocation"></textarea>
+										<textarea style="display: none" id="ylocation" name ="ylocation"></textarea>
 									</div>
 								</div>
 								<div class="form-group">

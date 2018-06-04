@@ -103,22 +103,22 @@ create table foodtruck(
     constraint foodtruck_user_id_pk FOREIGN key (user_id) REFERENCES users(user_id)
 );
 
---create foodtruck_location table
 CREATE TABLE foodtruck_location(
 no          number not null,               
 user_id     varchar2(20) not null,                            
 title       varchar2(100) not null,
 opendate    varchar2(20) not null,
 detail      varchar2(1500),
-latitude    varchar2(50),
-longtitude  varchar2(50),                 
-poweryn     number(1) not null, --boolean
+latitude    number, 37.3456489
+longtitude  number,                 
+poweryn     varchar2(2) , --boolean 
 foodtype    varchar2(20) not null,
---file빠짐
+imgpath     varchar2(100),
 constraint food_truck_no_pk primary key(no, user_id),
 constraint food_truck_user_id_fk foreign key(user_id)
     references users(user_id)
 );
+
 
 --create table event
 create table event(
@@ -455,13 +455,16 @@ select * from comments;
 --values();
 
 
---insert comments table data
---insert into course(no, user_id, trip_date, title, detail, views, good)
---values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
---insert into detail_course(no, step, latitude, longtitude)
---values(course_no_seq.currval, detailcourse_no_seq.nextval, 37.51, 126.91);
---insert into detail_course(no, step, trip_date, ylocation, xlocation)
---values(course_no_seq.currval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+insert comments table data
+insert into course(no, user_id, trip_date, title, detail, views, good)
+values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
+insert into detail_course(no, step, latitude, longtitude)
+values(course_no_seq.currval, detailcourse_no_seq.nextval, 37.51, 126.91);
+insert into detail_course(no, step, trip_date, ylocation, xlocation)
+values(course_no_seq.currval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+insert into detail_course(no, step, trip_date, ylocation, xlocation)
+values(course_no_seq.nextval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1;
 
 --insert into course(no, user_id, trip_date, title, detail, views, good)
 --values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);

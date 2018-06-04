@@ -23,6 +23,8 @@ public class CourseDAOOracle implements CourseDAO
 				"values (course_no_seq.nextval, ?, to_char(to_date(?, 'yyyy.mm.dd')), ?, ?, ?, ?)";
 		String insertSQL2 =	"insert into detail_course(no, step, latitude, longtitude)\r\n" + 
 				"values(course_no_seq.currval, detailcourse_no_seq.nextval, ?, ?)";
+		String insertSQL3 = "ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1";
+		
 		System.out.println("oracle");
 		
 		try {

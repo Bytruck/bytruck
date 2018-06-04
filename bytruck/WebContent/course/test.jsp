@@ -39,12 +39,17 @@
 				top : e.offset.y
 			}).html(coordHtml);
 			
+		   var data='marker --> x : ' + e.coord.x +', y : ' + e.coord.y;
+		   console.log(data);
+	       $('textarea#xlocation').append(e.coord.x).hide();
+	       $('textarea#ylocation').append(e.coord.y).hide();
 		});
 
 		naver.maps.Event.addListener(map, 'mousedown', function(e) {//스크롤 움직일때 정보창 숨기기(지워도 될거같음)
 			menuLayer.hide();
 		});
 		
+				
 	</script>
 </body>
 </html>

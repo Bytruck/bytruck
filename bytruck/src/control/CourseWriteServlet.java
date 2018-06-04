@@ -28,6 +28,13 @@ public class CourseWriteServlet extends HttpServlet {
 		String xlocation = request.getParameter("xlocation");
 		String ylocation = request.getParameter("ylocation");
 		
+		String[] xloca = xlocation.split("/");
+		String[] yloca = ylocation.split("/");
+		
+		for(int i=0; xloca.length > i; i++) {
+			Double.parseDouble(xloca[i]);
+		}
+		
 		double xloc = Double.parseDouble(xlocation);
 		double yloc = Double.parseDouble(ylocation);
 		

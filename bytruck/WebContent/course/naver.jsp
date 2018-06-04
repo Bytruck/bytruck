@@ -66,8 +66,8 @@
        y[ marker.getZIndex()] = e.coord.y;
        var data=marker.getZIndex()+'st marker --> x : ' + x[ marker.getZIndex()] +', y : ' + y[ marker.getZIndex()];
        console.log(data);
-       $('textarea#xlocation').append(e.coord.x).hide();
-       $('textarea#ylocation').append(e.coord.y).hide();
+       $('textarea#xlocation').append(e.coord.x + "/").hide();
+       $('textarea#ylocation').append(e.coord.y +  "/").hide();
    });
 
    var bicycleLayer = new naver.maps.BicycleLayer();
