@@ -49,7 +49,7 @@ public class CourseDAOOracle implements CourseDAO
 	}
 
 	@Override
-	public List<Tripcourse> listcourse() {
+	public List<Tripcourse> listcourse() { //미완성
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

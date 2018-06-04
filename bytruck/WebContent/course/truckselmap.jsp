@@ -2,17 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>map</title>
+<title>TruckSelMap.jsp</title>
 <script type="text/javascript" lang="ko" charset="UTF-8"
    src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=lCSVdReL0yZjRvKWpVR1&submodules=geocoder"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
  </head>
+ <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <body>
    <div id="map" style="width: 100%; height: 400px;"></div>
    <script>
+   $(function(){
+	   $()	
+   })
+   </script>
+   <script>
    var position = new naver.maps.LatLng(37.3595704, 127.105399);
-   var markerList = [];
+
    var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
    
    var map = new naver.maps.Map('map', {
@@ -37,12 +42,11 @@
        strokeColor: '#ff0000',
        strokeWeight: 2
    });
-
+   
    var index=1;
    var x = [];
-   var y = [];
+   var y = []; 
    naver.maps.Event.addListener(map, 'click', function(e) {
-       var markersMap={};
        var marker = new naver.maps.Marker({
            position: e.coord,
            map: map
@@ -50,10 +54,9 @@
        
        marker.setTitle(marker.setZIndex(index));//마크 찍은 순번 저장
        index++;
-       markerList.push(marker);//마크 리스트에 담기(복수) 
+       marker.setPosition(marker);//마크 리스트에 담기(복수) 
        
       var coordHtml = 'Coord: '+  e.coord+',number : '+ marker.getZIndex();//위치 표시 (위도,경도) -- 디비에 넣고, 확인후 지우기
-      
         menuLayer.show().css({
            left: e.offset.x,//지도상위도
            top: e.offset.y//지도상경도
