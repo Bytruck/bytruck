@@ -318,17 +318,26 @@ insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, deta
 values('jigak', 'KITRI', '지각 5분' , 1000, 1, '1~5분 지각시');
 select * from foodtruck;
 
--- insert foodtruck_location table data
-insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'JM', '오늘은 감바사 먹는 날', to_char(to_date('2018.04.18','yyyy.mm.dd')),'춘천 자전거 도로에서 판매하는 아주 맛있는 감바사가 있습니다. 우후 2시~4시 10%할인 행사 있어요~','36.51','126.91',1,'main');
-insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'EJ', '피자를 피자', to_char(to_date('2018.05.18','yyyy.mm.dd')),'강원도 횡성 어딘가에서 판매하고 있는 피자집 입니다.','36.51','126.91',1, 'main');
-insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'SB', '치킨먹 닭', to_char(to_date('2018.05.22','yyyy.mm.dd')),'부산 어딘가에 있는 광안대교 ?? 에 있는 맛집 치킨치킨 gogo','위도','경도',1, 'drink');
-insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'MS', '새우니니', to_char(to_date('2018.05.25','yyyy.mm.dd')),'실제상황 입니다. 이렇게 큰 새우, 너 새우니니?','위도','경도',1, 'drink');
-insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'jigak', '오징어따리', to_char(to_date('2018.06.02','yyyy.mm.dd')),'오징어다리는 휴게소아닌 피시방 아닌 오징어따리로','위도','경도',1,'desert');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'EJ', '큐브 스테이크', to_char(to_date('2018.06.09', 'yyyy.mm.dd')), '<p style="text-align: center; ">큐브 스테이크 먹으러 오세요</p>', '37.3574358', '127.1150643' , '0', 'main', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\main2.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'EJ', '컵밥', to_char(to_date('2018.07.07', 'yyyy.mm.dd')), '<p style="text-align: left;">컵밥 좋아요</p>', '37.3574358', '127.1150643',  '1', 'main', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\main3.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'SB', '라멘트럭', to_char(to_date('2018.08.07', 'yyyy.mm.dd')), '<p>라멘라멘 맛있다</p>','37.3574358', '127.1150643', '1', 'main', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\main8.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'SB', '도너츠', to_char(to_date('2018.07.11', 'yyyy.mm.dd')), '도너츠 10+1 판매합니다',  '37.3574358', '127.1150643', '0', 'desert', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\desert6.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'MS', '초코쿠키', to_char(to_date('2018.08.20', 'yyyy.mm.dd')), '<p><u>서브웨이 쿠키보다 맛있음</u></p>',  '37.3574358', '127.1150643', '0', 'desert', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\desert2.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'MS', '와플이 쪼아', to_char(to_date('2018.07.01', 'yyyy.mm.dd')), '<p>아이스크림이 듬뿍 올라간 <span style="background-color: rgb(255, 0, 255);">와플</span></p>', '37.3574358', '127.1150643' , '1', 'desert', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\desert1.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'jigak', '아메리카노~', to_char(to_date('2018.08.02', 'yyyy.mm.dd')), '<h2>아메리카노 좋아좋아좋아</h2>',  '37.3574358', '127.1150643', '1', 'drink', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\desert2.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'jigak', '핵꿀맛 망고스무디', to_char(to_date('2018.07.21', 'yyyy.mm.dd')), '<p><span style="background-color: rgb(239, 198, 49); color: rgb(255, 156, 0);">망고스무디는 노란색인가요</span></p>', '37.3574358' , '127.1150643', '1', 'drink', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\mango.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'JM', '그린티라떼', to_char(to_date('2018.08.08', 'yyyy.mm.dd')), '<p>내가 좋아하는 그린티라떼</p>', '37.3574358' , '127.1150643', '0', 'drink', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\drink6.PNG');
+insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
+values(foodtruck_no_seq.nextval, 'JM', '딸기쥬~스', to_char(to_date('2018.07.09', 'yyyy.mm.dd')), '<p><span style="color: rgb(255, 0, 0); font-weight: bold;">안 먹으면 후회하는 딸기주스</span></p>', '37.3574358', '127.1150643' ,  '0', 'drink', 'D:\apache-tomcat-8.5.30\wtpwebapps\bytruck\upload\drink4.PNG');
 
 select * from foodtruck_location;
 
