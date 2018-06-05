@@ -23,6 +23,7 @@ drop sequence board_no_seq1;
 drop sequence board_no_seq2;
 drop sequence comments_com_seq;
 drop sequence course_no_seq;
+drop sequence detailcourse_no_seq;
 drop sequence ad_id_seq;
 drop sequence event_id_seq;
 
@@ -208,8 +209,6 @@ create table course(
     CONSTRAINT course_user_id_fk foreign key(user_id) references users(user_id)
 );
 
-select title, good
-from course;
 --create detail_course
 create table detail_course(
     no          number not null,
@@ -501,10 +500,14 @@ select * from course;
 --insert into detail_course(no, step, trip_date, latitude, longtitude)
 --values(5, 1, to_char(to_date('2018.05.11', 'yyyy.mm.dd')), 37.59, 126.99);
     
-select * 
+select *
 from course c join detail_course dc
 on c.no = dc.no;    
 
+select c.no, c.title, c.detail, c.withyn, dc.LATITUDE, dc.LONGTITUDE
+from course c join detail_course dc
+on c.no = dc.no
+where c.no = 1;    
 
 --insert profit table data
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)

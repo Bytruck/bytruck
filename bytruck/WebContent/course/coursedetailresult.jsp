@@ -7,7 +7,7 @@
 {"location":[<c:forEach var="i" items="${requestScope.location}" varStatus="status">
 <c:if test="${status.index > 0}">,</c:if>
    {
-     "xlocation":"${i.xlocation}",
-     "ylocation":"${i.ylocation}"  
+     "xlocation":"${i.xlocationS}",
+     "ylocation":"${i.ylocationS}"  
    }
 </c:forEach>]}

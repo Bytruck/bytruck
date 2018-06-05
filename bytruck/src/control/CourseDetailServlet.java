@@ -29,7 +29,7 @@ public class CourseDetailServlet extends HttpServlet {
 			request.setAttribute("location", e.getMessage());
 		}
 		
-		String forwardURL = "course/coursewriteresult.jsp";
+		String forwardURL = "course/coursedetailresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);	
 	}

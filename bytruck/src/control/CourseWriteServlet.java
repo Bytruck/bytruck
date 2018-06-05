@@ -30,14 +30,14 @@ public class CourseWriteServlet extends HttpServlet {
 		
 		String[] xloca = xlocation.split("/");
 		String[] yloca = ylocation.split("/");
+		double[] xloc = null;
+		double[] yloc = null;
 		
 		for(int i=0; xloca.length > i; i++) {
-			Double.parseDouble(xloca[i]);
+			xloc[i] = Double.parseDouble(xloca[i]);
+			yloc[i] = Double.parseDouble(yloca[i]);
 		}
-		
-		double xloc = Double.parseDouble(xlocation);
-		double yloc = Double.parseDouble(ylocation);
-		
+				
 		System.out.println("servelt");
 		System.out.println(idValue);
 		System.out.println(title);
@@ -45,8 +45,8 @@ public class CourseWriteServlet extends HttpServlet {
 		System.out.println(with);
 		System.out.println(open);
 		System.out.println(date);
-		System.out.println(xloc);
-		System.out.println(yloc);
+		System.out.println(xloc[0]);
+		System.out.println(yloc[0]);
 		
 		Tripcourse course = new Tripcourse();
 	   

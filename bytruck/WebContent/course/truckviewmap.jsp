@@ -20,9 +20,9 @@ $(function(){
 		dataType: 'JSON',
 		success: function(data){
 			console.log(data);
-			console.log(data.location[0].xlocation);
-			xlocation = data.location[0].xlocation;
-			ylocation = data.location[0].ylocation;
+			console.log(data.location[0].xlocationS);
+			xlocation = data.location[0].xlocationS;
+			ylocation = data.location[0].ylocationS;
 			
 			var map = new naver.maps.Map('map', {
 			    center: new naver.maps.LatLng(xlocation,ylocation),

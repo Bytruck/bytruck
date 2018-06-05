@@ -26,7 +26,8 @@ public class CourseDAOOracle implements CourseDAO
 		String insertSQL3 = "ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1";
 		
 		System.out.println("oracle");
-		
+		double[] xlocation = course.getXlocation();
+		double[] ylocation = course.getYlocation();
 		try {
 			con = sql.MyConnection.getConnection();	
 			pstmt = con.prepareStatement(insertSQl);
@@ -39,8 +40,10 @@ public class CourseDAOOracle implements CourseDAO
 			pstmt.executeUpdate();
 			
 			pstmt2 = con.prepareStatement(insertSQL2);
-			pstmt2.setDouble(1, course.getYlocation());
-			pstmt2.setDouble(2, course.getXlocation());
+			for(int i=0; xlocation.length > i ; i++) {
+				pstmt2.setDouble(1, xlocation[i]);
+				pstmt2.setDouble(2, ylocation[i]);				
+			}
 			pstmt2.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,15 +91,21 @@ public class CourseDAOOracle implements CourseDAO
 		
 		List<Tripcourse> list = new ArrayList<Tripcourse>();
 		
-		String selectSQL = "select dc.LATITUDE, dc.LONGTITUDE\r\n" + 
+		String selectSQL = "select c.no, c.title, c.detail, c.withyn, dc.LATITUDE, dc.LONGTITUDE\r\n" + 
 				"from course c join detail_course dc\r\n" + 
-				"on c.no = dc.no";
+				"on c.no = dc.no\r\n" + 
+				"where c.no = ?";
 		try {
 			con=MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectSQL);
+			pstmt.setInt(1,1);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				list.add(new Tripcourse(
+							rs.getInt("no"),
+							rs.getString("title"),
+							rs.getString("detail"),
+							rs.getString("withyn"),
 							rs.getDouble("latitude"),
 							rs.getDouble("longtitude")
 						));
