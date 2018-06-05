@@ -104,14 +104,15 @@ create table foodtruck(
     constraint foodtruck_user_id_pk FOREIGN key (user_id) REFERENCES users(user_id)
 );
 
+--create foodtruck_location table
 CREATE TABLE foodtruck_location(
 no          number not null,               
 user_id     varchar2(20) not null,                            
 title       varchar2(100) not null,
 opendate    varchar2(20) not null,
 detail      varchar2(1500),
-latitude    number, 37.3456489
-longtitude  number,                 
+latitude    varchar2(50),
+longtitude  varchar2(50),                 
 poweryn     varchar2(2) , --boolean 
 foodtype    varchar2(20) not null,
 imgpath     varchar2(100),
@@ -120,16 +121,22 @@ constraint food_truck_user_id_fk foreign key(user_id)
     references users(user_id)
 );
 
+select * from foodtruck_location;
+
 
 --create table event
 create table event(
     no                  number,
     user_id             varchar2(20) not null,
     title               varchar2(50) not null,
-    detail              varchar2(1000) not null,--file 없음
-    constraint event_no_user_id_pk primary key(no,user_id),
-    constraint event_no_user_id_fk foreign key(no,user_id) references foodtruck_location(no,user_id)
+    detail             varchar2(1000) not null,
+    event_date      varchar2(20)    not null,
+    imgpath         varchar2(100),
+    constraint event_no_user_id_pk primary key(no, user_id),
+    constraint event_no_user_id_fk foreign key(no,user_id) references foodtruck_location(no, user_id)
 );
+
+select * from event;    
 
 -- create review table
 create table review(
@@ -313,15 +320,17 @@ select * from foodtruck;
 
 -- insert foodtruck_location table data
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'JM', '오늘은 감바사 먹는 날', to_char(to_date('2018.04.18','yyyy.mm.dd')),'춘천 자전거 도로에서 판매하는 아주 맛있는 감바사가 있습니다. 우후 2시~4시 10%할인 행사 있어요~','위도','경도',1,'main');
+values (foodtruck_no_seq.nextval,'JM', '오늘은 감바사 먹는 날', to_char(to_date('2018.04.18','yyyy.mm.dd')),'춘천 자전거 도로에서 판매하는 아주 맛있는 감바사가 있습니다. 우후 2시~4시 10%할인 행사 있어요~','36.51','126.91',1,'main');
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
-values (foodtruck_no_seq.nextval,'EJ', '피자를 피자', to_char(to_date('2018.05.18','yyyy.mm.dd')),'강원도 횡성 어딘가에서 판매하고 있는 피자집 입니다.','위도','경도',1, 'main');
+values (foodtruck_no_seq.nextval,'EJ', '피자를 피자', to_char(to_date('2018.05.18','yyyy.mm.dd')),'강원도 횡성 어딘가에서 판매하고 있는 피자집 입니다.','36.51','126.91',1, 'main');
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
 values (foodtruck_no_seq.nextval,'SB', '치킨먹 닭', to_char(to_date('2018.05.22','yyyy.mm.dd')),'부산 어딘가에 있는 광안대교 ?? 에 있는 맛집 치킨치킨 gogo','위도','경도',1, 'drink');
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
 values (foodtruck_no_seq.nextval,'MS', '새우니니', to_char(to_date('2018.05.25','yyyy.mm.dd')),'실제상황 입니다. 이렇게 큰 새우, 너 새우니니?','위도','경도',1, 'drink');
 insert into foodtruck_location(no,user_id, title, opendate, detail, latitude, longtitude, poweryn, foodtype)
 values (foodtruck_no_seq.nextval,'jigak', '오징어따리', to_char(to_date('2018.06.02','yyyy.mm.dd')),'오징어다리는 휴게소아닌 피시방 아닌 오징어따리로','위도','경도',1,'desert');
+
+select * from foodtruck_location;
 
 --inset event data table
 insert into event (no, user_id, title, detail)

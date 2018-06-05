@@ -50,7 +50,7 @@
 					}
 				});
 				return false;
-			});
+		
 		});
 	</script>
 	<div class="board">
