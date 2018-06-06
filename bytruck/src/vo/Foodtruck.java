@@ -5,20 +5,20 @@ public class Foodtruck {
 	private String bussiness_name;
 	private String menu_name;
 	private int price;
-	private int menu_type;
+	private String menu_type;
 	private String detail;
 
 	public Foodtruck() {
 		super();
 	}
 
-	public Foodtruck(String user_id, String bussiness_name, String menu_name, int price, int menu_type, String detail) {
+	public Foodtruck(String user_id, String bussiness_name, String menu_name, int price, String ptype, String detail) {
 		super();
 		this.user_id = user_id;
 		this.bussiness_name = bussiness_name;
 		this.menu_name = menu_name;
 		this.price = price;
-		this.menu_type = menu_type;
+		this.menu_type = ptype;
 		this.detail = detail;
 	}
 
@@ -54,11 +54,11 @@ public class Foodtruck {
 		this.price = price;
 	}
 
-	public int getMenu_type() {
+	public String getMenu_type() {
 		return menu_type;
 	}
 
-	public void setMenu_type(int menu_type) {
+	public void setMenu_type(String menu_type) {
 		this.menu_type = menu_type;
 	}
 

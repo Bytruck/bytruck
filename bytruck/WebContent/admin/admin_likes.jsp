@@ -9,6 +9,8 @@ String root = request.getContextPath();%>
 
 .ranking .container {
 	padding-left: 90px;
+	width: 60%;
+	float: center; 
 }
 </style>
 <body>

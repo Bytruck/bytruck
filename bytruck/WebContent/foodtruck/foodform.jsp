@@ -47,8 +47,6 @@
          </div>
       </div>
    </div>
-   <!-- <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
    <script>
    $(function() {
       $('.summernote').summernote({ // summernote를 사용하기 위한 선언
@@ -74,31 +72,11 @@
                processData : false,
                success : function(data) { // 처리가 성공할 경우
                     // 에디터에 이미지 출력
-                    //alert("성공???? >>> " + data.url)   ;
                   $(editor).summernote('editor.insertImage', data.url);
                }, 
                error : function(e) {alert("에러!" + e);}
            });
        }
-<%--       $('#foodregister').click(function() {
-            $.ajax({
-               url : '<%=root%>/foodtruckwrite.bt',
-               method : 'post',
-               data : $('.formwrite').serialize(),
-               success : function(data) {
-                  data = data.trim();
-                  if (data == '1') { //글쓰기 성공
-                     alert('글쓰기 성공');
-                     /* var $triggerObj = $("nav>ul li.board");
-                     $triggerObj.trigger('click'); */
-                  } else if (data == '-1') { //글쓰기 실패
-                     alert('글쓰기 실패');
-                  }
-               }
-            });
-            return false;
-         }); --%>
-      
       $('button#cancel').click(function() {
             alert("취소하시면 작성하신 글이 사라지게 됩니다. \n 정말 작성 취소하시겠습니까?");
             location.href="<%=root%>/foodtruck/foodboard.jsp";
@@ -184,7 +162,7 @@
                         <div class="form-group">
                            <label class="col-md-2 control-label">위치</label>
                            <div class="col-md-10">
-                              <%@include file="../course/location.jsp"%>
+                              <%@include file="../foodtruck/truckselmap.jsp"%>
                               <textarea style="display: none" id="xlocation"
                                  name="xlocation"></textarea>
                               <textarea style="display: none" id="ylocation"

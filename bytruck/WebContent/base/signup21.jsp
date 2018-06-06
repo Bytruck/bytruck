@@ -306,9 +306,9 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-cloud"></i></span>
 										<select class="form-control" name="ptype">
-											<option value="drink">음료</option>
-											<option value="hotdog">핫도그</option>
-											<option value="cupbab">컵밥</option>
+											<option value="main">main</option>
+											<option value="desert">desert</option>
+											<option value="drink">drink</option>
 										</select>
 									</div>
 								</div>

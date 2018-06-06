@@ -1,140 +1,119 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="vo.Board" %>
-<%@page import="vo.PageBean" %>
-
-<%@page import="java.util.List" %>
-<%@taglib prefix="p" uri="http://java.sun.com/jsp/jstl/core"%>
-<p:set var="pb" value="${requestSocpe.PageBean }"/>
-<%String root = request.getContextPath();%>
-<!DOCTYPE html>
-
-    <title>qna.jsp</title>  
-
-  <header>
- 	<jsp:include page = "/template/header.jsp"/>
-  </header>
- <style>
- 	div.bt{
- 		padding-left: 83%;
- 		padding-top: 1%;
- 	}
- </style>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	pageEncoding="UTF-8"%>
+<style>
+.board {
+	padding-top: 10%;
+}
+.board .page-header {
+	margin-top: 0;
+}
+</style>
+<title>qna.jsp</title>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-lg-12">
+				<header>
+					<%@include file="/template/header.jsp"%>
+				</header>
+			</div>
+		</div>
+	</div>
 <script>
-$(function(){
-	$('.pagination a').click(function(){
-		var page;
-		if($(this).text() == '«'){
-			page=${pb.startPage}-1;
-		}else if($(this).text() =='»'){
-			page=${pb.endPage}+1;
-		}else{
-			page=$(this).text();
-		}
-		$.ajax({
-			url:"boardlist.do",
-			method:'get',
-			data:'page='+page,
-			success:function(data){
-				$('qna.jsp').empty();
-				$('qna.jsp').jsp(data.trim());
-			}
-		});
+ $(function(){
+	 $.ajax({
+			method:"post",
+			url:"<%=request.getContextPath()%>/boardlist.bt?type=1",
+			success:function(data) {
+				console.log(data);
+             if(data != null) {
+                var $divObj = $('tbody.qnalist');
+               $divObj.html(data.trim());
+               } 
+	        }
+		}); 
 		return false;
-	});
-	$('.pagination a').each(function(index, element){
-		if($(element).text() == '${pb.currentPage}'){
-			$(element).addClass('active');
-		}	
-	});
-	$("button.btn btn-default").click(function(){
-		$ajax({
-			url:'qna_write.jsp',
-			success:function(data){
-				$('qna.jsp').empty();
-				$('qna_write.jsp').jsp(data.trim());
-			}
-		});
-		return false;
-	});
-	
 });
 </script>
-<body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container">
-	<h2>Q&A</h2>
-	<br>
-	<br>
+	<div class="board">
+		<div class="row">
+			<div class="container">
+				<!-- BREADCRUMBS -->
+				<ol class="breadcrumb link-accent separator-arrow">
+					<li><a href="<%=root%>/index.jsp" title="Home"><i
+							class="fa fa-home"></i></a></li>
+					<li class="active">Q&A</li>
+					<li><a href="<%=root%>/board/faq.jsp" title="Home">FAQ</a></li>
+					<li><a href="<%=root%>/chatting/chat.jsp" title="Home">타임라인</a></li>
+				</ol>
+				<!-- END BREADCRUMBS -->
+						<div class="page-header">
+							<div class="row">
+								<div class=col-lg-12">
+									<h1 align="center">
+										<b>Q&A</b>
+									</h1>
+									<p align="center">
+										<b>BYTRUCK은 여러분의 소리에 귀를 기울이고 있습니다.</b>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div align="left" class="col-lg-offset-6 col-lg-6"
+							style="padding-bottom: 10px">
+							<select class="col-lg-3 col-lg-offset-1" id="type"
+								style="height: 25px; vertical-align: top;">
+								<option value="">검색</option>
+								<option value="title">제목</option>
+								<option value="detail">내용</option>
+							</select> <input type="text" class="col-lg-6">
+							<button class="col-lg-2 btn btn-info"
+								style="height: 26px; line-height: 26px; padding: 0 15px;">검색</button>
+						</div>
+						<table class="table table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>글번호</th>
+									<th>글제목</th>
+									<th>작성자</th>
+									<th>게시일</th>
+								</tr>
+							</thead>	
+							<tbody class="qnalist">
 
-  <table class="table table-bordered" style="text-align:center">
-  
-    <board>
-    <div class="board">
-      <tr>      	
-        <th style="width: 10%; text-align:center"> 번호</th>
-        <th style="width: 50%; text-align:center"> 제목</th>
-        <th style="width: 20%; text-align:center">등록일</th>
-        <th style="width: 10%; text-align:center"> 조회</th>		    
-      </tr>
-     </div>
-    </board>
-    <p:set var="list" value="${pb.list }"/>
-	<p:forEach items="${list}" var="b">
-	 <board>
-    <div class="board">
- 	 <p:forEach begin="1" end="${b.level }">▷</p:forEach>
- 	 ${b.board_seq}
- 	  <tr>      	
-        <th style="width: 10%; text-align:center">${b.no }</th>
-        <th style="width: 50%; text-align:center"> ${b.title }</th>
-        <th style="width: 20%; text-align:center">${b.date }</th>
-        <th style="width: 10%; text-align:center"> ${b.views }</th>
-		    
-      </tr>
- 	 </div>
- 	 
-    
-  </table>
-  </p:forEach>
-  <div class="bt" style="margin-left: 10%">
-<button type="button" class="btn btn-default"><a href="<%=root%>/board/qna_write.jsp">글쓰기</a></button>  
-</div>
-  				<!-- END TOP FAQs -->
-<div class="row">
-		<div class="pagination" style="width: 400px;margin-left: 30%;">
-	<p:set var="startPage" value="${pb.startPage }"/>
-	<p:set var="endPage" value="${pb.endPage }"/>
-	<p:if test="${startPage > 1 }">
-		 <li class="active"><a href="qna.jsp">1</a></li>
-	</p:if>
-	<p:forEach begin="${startPage }" end="${endPage }" var="i">
-		 <li><a href="#">${i }</a></li>
-	</p:forEach>
-	<p:if test="${endPage < pb.totalPage }">
-		<li><a href="#">&raquo;</a></li>
-	</p:if>
-		</div>	
-</div>
-</div>
-<!-- FOOTER -->
-	<div>
-      <footer>
-      		<jsp:include page = "/template/footer.jsp"/>
-      </footer>
-     </div>
-
+							</tbody>
+						</table>
+					  <a class="btn btn-success pull-right" href="<%=root%>/board/qna_write.jsp">글쓰기</a>
+					</div>
+				</div>
+			</div>
+	<div class="text-center">
+		<ul class="pagination">
+			<%-- <c:set var="startPage" value="${pb.startPage}"/>
+			<c:set var="endPage" value="${pb.endPage}"/>
+			<c:if test="${startPage > 1}">
+			<a href="#">&laquo;</a>
+			</c:if>
+			<c:forEach begin="${startPage}" end="${endPage}" var = "i">
+				<a href="#">${i}</a>
+			</c:forEach>
+			<c:if test="${endPage < pb.totalPage}">
+				<a href="#">&raquo;</a>
+			</c:if>	 --%>
+		</ul>
+	</div>
+	<div class="foot">
+		<div class="row">
+			<div class="container-fluid">
+				<div class="col-lg-12">
+					<footer>
+						<%@include file="/template/footer.jsp"%>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-
-
-
-
-
-
-
-
+</html>

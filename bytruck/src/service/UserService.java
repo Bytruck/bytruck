@@ -1,7 +1,11 @@
 package service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 import dao.UserDAO;
 import dao.userDAOOracle;
+import sql.MyConnection;
 import vo.Users;
 
 public class UserService {
@@ -37,7 +41,6 @@ public class UserService {
 
 	public String dupChkBusi(String busiNumValue) throws Exception {
 		String c =  dao.selectByBusiNum(busiNumValue);
-		System.out.println("userservice_dupchkBusi()");
 		if(c==null) {
 			return "1"; 	//사업자 번호가 없는 경우(회원가입 가능)
 		}else {
@@ -60,11 +63,33 @@ public class UserService {
 
 	public String findIdbyEmail(String name, String email) throws Exception {
 		String id = dao.selectbyIdEmail(name, email);
-		System.out.println("id : "+id);
+		
 		if(id==null) {
 			return "-1";
 		}else {
 			return id;
 		}
+	}
+
+	public Users finduser(String idValue) throws Exception {
+		Users u = dao.selectById(idValue);
+		
+		if (u != null) {//회원이 존재할 경우
+			return u;
+		}
+		return null;
+	}
+
+	public String userdrop(String idValue) throws Exception {//탈퇴
+		String dropResult = dao.drop(idValue);
+		if(dropResult == "1") {//탈퇴성공
+			return "1";
+		}else {
+			return "-1";
+		}
+	}
+
+	public void update(Users user) throws Exception {
+		dao.update(user);
 	}
 }

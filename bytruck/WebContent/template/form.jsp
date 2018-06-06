@@ -120,7 +120,6 @@
                   </a>
                      <ul class="dropdown-menu" role="menu">
                         <li><a href="<%=root %>/mypage/mypage.jsp">마이페이지</a></li>
-                        <li><a href="<%=root %>/mypage/myCoupon.jsp">내 쿠폰</a></li>
                         <li><a href="<%=root %>/mypage/zzimCourse.jsp">관심코스</a></li>
                         <li><a href="<%=root %>/mypage/writingList.jsp">내가쓴글</a></li>
                         <li><a href="<%=root %>/mypage/editInfoCustom.jsp">정보수정</a></li>

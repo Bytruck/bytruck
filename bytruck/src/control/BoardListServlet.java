@@ -13,75 +13,32 @@ import service.BoardService;
 import vo.Board;
 
 
+//은진 공지사항 리스트
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private BoardService service = new BoardService();
-
-    public BoardListServlet() {
-        super();
-     
-    }
-
+	private BoardService service = new BoardService();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = request.getParameter("page");
-		int intPage=1;
-		if(page != null) {
-			intPage = Integer.parseInt(page);
-			
-		}
+		request.setCharacterEncoding("UTF-8");
+		String type_s = request.getParameter("type");
+		int type = Integer.parseInt(type_s);
 		try {
-			int totalCount = service.findCount();
-			int totalPage = 0;
-			int cntPerPage = 10;
-			totalPage = (int)Math.ceil((double)totalCount/cntPerPage);
-			
-			int cntPerPageGroup=10;
-			int startPage = (int)Math.floor((double)(intPage)/(cntPerPageGroup+1))*cntPerPageGroup+1;
-			int endPage = startPage + cntPerPageGroup-1;
-			if(endPage > totalPage) {
-				endPage=totalPage;
-			}
-			List<Board> list = service.findAll(intPage);
-			vo.PageBean<Board> pb = new vo.PageBean<>();
-			pb.setCurrentPage(intPage);
-			pb.setEndPage(endPage);
-			pb.setList(list);
-			pb.setStartPage(startPage);
-			pb.setTotalPage(totalPage);
-			
-			request.setAttribute("PageBean", pb);
-			
-			
-		}catch (Exception e) {
-			e.printStackTrace();
+			List<Board> list = service.findAll(type);
+			request.setAttribute("list", list);
+			System.out.println(list);
+		} catch (Exception e) {
 			request.setAttribute("result", e.getMessage());
 		}
-		RequestDispatcher rd;
-		String forwardURL = "qna.jsp";
-		rd = request.getRequestDispatcher(forwardURL);
-		rd.forward(request, response);
 		
+		RequestDispatcher rd;
+	      String forwardURL = null;
+	      if(type == 0) {
+	         forwardURL = "brand/noticelistresult.jsp";
+	      }else if(type== 1) {
+	         forwardURL = "board/qnalistresult.jsp";
+	      }
+	      System.out.println("forward");
+	      rd = request.getRequestDispatcher(forwardURL);
+	      rd.forward(request, response);
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

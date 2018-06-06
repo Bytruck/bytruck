@@ -472,16 +472,16 @@ select * from comments;
 --values();
 
 
-insert comments table data
-insert into course(no, user_id, trip_date, title, detail, views, good)
-values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
-insert into detail_course(no, step, latitude, longtitude)
-values(course_no_seq.currval, detailcourse_no_seq.nextval, 37.51, 126.91);
-insert into detail_course(no, step, trip_date, ylocation, xlocation)
-values(course_no_seq.currval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
-insert into detail_course(no, step, trip_date, ylocation, xlocation)
-values(course_no_seq.nextval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
-ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1;
+--insert comments table data
+--insert into course(no, user_id, trip_date, title, detail, views, good)
+--values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
+--insert into detail_course(no, step, latitude, longtitude)
+--values(course_no_seq.currval, detailcourse_no_seq.nextval, 37.51, 126.91);
+--insert into detail_course(no, step, trip_date, ylocation, xlocation)
+--values(course_no_seq.currval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+--insert into detail_course(no, step, trip_date, ylocation, xlocation)
+--values(course_no_seq.nextval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
+--ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1;
 
 --insert into course(no, user_id, trip_date, title, detail, views, good)
 --values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);
@@ -518,14 +518,24 @@ select * from course;
 --insert into detail_course(no, step, trip_date, latitude, longtitude)
 --values(5, 1, to_char(to_date('2018.05.11', 'yyyy.mm.dd')), 37.59, 126.99);
     
-select *
+select c.no, dc.step, c.title, c.detail, c.withyn, c.trip_date,  dc.LATITUDE, dc.LONGTITUDE
 from course c join detail_course dc
-on c.no = dc.no;    
+on c.no = dc.no; 
 
-select c.no, c.title, c.detail, c.withyn, dc.LATITUDE, dc.LONGTITUDE
+        
+        select *
+        from course
+        order by no;
+
+
+select c.no, dc.step, c.title, c.detail, c.withyn, dc.LATITUDE, dc.LONGTITUDE
 from course c join detail_course dc
-on c.no = dc.no
-where c.no = 1;    
+on c.no = dc.no;
+where c.no = 5;
+ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1;
+
+select detailcourse_no_seq.currval
+from dual; 
 
 --insert profit table data
 insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)

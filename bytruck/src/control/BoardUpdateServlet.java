@@ -1,30 +1,50 @@
 package control;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class BoardUpdateServlet
- */
+import service.BoardService;
+import vo.Board;
+
 public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BoardUpdateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private BoardService service = new BoardService();   
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+		Board board = new Board();
+		String num = request.getParameter("num");
+		String bname = request.getParameter("type");
+		String title = request.getParameter("title");
+		String detail = request.getParameter("detail"); 
 
+		int boardNum = Integer.parseInt(num);
+		int type = Integer.parseInt(bname);
+		request.setAttribute("bnum", boardNum);
+		request.setAttribute("btype",bname);
+		request.setAttribute("btitle", title);
+		request.setAttribute("bdetail", detail);
+
+		//수정
+			System.out.println("boardServlet update");
+			board.setNo(boardNum);
+			board.setType(type);
+			board.setTitle(title);
+			board.setDetail(detail);
+			try {
+				service.modify(board);
+				request.setAttribute("result", 1);
+			}catch(Exception e) {
+				e.printStackTrace();
+				request.setAttribute("result", -1);
+			}
+			String forwardURL = "brand/noticewriteresult.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
+			rd.forward(request, response);
+		
+	}
 }

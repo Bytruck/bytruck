@@ -238,8 +238,7 @@
 							</div>
 						<!-- </form> -->
 						<div style="text-align: center">
-							<a href="<%=root%>/base/findId.jsp">아이디 찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
-								href="<%=root%>/base/findPwd.jsp">비밀번호 찾기</a>
+							<a href="<%=root%>/base/findId.jsp">아이디 찾기
 						</div>
 						<p>
 							<em>회원이 아니신가요?</em> <a href="<%=root%>/base/signupcover.jsp">&nbsp;<strong>회원가입</strong></a>

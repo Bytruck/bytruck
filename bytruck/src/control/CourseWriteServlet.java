@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
 import service.CourseService;
 import vo.Tripcourse;
 
@@ -23,30 +21,28 @@ public class CourseWriteServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String detail = request.getParameter("detail");
 		String with = request.getParameter("withradio");
-		String open = request.getParameter("openradio");
-		String date = request.getParameter("opendate");
+		String date = request.getParameter("tripdate");
 		String xlocation = request.getParameter("xlocation");
 		String ylocation = request.getParameter("ylocation");
 		
 		String[] xloca = xlocation.split("/");
 		String[] yloca = ylocation.split("/");
-		double[] xloc = null;
+/*		double[] xloc = null;
 		double[] yloc = null;
 		
 		for(int i=0; xloca.length > i; i++) {
 			xloc[i] = Double.parseDouble(xloca[i]);
 			yloc[i] = Double.parseDouble(yloca[i]);
-		}
+		}*/
 				
 		System.out.println("servelt");
 		System.out.println(idValue);
 		System.out.println(title);
 		System.out.println(detail);
 		System.out.println(with);
-		System.out.println(open);
 		System.out.println(date);
-		System.out.println(xloc[0]);
-		System.out.println(yloc[0]);
+		System.out.println(xloca[0]);
+		System.out.println(yloca[0]);
 		
 		Tripcourse course = new Tripcourse();
 	   
@@ -54,10 +50,9 @@ public class CourseWriteServlet extends HttpServlet {
 	    course.setTitle(title);
 	    course.setDetail(detail);
 	    course.setWith(with);
-	    course.setOpen(open);
 		course.setDate(date);
-		course.setXlocation(xloc);
-		course.setYlocation(yloc);
+		course.setXlocation(xloca);
+		course.setYlocation(yloca);
 		
 		try {
 			service.write(course);
@@ -67,7 +62,7 @@ public class CourseWriteServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("result", 0);
 		}
-		String forwardURL = "/couse/courseWriteResult.jsp";
+		String forwardURL = "/course/coursemakedetail.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
 		

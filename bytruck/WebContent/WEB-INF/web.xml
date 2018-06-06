@@ -41,12 +41,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>UserdropServlet</display-name>
-    <servlet-name>UserdropServlet</servlet-name>
-    <servlet-class>control.UserdropServlet</servlet-class>
+    <display-name>UserDropServlet</display-name>
+    <servlet-name>UserDropServlet</servlet-name>
+    <servlet-class>control.UserDropServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UserdropServlet</servlet-name>
+    <servlet-name>UserDropServlet</servlet-name>
     <url-pattern>/userdrop.bt</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -191,26 +191,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CouponSendServlet</display-name>
-    <servlet-name>CouponSendServlet</servlet-name>
-    <servlet-class>control.CouponSendServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CouponSendServlet</servlet-name>
-    <url-pattern>/couponsend.bt</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CouponViewServlet</display-name>
-    <servlet-name>CouponViewServlet</servlet-name>
-    <servlet-class>control.CouponViewServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CouponViewServlet</servlet-name>
-    <url-pattern>/couponview.bt</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>TimelineViewServlet</display-name>
     <servlet-name>TimelineViewServlet</servlet-name>
     <servlet-class>control.TimelineViewServlet</servlet-class>
@@ -228,16 +208,6 @@
   <servlet-mapping>
     <servlet-name>TimelineWriteServlet</servlet-name>
     <url-pattern>/timelinewrite.bt</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TimelineDeleteServlet</display-name>
-    <servlet-name>TimelineDeleteServlet</servlet-name>
-    <servlet-class>control.TimelineDeleteServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TimelineDeleteServlet</servlet-name>
-    <url-pattern>/timelinedelete.bt</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -491,12 +461,132 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>FoodtruckMapServelt</display-name>
-    <servlet-name>FoodtruckMapServelt</servlet-name>
-    <servlet-class>control.FoodtruckMapServelt</servlet-class>
+    <display-name>MemListServlet</display-name>
+    <servlet-name>MemListServlet</servlet-name>
+    <servlet-class>control.MemListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FoodtruckMapServelt</servlet-name>
+    <servlet-name>MemListServlet</servlet-name>
+    <url-pattern>/memlist.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardUpdateDetailServlet</display-name>
+    <servlet-name>BoardUpdateDetailServlet</servlet-name>
+    <servlet-class>control.BoardUpdateDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardUpdateDetailServlet</servlet-name>
+    <url-pattern>/boardupdatedetail.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserInfoUpdateDetailServlet</display-name>
+    <servlet-name>UserInfoUpdateDetailServlet</servlet-name>
+    <servlet-class>control.UserInfoUpdateDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInfoUpdateDetailServlet</servlet-name>
+    <url-pattern>/userinfoupdatedetail.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserInfoViewBusiServlet</display-name>
+    <servlet-name>UserInfoViewBusiServlet</servlet-name>
+    <servlet-class>control.UserInfoViewBusiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInfoViewBusiServlet</servlet-name>
+    <url-pattern>/userinfoviewbusi.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserBusiInfoUpdateServlet</display-name>
+    <servlet-name>UserBusiInfoUpdateServlet</servlet-name>
+    <servlet-class>control.UserBusiInfoUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserBusiInfoUpdateServlet</servlet-name>
+    <url-pattern>/userbusiinfoupdate.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserBusiInfoUpdateDetailServlet</display-name>
+    <servlet-name>UserBusiInfoUpdateDetailServlet</servlet-name>
+    <servlet-class>control.UserBusiInfoUpdateDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserBusiInfoUpdateDetailServlet</servlet-name>
+    <url-pattern>/userbusiinfoupdatedetail.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EventWriteServlet</display-name>
+    <servlet-name>EventWriteServlet</servlet-name>
+    <servlet-class>control.EventWriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventWriteServlet</servlet-name>
+    <url-pattern>/eventwrite.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalendarServlet</display-name>
+    <servlet-name>CalendarServlet</servlet-name>
+    <servlet-class>control.CalendarServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalendarServlet</servlet-name>
+    <url-pattern>/calendar.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GRankServlet</display-name>
+    <servlet-name>GRankServlet</servlet-name>
+    <servlet-class>control.GRankServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GRankServlet</servlet-name>
+    <url-pattern>/grank.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemRankServlet</display-name>
+    <servlet-name>MemRankServlet</servlet-name>
+    <servlet-class>control.MemRankServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemRankServlet</servlet-name>
+    <url-pattern>/memrank.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FoodtruckUpdateDetailServlet</display-name>
+    <servlet-name>FoodtruckUpdateDetailServlet</servlet-name>
+    <servlet-class>control.FoodtruckUpdateDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodtruckUpdateDetailServlet</servlet-name>
+    <url-pattern>/foodtruckupdatedetail.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FoodtruckMapServlet</display-name>
+    <servlet-name>FoodtruckMapServlet</servlet-name>
+    <servlet-class>control.FoodtruckMapServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodtruckMapServlet</servlet-name>
     <url-pattern>/foodtruckmap.bt</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminAdvertiseListServlet</display-name>
+    <servlet-name>AdminAdvertiseListServlet</servlet-name>
+    <servlet-class>control.AdminAdvertiseListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminAdvertiseListServlet</servlet-name>
+    <url-pattern>/adminadvertiselist.bt</url-pattern>
   </servlet-mapping>
 </web-app>

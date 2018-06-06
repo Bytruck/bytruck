@@ -9,10 +9,6 @@ String root = request.getContextPath();
 .content {
 	padding-top: 50%;
 }
-footer {
-	margin-top: 10%;
-}
-
 </style>
 <body>
 	<!-- Bread crumb -->

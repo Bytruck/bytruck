@@ -10,20 +10,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="<%=root1%>/images/favicon.ico">
+<%-- <link rel="icon" href="<%=root1%>/images/favicon.ico">
 <link rel="stylesheet"
    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="<%=root1%>/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=root1%>/css/carousel.css" rel="stylesheet">
+<link href="<%=root1%>/css/bootstrap.min.css" rel="stylesheet"> --%>
 
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<%-- <link href="<%=root1%>/css/carousel.css" rel="stylesheet"> --%>
+
+<%-- <link href="<%=root1%>/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=root1%>/css/carousel.css" rel="stylesheet">
+<!-- <script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script src="<%=root1%>/js/ie-emulation-modes-warning.js"></script>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- <script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
 <script src="<%=root1%>/js/bootstrap.min.js"></script>
-<script src="<%=root1%>/js/docs.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="<%=root1%>/js/docs.min.js"></script> --%>
+
 <script src="<%=root1%>/js/ie10-viewport-bug-workaround.js"></script>
 <title>index.jsp</title>
 </head>

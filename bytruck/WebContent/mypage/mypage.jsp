@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="vo.Users"%>
 <style>
 .board {
 	padding-top: 10%;
@@ -10,6 +10,7 @@
 }
 </style>
 <title>mypage.jsp</title>
+
 <body>
 	<div class="row">
 		<div class="container-fluid">
@@ -20,6 +21,10 @@
 			</div>
 		</div>
 	</div>
+	<%loginInfo = (String) session.getAttribute("loginInfo");
+	userInfo = (String) session.getAttribute("loginInfo_type");
+	Users users = (Users)request.getAttribute("users");%>
+
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -37,7 +42,7 @@
 								<b>MY PAGE</b>
 							</h1>
 							<p align="center">
-								<b>회원님의 기본정보를 볼 수 있습니다.</b>
+								<b>회원님의 기본정보를 볼 수 있습니다.<br>(개인정보)</b> 
 							</p>
 						</div>
 					</div>
@@ -48,12 +53,12 @@
 				<form class="form-horizontal" role="form">
 					<br>
 					<div class="form-group">
-						<label for="username" class="control-label sr-only">이름</label>
+						<label for="username" class="control-label sr-only">아이디</label>
 						<div class="col-sm-8 col-sm-offset-2">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
-								<text type="text" class="form-control" id="username"
-									readonly="readonly">kitri1</text>
+								<text type="text" class="form-control" id="id"
+									readonly="readonly"><span id="id"><%=users.getUser_id()%></span></text>
 							</div>
 						</div>
 					</div>
@@ -64,17 +69,29 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user"></i></span>
 								<text type="text" class="form-control" id="username"
-									readonly="readonly">김명섭</text>
+									readonly="readonly"><span id="name"><%=users.getName()%></span></text>
 							</div>
 						</div>
 					</div>
+					<%if(userInfo.equals("TR")){ %>
 					<div class="form-group">
-						<label for="email" class="control-label sr-only">Email</label>
+						<label for="username" class="control-label sr-only">사업자번호</label>
+						<div class="col-sm-8 col-sm-offset-2">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<text type="text" class="form-control" id="bussiness_number" readonly="readonly">
+								<span id="name"><%=users.getBussiness_number() %></span></text>
+							</div>
+						</div>
+					</div>
+					<%} %>
+					<div class="form-group">
+						<label for="email" class="control-label sr-only">이메일</label>
 						<div class="col-sm-8 col-sm-offset-2">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 								<text type="email" class="form-control" id="email"
-									readonly="readonly">kitri25@naver.com</text>
+									readonly="readonly"><span id="email"><%=users.getEmail() %></span></text>
 
 							</div>
 						</div>
@@ -86,7 +103,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 								<text type="date" class="form-control" id="birthday"
-									readonly="readonly">1999.09.09</text>
+									readonly="readonly"><span id="bitrh"><%=users.getBirthday() %></span></text>
 							</div>
 						</div>
 					</div>
@@ -96,8 +113,13 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
 								<text type="tel" class="form-control" id="tel"
-									readonly="readonly">010-1234-5678</text>
+									readonly="readonly"><span id="tel"><%=users.getPhone_number()%></span></text>
 							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-8 col-sm-offset-2">
+							<a type="submit" class="btn btn-warning btn-block" href="<%=root%>/userinfoupdatedetail.bt?id=<%=users.getUser_id()%>">수정</a>
 						</div>
 					</div>
 					<br>

@@ -16,9 +16,22 @@ public class BoardWriteServlet extends HttpServlet {
 	private BoardService service = new BoardService();
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String title = request.getParameter("title");
-		String detail = request.getParameter("detail"); 
+		
+		String id = (String)request.getParameter("id");
+		String type_s = (String)request.getParameter("type");
+		String title = (String)request.getParameter("title");
+		String detail = (String)request.getParameter("detail");
+		
+		System.out.println(id);
+		System.out.println(type_s);
+		System.out.println(title);
+		System.out.println(detail);
+		
+		int type = Integer.parseInt(type_s);
+		/*System.out.println(type);*/
 		Board board = new Board();
+		board.setUser_id(id);
+		board.setType(type);
 		board.setTitle(title);
 		board.setDetail(detail);
 		try {
@@ -28,8 +41,10 @@ public class BoardWriteServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("result", -1);
 		}
+		
 		String forwardURL = "brand/noticewriteresult.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(forwardURL);
 		rd.forward(request, response);
+		
 	}
 }
