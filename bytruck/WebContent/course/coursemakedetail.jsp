@@ -97,8 +97,8 @@
 									<h3>
 										<b>세부옵션사항</b>
 									</h3>
-									<label><input type="radio" name="withradio" value="solo">나만보기</label><br>
-									<label><input type="radio" name="withradio" value="couple">동행가능</label>
+									<label><input type="radio" name="withradio" value="혼자여행">나만보기</label><br>
+									<label><input type="radio" name="withradio" value="참여여행">동행가능</label>
 								</div>
 							</div>
 							<div class="col-sm-10">

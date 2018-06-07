@@ -60,6 +60,7 @@ public class Review {
 	      this.views = views;
 	      this.good = good;
 	   }
+	
 
 	public int getNo() {
 		return no;

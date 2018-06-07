@@ -57,7 +57,7 @@ Review review = (Review)request.getAttribute("review");
                   </div>
                   <div class="col-sm-10">
                      <div class="col-md-9">
-                        <%@include file="naver.jsp"%><br>
+                      <%@include file="courseviewmap.jsp"%>
                         <label>제목</label>&nbsp;&nbsp;<input type="text"
                            class="form-control" required readonly value=<%=review.getTitle()%>><br>
                         <label>게시일</label>&nbsp;&nbsp;<input type="text"

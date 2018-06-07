@@ -67,11 +67,11 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=request.getContextPath()%>/courselist.bt">코스소개</a></li>
 								<li><a href="<%=request.getContextPath()%>/course/coursemakedetail.jsp">코스짜기</a></li>
-								<li><a href="<%=request.getContextPath()%>/course/reviewlist.jsp">코스후기</a></li>
+								<li><a href="<%=request.getContextPath()%>/course/reviewboard.jsp">코스후기</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false">FOODTRUCK<span
-								class="caret"></span></a>
+								class="caret"></span></a>	
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=root%>/foodtruck/foodtruck.jsp">푸드트럭 소개</a></li>
 							</ul></li>

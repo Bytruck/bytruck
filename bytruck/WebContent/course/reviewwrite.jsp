@@ -132,7 +132,7 @@ src="../js/bootstrap.min.js"></script> -->
                   <div class="col-sm-10">
                    <div class="col-md-9">
 						<label>위치</label>
-							<%@include file="../course/location.jsp"%>
+							<%@include file="courseselmap.jsp"%>
 								<textarea style="display: none" id="xlocation"
 									name="xlocation"></textarea>
 								<textarea style="display: none" id="ylocation"

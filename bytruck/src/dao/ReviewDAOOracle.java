@@ -65,38 +65,37 @@ public class ReviewDAOOracle implements ReviewDAO {
 		return list;
 	}
 	
-	//여행후기 디테일
-	@Override
-	   public Review selectDetail(int rnum) throws Exception {
-	      Connection con = null;
-	       PreparedStatement pstmt = null;
-	       ResultSet rs = null;
-	       Review r = new Review();
-	       try {
-	            String selectDetailSQL = "SELECT *" 
-	                              + " FROM review" 
-	                              + " WHERE no = ?"
-	                              +" ORDER BY no desc";
-	            con = sql.MyConnection.getConnection();
-	            pstmt = con.prepareStatement(selectDetailSQL);
-	            pstmt.setInt(1, rnum);
-	            rs = pstmt.executeQuery();
-	            if (rs.next()) {
-	                 int no = rnum;
-	               String id = rs.getString("user_id");
-	               String tdate = rs.getString("trip_date");
-	               String title = rs.getString("title");
-	               String detail = rs.getString("detail");
-	               String pdate = rs.getString("posted");
-	               int views = rs.getInt("views");
-	               int good = rs.getInt("good");
-	               r = new Review(no, id, tdate, title, detail, pdate, views, good);
-	               
+	   @Override
+	      public Review selectDetail(int rnum) throws Exception {
+	         Connection con = null;
+	          PreparedStatement pstmt = null;
+	          ResultSet rs = null;
+	          Review r = new Review();
+	          try {
+	               String selectDetailSQL = "SELECT no, user_id, trip_date, title, detail, posted, latitude, longtitude" 
+	                                 + " FROM review" 
+	                                 + " WHERE no = ?"
+	                                 +" ORDER BY no desc";
+	               con = sql.MyConnection.getConnection();
+	               pstmt = con.prepareStatement(selectDetailSQL);
+	               pstmt.setInt(1, rnum);
+	               rs = pstmt.executeQuery();
+	               if (rs.next()) {
+	                  int no = rnum;
+	                  String id = rs.getString("user_id");
+	                  String tdate = rs.getString("trip_date");
+	                  String title= rs.getString("title");
+	                  String detail = rs.getString("detail");
+	                  String pdate = rs.getString("posted");
+	                  String latitude=rs.getString("latitude");
+	                  String longtitude = rs.getString("longtitude");
+	                  r = new Review(no, id, tdate, title, detail, pdate, latitude,
+	                       longtitude);
+	                  
+	               }
+	            } finally {
+	               MyConnection.close(rs, pstmt, con);
 	            }
-	         } finally {
-	            MyConnection.close(rs, pstmt, con);
-	         }
-	         return r;
-	   }
-
-}
+	            return r;
+	      }
+	}
