@@ -1,19 +1,15 @@
-drop table profit; 
+
 drop table detail_course;
 drop table course;
-drop table use_coupon; 한번만 실행 후 삭제
-drop table coupon; 한번만 실행 후 삭제
 drop table advertisement;
 drop table event;
 drop table foodtruck;
 drop table foodtruck_location;
 drop table review;
 drop table chatting;
-drop table comments;
-drop table reply;
 drop table board;
 drop table users;
-drop sequence seq_coupon_type; 한번만 실행후 삭제
+
 drop sequence seq_advertisementmotion_no;
 drop sequence foodtruck_no_seq;
 drop sequence review_no_seq;
@@ -40,54 +36,13 @@ create table users(
     useryn              varchar2(2) default 'y' not null
 );
 
---create use_coupon table
---create table use_coupon(
---    coupon_number       number  not null,
---    user_id                    varchar2(20)   not null,    
---    coupon_type            number   not null,
---    start_date                date  not null,
---    end_date                 date   not null,
---    constraint use_coupon_id_fk foreign key (user_id) references users(user_id)
---);
-----insert use_coupon table data
---insert into use_coupon(coupon_number, user_id, coupon_type, start_date, end_date)
---values(76940098, 'CL', 1, to_char(to_date('2018.06.01','YYYY.MM.DD'), to_char(to_date('2018.06.30','YYYY.MM.DD'));
---insert into use_coupon (coupon_number, user_id, coupon_type, start_date, end_date)
---values (15541198, 'JM', 1, to_char(to_date('2018.07.01','YYYY.MM.DD'), to_char(to_date('2018.07.31','YYYY.MM.DD'));
---insert into use_coupon (coupon_number, user_id, coupon_type, start_date, end_date)
---values (66384951, 'EJ', 2, to_char(to_date('2018.07.08','YYYY.MM.DD'), to_char(to_date('2018.07.15','YYYY.MM.DD'));
---insert into use_coupon (coupon_number, user_id, coupon_type, start_date, end_date)
---values (12345670, 'SB', 2, to_char(to_date('2018.07.18','YYYY.MM.DD'), to_char(to_date('2018.08.01','YYYY.MM.DD'));
---insert into use_coupon (coupon_number, user_id, coupon_type, start_date, end_date)
---values (98765430, 'MS', 3, to_char(to_date('2018.08.18','YYYY.MM.DD'), to_char(to_date('2018.09.01','YYYY.MM.DD'));
---insert into use_coupon (coupon_number, user_id, coupon_type, start_date, end_date)
---values (74185236, 'gijang', 3, to_char(to_date('2018.09.18','YYYY.MM.DD'), to_char(to_date('2018.10.01','YYYY.MM.DD'));
---select * from use_coupon;
-
--- create coupon table
---create table coupon(
---    coupon_type            number   not null,
---    coupon_name          varchar2(20)   not null,
---    discount_rate           number  not null
---);
----- insert coupon table data
---insert into coupon(coupon_type, coupon_name, discount_rate)
---values(SEQ_COUPON_TYPE.NEXTVAL , '생일 쿠폰', 30);
---insert into coupon (coupon_type, coupon_name, discount_rate)
---values (SEQ_COUPON_TYPE.NEXTVAL, '이벤트 쿠폰', 20); 
---insert into coupon (coupon_type, coupon_name, discount_rate)
---values (SEQ_COUPON_TYPE.NEXTVAL, '시즌 쿠폰', 30);
---select * from coupon;
-
 -- create advertisement table
 create table advertisement(
     user_id                     varchar2(20) not null,
     no                          number  not null,
-    type                        number(1) not null,
-    start_date                  varchar2(20) not null,
-    end_date                    varchar2(20) not null,
     title                       varchar2(100) not null,
-    detail                      varchar2(500) not null,--file 빠짐
+    detail                      varchar2(500) not null,
+    posted                      varchar2(20),
     constraint advertisementmotion_id_no_pk primary key(user_id, no),
     constraint advertisementmotion_id_fk foreign key (user_id) references users(user_id)
 );
@@ -139,17 +94,18 @@ create table event(
 select * from event;    
 
 -- create review table
+-- create review table
 create table review(
     no              number       not null,
     user_id         varchar2(20) not null,
-    location        varchar2(20) not null,
     trip_date       varchar2(20) not null,
     title           varchar2(100) not null,
-    detail          varchar2(500),
-    publicyn        number(1)  not null,
-    posted          varchar2(20),--첨부파일 빠짐,
-    views           number not null,
-    good            number not null,
+    detail          varchar2(2000),
+    posted          varchar2(20),
+    latitude    varchar2(50),
+    longtitude  varchar2(50), 
+    views           number,
+    good            number,
     constraint review_no_pk primary key(no),
     constraint review_user_id_fk foreign key(user_id)
     references users(user_id)
@@ -179,35 +135,13 @@ create table board(
     CONSTRAINT board_user_id foreign key(user_id) references users(user_id)
 );
 
---create comments table
-create table comments(
-    com_no  number not null,
-    user_id varchar2(20) not null,
-    no      number not null,
-    type    number not null,
-    comments varchar2(3000) not null,
-    CONSTRAINT comments_com_no_pk primary key(com_no),
-    CONSTRAINT comments_no_fk foreign key(no,type) references board(no,type)
-);
-
---create reply table
-create table reply(
-    re_no  number not null,
-    user_id varchar2(20) not null,
-    no      number not null,
-    type    number not null,
-    comments varchar2(3000) not null,
-    CONSTRAINT reply_re_no_pk primary key(re_no),
-    CONSTRAINT reply_re_no_fk foreign key(no,type) references board(no,type)
-);
 
 --create course table
 create table course(
     no          number not null,
     user_id     varchar2(20) not null,
     trip_date   varchar2(20) not null,
-    withyn      varchar2(6) default 'y' not null,
-    openyn      varchar2(6) default 'y' not null,
+    withyn      varchar2(20) default 'y' not null,
     title       varchar2(100) not null,
     detail      varchar2(500),
     views       number,
@@ -223,18 +157,6 @@ create table detail_course(
     latitude    number not null,
     longtitude  number not null,
      CONSTRAINT detail_course_no_step_pk primary key(no,step)
-);
-
---create profit table
-create table profit(
-    ad_id       number not null,
-    type        varchar2(10) not null,
-    price       number not null,
-    start_date  varchar2(20) null,
-    end_date    varchar(20) not null,
-    detail      varchar2(500),
-    bussiness_name  varchar2(20),
-    CONSTRAINT profit_ad_id_pk primary key(ad_id)
 );
 
 -- create sequence
@@ -290,19 +212,24 @@ insert into users(user_id, user_pwd, name, birthday, phone_number, email, bussin
 values('hanzo' ,'12345' ,'insect', to_char(to_date('2018.04.07', 'yyyy.mm.dd')), '010-1234-1234', 'iii@naver.com', null ,'BK');
 select * from users;
 
---insert , advertisementmotion table data
-insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('CL', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.05.18','YYYY.MM.dd')), to_char(to_date('2018.05.25','YYYY.MM.dd')), '맥주 이벤트', '맥주 1잔을 무료로 드립니다.');
-insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('JM', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.06.18','YYYY.MM.dd')), to_char(to_date('2018.06.28','YYYY.MM.dd')), '힘내라 청춘', '20대를 위한 특별 이벤트입니다.');
-insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('EJ', seq_advertisementmotion_no.nextval, 1, to_char(to_date('2018.07.01','YYYY.MM.dd')), to_char(to_date('2018.07.08','YYYY.MM.dd')), '한강 이벤트', '이번주에 한강을 방문하시는 분들을 위한 이벤트입니다.');
-insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('SB', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.06.18','YYYY.MM.dd')), to_char(to_date('2018.06.20','YYYY.MM.dd')), '백종원이 떴다!', '푸드트럭에 백종원이 나타납니다.');
-insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('MS', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.07.18','YYYY.MM.dd')), to_char(to_date('2018.07.19','YYYY.MM.dd')), '원더트럭', '씩씩하고 활기찬 여성의 이미지를 담은 푸드트럭입니다.');
-insert into advertisement(user_id, no, type, start_date, end_date, title, detail)
-values('gijang', seq_advertisementmotion_no.nextval, 2, to_char(to_date('2018.05.20','YYYY.MM.dd')), to_char(to_date('2018.05.25','YYYY.MM.dd')), '프랑스 분식', '브르타뉴 출신이 만드는 크레페를 선보입니다.');
+--insert advertisement table data
+insert into advertisement(user_id, no, title, detail, posted)
+values('CL', seq_advertisement_no.nextval, '맥주 이벤트', '여러분 많이 더우시죠? 저희 푸드트럭에서는 메뉴 1가지이상을 주문하면 맥주 1잔을 무료로 주는 이벤트를 합니다. 많이 오셔서 시원한 맥주 한잔 하고 가세요~', to_char(to_date('2018.05.08','YYYY.MM.dd')));
+insert into advertisement(user_id, no, title, detail, posted)
+values('JM', seq_advertisement_no.nextval, '힘내라 청춘', '20대를 위한 특별한 이벤트가 준비되어 있습니다.', to_char(to_date('2018.05.10','YYYY.MM.dd')));
+insert into advertisement(user_id, no, title, detail, posted)
+values('EJ', seq_advertisement_no.nextval, '한강 이벤트', '이번주에 한강을 방문하시는 분들을 위한 이벤트입니다.', to_char(to_date('2018.05.18','YYYY.MM.dd')));
+insert into advertisement(user_id, no, title, detail, posted)
+values('SB', seq_advertisement_no.nextval, '백종원이 떴다!', '푸드트럭에 백종원이 나타납니다. 깜짝놀랐쥬?', to_char(to_date('2018.05.26','YYYY.MM.dd')));
+insert into advertisement(user_id, no, title, detail, posted)
+values('MS', seq_advertisement_no.nextval, '여성 고객들을 위한 이벤트!', '여성분들께만 특별히 20%할인을 진행합니다. 많이 오셔서 맛있는 음식 드시고, 좋은 추억 만들어 가세요!', to_char(to_date('2018.05.30','YYYY.MM.dd')));
+insert into advertisement(user_id, no, title, detail, posted)
+values('gijang', seq_advertisement_no.nextval, '던킨도너츠', '던킨 도너츠에서 광고 신청합니다. 로그인할 때 배너로 보여줄 수 있나요?',to_char(to_date('2018.06.10','YYYY.MM.dd')));
+insert into advertisement(user_id, no, title, detail, posted)
+values('gijang', seq_advertisement_no.nextval, '프랑스 분식', '브르타뉴 출신이 만드는 크레페를 선보입니다.',to_char(to_date('2018.06.22','YYYY.MM.dd')));
+select * from advertisement;
+insert into advertisement(user_id, no, title, detail, posted)
+values('gijang', seq_advertisement_no.nextval, '로지텍', '혹시 홈페이지 메인에도 광고를 넣을 수 있나요? 광고 부탁드립니다.',to_char(to_date('2018.06.29','YYYY.MM.dd')));
 select * from advertisement;
 
 --insert foodtruck table data
@@ -315,7 +242,7 @@ values('SB', '덕복희씨', '떡볶이', 3000, 1, '웃음터지는 덕복희');
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
 values('MS', '문어빵', '타코야끼 6개', 2000, 1, '주인이 좋아하는 타코야끼');
 insert into foodtruck(user_id, bussiness_name, menu_name, price, menu_type, detail)
-values('jigak', 'KITRI', '지각 5분' , 1000, 1, '1~5분 지각시');
+values('jigak', '비내리는 포차', '우동' , 4000, 1, '우동 한 그릇 하실래예?');
 select * from foodtruck;
 
 insert into foodtruck_location(no, user_id, title, opendate,  detail, latitude, longtitude, poweryn, foodtype, imgpath)
@@ -342,16 +269,16 @@ values(foodtruck_no_seq.nextval, 'JM', '딸기쥬~스', to_char(to_date('2018.07.09'
 select * from foodtruck_location;
 
 --inset event data table
-insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'JM', '어린이날 기념 20% 할인', '이벤트 합니다 많이 오셔서 즐겁게 놀다 가세요');
-insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'EJ', '어버이날 기념 20% 할인', '이벤트 합니다 많이 오셔서 즐겁게 놀다 가세요');
-insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'SB', '스승의날 기념 20% 할인', '이벤트 합니다 많이 오셔서 즐겁게 놀다 가세요');
-insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'MS', '민수탄신일 기념 20% 할인', '이벤트 합니다 많이 오셔서 즐겁게 놀다 가세요');
-insert into event (no, user_id, title, detail)
-values(event_id_seq.nextval, 'jigak', '지구멸망 기념 20% 할인', '이벤트 합니다 많이 오셔서 즐겁게 놀다 가세요');
+insert into event(user_id, no, title, detail, event_date)
+values('CL',event_id_seq.nextval, '맥주 이벤트', '여러분 많이 더우시죠? 저희 푸드트럭에서는 메뉴 1가지이상을 주문하면 맥주 1잔을 무료로 주는 이벤트를 합니다. 많이 오셔서 시원한 맥주 한잔 하고 가세요~', to_char(to_date('2018.05.08','YYYY.MM.dd')));
+insert into event(user_id, no, title, detail, event_date)
+values('JM',event_id_seq.nextval, '힘내라 청춘', '20대를 위한 특별한 이벤트가 준비되어 있습니다.', to_char(to_date('2018-05-10','YYYY-MM-dd'),'YYYY-MM-DD'));
+insert into event(user_id, no, title, detail, event_date)
+values('EJ', event_id_seq.nextval, '한강 이벤트', '이번주에 한강을 방문하시는 분들을 위한 이벤트입니다.', to_char(to_date('2018-05-18','YYYY-MM-dd')),'YYYY-MM-DD')));
+insert into event(user_id, no, title, detail, event_date)
+values('SB', event_id_seq.nextval, '백종원이 떴다!', '푸드트럭에 백종원이 나타납니다. 깜짝놀랐쥬?', to_char(to_date('2018-05-26','YYYY-MM-dd')),'YYYY-MM-DD')));
+insert into event(user_id, no, title, detail, event_date)
+values('MS', event_id_seq.nextval, '여성 고객들을 위한 이벤트!', '여성분들께만 특별히 20%할인을 진행합니다. 많이 오셔서 맛있는 음식 드시고, 좋은 추억 만들어 가세요!', to_char(to_date('2018-05-30','YYYY-MM-dd')),'YYYY-MM-DD')));
 
 -- inset review table data
 insert into review(no, user_id, location, trip_date, title ,detail, publicyn, posted, views, good)
@@ -447,86 +374,15 @@ values (board_no_seq2.nextval, 2, '   관심코스 (찜)기능',
 '공개된 코스를 보면서 관심있는 코스는 하트 아이콘을 눌러 찜 을  하실 수 있습니다. 찜을 하시면 마이페이지의 관심코스 항목에서 바로 찾아 보실 수 있습니다. 많은 이용 부탁드립니다^^', 'CL', 52, to_char(to_date('2018.05.14','YYYY.MM.dd')));
 select * from board;
 
---insert comments table data
-insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'genji', 1, 1, '고객님 안녕하십니까^^ 코스짜기는 코스짜기 게시판에서  원하는 여행지역 선택 후 각각의 세부 코스 여행지를 선정 할 수 있으며, 상세 설명을 기입하실수 있습니다.^^');
-insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'EJ', 2, 1, '고객님 안녕하십니까^^ 개인정보 조회는 마이페이지에서 조회 가능합니다^^ 일반회원님일경우  관심코스, 회원정보, 쿠폰내역등을 볼 수 있으며, 사업자분들은 개인정보 변경뿐아니라 푸드트럭 정보도 변경 가능합니다. 정보가 변경되었을 시,마이페이지의 정보수정 항목을 찾아 수정해주세요^^');
-insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'JM', 3, 1, '고객님 안녕하십니까^^ 파워링크 광고, 프로모션 광고가 있습니다.  파워링크 광고는 푸드트럭행사게시물 작성시 옵션기능으로 하실수 있으며, 프로모션기능은 관리자에게 따로 문의 하셔야합니다. 개별 가격은 관리자에게 따로 문의 바랍니다.^^');
-insert into comments(com_no, user_id, no, type, comments)
-values (comments_com_seq.nextval, 'SB', 4, 1, '고객님 안녕하십니까^^ 죄송하지만 같은 아이디로 재가입은 불가능 하십니다 신중히 생각하신 후 결정해주시기 바랍니다^^');
-insert into comments(com_no, user_id, no, type, comments)
-values  (comments_com_seq.nextval, 'saem2', 5, 0, '고객님 안녕하십니까^^ 찜기능은 갯수 제한이 없습니다~ 많은 이용 부탁드립니다^^');
-select * from comments;
---insert reply table data
---insert into reply()
---values();
---insert into reply()
---values();
---insert into reply()
---values();
---insert into reply()
---values();
---insert into reply()
---values();
-
-
---insert comments table data
---insert into course(no, user_id, trip_date, title, detail, views, good)
---values (course_no_seq.nextval, 'gijang', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 'xx 같이 가실분','여행일정 부산찍고 제주찍고 서울까지', 10, 5);
---insert into detail_course(no, step, latitude, longtitude)
---values(course_no_seq.currval, detailcourse_no_seq.nextval, 37.51, 126.91);
---insert into detail_course(no, step, trip_date, ylocation, xlocation)
---values(course_no_seq.currval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
---insert into detail_course(no, step, trip_date, ylocation, xlocation)
---values(course_no_seq.nextval, detailcourse_no_seq.nextval, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
---ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1;
-
---insert into course(no, user_id, trip_date, title, detail, views, good)
---values (course_no_seq.nextval, 'saem', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 떠나요 둘이서', '여행일정 부산찍고 제주찍고 서울까지', 20, 10);
---insert into course(no, user_id, trip_date, title, detail, views, good)
---values (course_no_seq.nextval, 'saem2', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 손에 손잡고 나를 넘어서', '여행일정 부산찍고 제주찍고 서울까지',15, 7) ;
---insert into course(no, user_id, trip_date, title, detail, views, good)
---values (course_no_seq.nextval, 'genji', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), '인생은 혼자여행', '여행일정 부산찍고 제주찍고 서울까지',3, 2);
---insert into course(no, user_id, trip_date, title, detail, views, good)
---values (course_no_seq.nextval, 'hanzo', to_char(to_date('2018.05.07', 'yyyy.mm.dd')), ' 나홀로 배낭여행', '여행일정 부산찍고 제주찍고 서울까지',4, 5);
-
---insert into course(no, user_id, trip_date, withyn, openyn, title, detail, views, good)
---values (course_no_seq.nextval, ?,to_char(to_date('?', 'yyyy.mm.dd')),?,?,?,?,?,?);
-
-select * from course;
-
-
---insert comments talbe data
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(detailcourse_no_seq.nexval, 1, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.51, 126.91);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(detailcourse_no_seq.currval, 2, to_char(to_date('2018.05.07', 'yyyy.mm.dd')), 37.52, 126.92);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(2, 1, to_char(to_date('2018.05.08', 'yyyy.mm.dd')), 37.53, 126.93);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(2, 2, to_char(to_date('2018.05.08', 'yyyy.mm.dd')), 37.54, 126.94);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(3, 1, to_char(to_date('2018.05.09', 'yyyy.mm.dd')), 37.55, 126.95);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(3, 2, to_char(to_date('2018.05.09', 'yyyy.mm.dd')), 37.56, 126.96);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(4, 1, to_char(to_date('2018.05.10', 'yyyy.mm.dd')), 37.57, 126.97);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(4, 2, to_char(to_date('2018.05.10', 'yyyy.mm.dd')), 37.58, 126.98);
---insert into detail_course(no, step, trip_date, latitude, longtitude)
---values(5, 1, to_char(to_date('2018.05.11', 'yyyy.mm.dd')), 37.59, 126.99);
+commit;
     
 select c.no, dc.step, c.title, c.detail, c.withyn, c.trip_date,  dc.LATITUDE, dc.LONGTITUDE
 from course c join detail_course dc
 on c.no = dc.no; 
-
         
-        select *
-        from course
-        order by no;
-
+select *
+from course
+order by no;
 
 select c.no, dc.step, c.title, c.detail, c.withyn, dc.LATITUDE, dc.LONGTITUDE
 from course c join detail_course dc
@@ -534,19 +390,9 @@ on c.no = dc.no;
 where c.no = 5;
 ALTER SEQUENCE detailcourse_no_seq INCREMENT BY 1;
 
-select detailcourse_no_seq.currval
-from dual; 
 
---insert profit table data
-insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'PL' ,300000,  to_char(to_date('2018.05.11', 'yyyy.mm.dd')),  to_char(to_date('2018.06.11', 'yyyy.mm.dd')), '파워링크', '덕복희씨');
-insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'PL' ,300000,  to_char(to_date('2018.05.12', 'yyyy.mm.dd')),  to_char(to_date('2018.06.12', 'yyyy.mm.dd')), '파워링크', 'Chu러스~');
-insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'AD' ,1000000,  to_char(to_date('2018.05.13', 'yyyy.mm.dd')),  to_char(to_date('2018.07.13', 'yyyy.mm.dd')), '광고', '던킨');
-insert into profit(ad_id, type, price, start_date, end_date, detail, bussiness_name)
-values(ad_id_seq.nextval, 'AD' ,1000000,  to_char(to_date('2018.05.14', 'yyyy.mm.dd')),  to_char(to_date('2018.08.14', 'yyyy.mm.dd')), '광고', '로지텍');
-
-commit;
-
+select c.no, dc.step, c.title, c.detail, c.withyn, c.trip_date, dc.LATITUDE, dc.LONGTITUDE
+from course c join detail_course dc
+on c.no = dc.no
+where c.no = 3;
 
