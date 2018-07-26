@@ -65,23 +65,26 @@
 							data-toggle="dropdown" role="button" aria-expanded="false">COURCE<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="<%=root%>/course/viewcourse.jsp">코스소개</a></li>
-								<li><a href="<%=root%>/course/makecourse.jsp">코스짜기</a></li>
-								<li><a href="<%=root%>/course/reviewboard.jsp">코스후기</a></li>
+								<li><a href="<%=request.getContextPath()%>/courselist.bt">코스소개</a></li>
+								<li><a href="<%=request.getContextPath()%>/course/coursemakedetail.jsp">코스짜기</a></li>
+								<li><a href="<%=request.getContextPath()%>/course/reviewboard.jsp">코스후기</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false">FOODTRUCK<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=root%>/foodtruck/foodtruck.jsp">푸드트럭 소개</a></li>
-								<li><a href="<%=root %>/foodtruck/foodboard.jsp">푸드트럭 등록</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false">EVENT<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="<%=root %>/event/event.jsp">이벤트</a></li>
+								<%String userInfo = (String) session.getAttribute("loginInfo_type");
+								if(userInfo==null) userInfo="X";
+								if(userInfo.equals("TR")){ %>
 								<li><a href="<%=root%>/adboard/normal_ad.jsp">배너광고신청</a></li>
+								<%}%>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-expanded="false">BOARD<span
@@ -100,7 +103,7 @@
 							<li class='login' id="nav-login-btn"><a
 								href="<%=root%>/base/loginform.jsp">Login</a></li>
 							<%} else {//로그인 했을 때
-							String userInfo = (String) session.getAttribute("loginInfo_type");
+							userInfo = (String) session.getAttribute("loginInfo_type");
 							if (userInfo.equals("AD")) {//관리자분류번호%>
 							<li class="admin"><a href="<%=root%>/admin/admin_main.jsp">ADMIN</a></li>
 							<li class='logout' id="nav-logout-btn"><a
@@ -111,9 +114,8 @@
 									class="caret"></span>
 							</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="<%=root %>/mypage/mypageBussiness.jsp">마이페이지</a></li>
-									<li><a href="<%=root %>/mypage/writingList.jsp">내가쓴글</a></li>
-									<li><a href="<%=root %>/mypage/editInfoBussiness.jsp">정보수정</a></li>
+									<li><a href="<%=root %>/userInfoview.bt?id=<%=loginInfo%>&type=<%=userInfo%>">마이페이지(개인정보)</a></li>
+									<li><a href="<%=root %>/userinfoviewbusi.bt?id=<%=loginInfo%>">마이페이지(푸드트럭)</a></li>
 									<li><a href="<%=root %>/mypage/bye.jsp">탈퇴</a></li>
 								</ul></li>
 							<li class='logout' id="nav-logout-btn"><a
@@ -124,11 +126,7 @@
 								class="caret"></span>
 						</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="<%=root %>/mypage/mypage.jsp">마이페이지</a></li>
-								<li><a href="<%=root %>/mypage/myCoupon.jsp">내 쿠폰</a></li>
-								<li><a href="<%=root %>/mypage/zzimCourse.jsp">관심코스</a></li>
-								<li><a href="<%=root %>/mypage/writingList.jsp">내가쓴글</a></li>
-								<li><a href="<%=root %>/mypage/editInfoCustom.jsp">정보수정</a></li>
+								<li><a href="<%=root %>/userInfoview.bt?id=<%=loginInfo%>">마이페이지</a></li>
 								<li><a href="<%=root %>/mypage/bye.jsp">탈퇴</a></li>
 							</ul></li>
 							<li class='logout' id="nav-logout-btn"><a

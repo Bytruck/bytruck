@@ -1,30 +1,42 @@
 package control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class TimelineWriteServlet
- */
+import service.TimelineService;
+import vo.Chatting;
+
+
 public class TimelineWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TimelineWriteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	 private TimelineService service = new TimelineService();  
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		String id = session.getAttribute("loginInfo").toString();
+		String content = request.getParameter("content");	
+		Chatting chatting = new Chatting(id, content);
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String result = "{";
+		try {
+			service.insertChat(chatting);
+			result+="\"status\":\"1\"";
+		}catch(Exception e) {
+			e.printStackTrace();
+			result+="\"status\":\"-1\", ";
+			result+="\"msg\": \"" + e.getMessage() + "\"";
+		}		
+		result += "}";
+		out.print(result);
 	}
 
 }

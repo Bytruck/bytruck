@@ -20,6 +20,31 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(function(){
+		$.ajax({
+			url: '<%=root%>/mywriteview.bt',	
+			dataType:'json',
+			success:function(data){
+				console.log(data);
+				var id=[]; var posted=[]; var msg=[];
+				for(var i=0;i<data.chatting.length;i++){
+					id[i]=data.chatting[i].user_id;
+					posted[i]=data.chatting[i].posted;
+					msg[i]=data.chatting[i].message;
+				}
+		         if(data!=null){
+		        	var id = $('ul#list');
+			        html="";
+			        for (var i=0;i<data.chatting.length;i++) {
+			            html += ''; 
+			        }		
+			        id.html(html).show();
+		        } 
+			}
+		});
+	});
+	</script>
 	<div class="board">
 		<div class="row">
 			<div class="container">
@@ -49,9 +74,15 @@
 					<select class="col-lg-3 col-lg-offset-1" id="type"
 						style="height: 25px; vertical-align: top;">
 						<!-- 이부분 사업자/일반if문 써서 구분시키기(게시판종류 다름) -->
+						<% userInfo = (String) session.getAttribute("loginInfo_type");
+						if(userInfo.equals("BK")){//일반회원일 때%>
 						<option value="">검색</option>
 						<option value="title">코스짜기</option>
 						<option value="detail">후기</option>
+						<%}else if(userInfo.equals("TR")){ %>
+						<option value="">검색</option>
+						<option value="title">등록</option>
+						<%} %>
 					</select> <input type="text" class="col-lg-6">
 					<button class="col-lg-2 btn btn-info"
 						style="height: 26px; line-height: 26px; padding: 0 15px;">검색</button>

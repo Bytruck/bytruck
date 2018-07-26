@@ -11,32 +11,39 @@ String root = request.getContextPath();%>
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Bytruck</title>
-<link rel="icon" href="favicon.ico">
-<link href="<%= root%>/css/helper.css" rel="stylesheet">
-<link href="<%= root%>/css/style.css" rel="stylesheet">
+<link href="<%=root%>/css/helper.css" rel="stylesheet">
+<link href="<%=root%>/css/style.css" rel="stylesheet">
 <link
    href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
    rel="stylesheet" id="bootstrap-css">
 <link
    href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
    rel="stylesheet">
-   <link href="<%= root%>/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%= root%>/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="<%= root%>/css/carousel.css" rel="stylesheet">
-<script
+<!-- <script
    src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script src="<%= root%>/js/bootstrap.min.js"></script>
-<script src="<%= root%>/js/docs.min.js"></script>
+<%-- <script src="<%= root%>/js/docs.min.js"></script> --%>
 <script src="<%= root%>/js/ie10-viewport-bug-workaround.js"></script>
-<script src="<%= root%>/js/ie-emulation-modes-warning.js"></script>
+<script src="<%= root%>/js/ie-emulation-modes-warning.js"></script> 
 </head>
 <style>
 .left-sidebar {
 	padding-top: 5%;
+	 width:200px;
+	
+}
+#main{
+  width:150px;
+  height: 50px;
+  font-size: 20px;
+  text-align: center;
 }
 </style>
 <body>
@@ -56,21 +63,17 @@ String root = request.getContextPath();%>
 					<li><a class="has-arrow  " href="<%=root%>/admin/admin_charts.jsp"
 						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
 							class="hide-menu">통계</span></a>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_likes.jsp"
-						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
-							class="hide-menu">좋아요 순위</span></a>
 					<li class="nav-label">광고관리</li>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_plink.jsp"
+					<li><a class="has-arrow  " href="<%=root%>/admin/ad_board.jsp"
 						aria-expanded="false"><i class="fa fa-table"></i><span
-							class="hide-menu"> 파워링크</span></a>
-					<li><a class="has-arrow  " href="<%=root%>/admin/admin_normal_ad.jsp"
-						aria-expanded="false"><i class="fa fa-table"></i><span
-							class="hide-menu"> 배너광고</span></a>	
+							class="hide-menu">배너광고</span></a>	
+					<li class="nav-label">일정관리</li>
+						<li><a class="has-arrow  " href="<%=root%>/admin/admin_calendar.jsp"
+						aria-expanded="false"><i class="fa fa-bar-chart"></i><span
+							class="hide-menu">이벤트 일정</span></a>		
 				</ul>
-				<span class="go_home" style="display: block;text-align: center;margin-top: 100px;">
-					<a href="<%=root%>" type="button" name="gohome" style="display:inline-block;
-					width:120px;height: 40px;font-size: 20px;line-height: 38px;background-color: #eee;
-					border: 1px solid #ccc;color: #000; box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);">Main</a>
+				<span class="go_home" style="display: block;text-align: center; margin-top: 100px;">
+				 <a class="btn btn-success" id = "main" href="<%=root%>">Main</a>
 				</span>
 			</nav>
 		</div>

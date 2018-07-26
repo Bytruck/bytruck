@@ -18,6 +18,18 @@ public class Board {
 		super();
 	}
 	
+	
+	//은진 공지사항 리스트
+	public Board(int no, String title, String posted, String user_id) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.posted = posted;
+		this.user_id = user_id;
+	}
+
+
+
 	public Board(int no, String title, String posted, int views) {
 		super();
 		this.no = no;

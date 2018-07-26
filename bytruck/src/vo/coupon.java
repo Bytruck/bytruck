@@ -1,5 +1,5 @@
 package vo;
 
-public class coupon {
+public class Coupon {
 
 }

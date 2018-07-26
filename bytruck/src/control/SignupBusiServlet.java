@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.FoodtruckService;
 import service.UserService;
-import vo.foodtruck;
-import vo.users;	
+import vo.Foodtruck;
+import vo.Users;	
 
 public class SignupBusiServlet extends HttpServlet {
 	 private UserService service = new UserService();
@@ -30,21 +30,13 @@ public class SignupBusiServlet extends HttpServlet {
 		
 		String storename = request.getParameter("storename");
 		String typename = request.getParameter("ptype");
-		System.out.println(typename);
-		int ptype=0;
-		if("drink".equals(typename)) {
-			ptype=1;
-		}else if("hotdog".equals(typename)) {
-			ptype=2;
-		}else if("cupbab".equals(typename)) {
-			ptype=3;
-		}
+
 		String product = request.getParameter("product");
 		int price = Integer.parseInt(request.getParameter("price"));
 		String detail = request.getParameter("detail");
 		
-		users u = new users(id, pwd, name, birthday, tel, email, businum, "TR");
-		foodtruck ft = new foodtruck(id, storename, product, price, ptype, detail);
+		Users u = new Users(id, pwd, name, birthday, tel, email, businum, "TR");
+		Foodtruck ft = new Foodtruck(id, storename, product, price, typename, detail);
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

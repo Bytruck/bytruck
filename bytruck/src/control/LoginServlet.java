@@ -23,17 +23,13 @@ public class LoginServlet extends HttpServlet {
 
 		String forwardURL = "";
 		HttpSession session = request.getSession();
-		//session.invalidate();
 
 		try {
-			System.out.println("servlet try{}");
 			String result = service.login(idValue, pwdValue);
-			System.out.println("result : "+result);
 			if (result.equals("1")) { // 로그인 성공:1, 실패:-1
 				session = request.getSession();
 				session.setAttribute("loginInfo", idValue);
 				String usertype = service.searchtype(idValue);
-				System.out.println("usertype : " + usertype);
 				session.setAttribute("loginInfo_type", usertype);
 				request.setAttribute("result", result);	
 			} else {

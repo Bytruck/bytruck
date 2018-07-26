@@ -27,9 +27,9 @@
 				<ol class="breadcrumb link-accent separator-arrow">
 					<li><a href="<%=root%>/index.jsp" title="Home"><i
 							class="fa fa-home"></i></a></li>
-					<li class="active">개요</li>		
+					<li class="active">개요</li>
 					<li><a href="<%=root%>/brand/notice.jsp" title="Home">공지사항</a></li>
-					
+
 				</ol>
 				<div class="page-header">
 					<div class="row">
@@ -95,13 +95,51 @@
 				</div>
 				<li style="list-style: none;">&nbsp;&nbsp;</li>
 				<hr>
-				<h4>
+				<h3>
 					<strong>Developer</strong>
-				</h4>
+				</h3>
 				<p>바이트럭을 위해 힘쓰고 있는 개발자들을 소개합니다.</p>
 				<li style="list-style: none;">&nbsp;&nbsp;</li>
+
+				<div class="row">
+					<div class="col-lg-1" align="center"></div>
+					<div class="col-lg-2" align="center">
+						<img class="img-circle" src="<%=root%>/images/kms.jpg"
+							alt="Generic placeholder image"
+							style="width: 200px; height: 200px; padding: 10px">
+						<h4>Kim MinSu</h4>
+						<h5>DEVELOPER</h5>
+					</div>
+					<div class="col-lg-2" align="center">
+						<img class="img-circle" src="<%=root%>/images/ssb.jpg"
+							alt="Generic placeholder image"
+							style="width: 200px; height: 200px; padding: 10px">
+						<h4>Shin SolBi</h4>
+						<h5>DEVELOPER</h5>
+					</div>
+					<div class="col-lg-2" align="center">
+						<img class="img-circle" src="<%=root%>/images/lej.png"
+							alt="Generic placeholder image"
+							style="width: 200px; height: 200px; padding: 10px">
+						<h4>Lee EunJin</h4>
+						<h5>DEVELOPER</h5>
+					</div>
+					<div class="col-lg-2" align="center">
+						<img class="img-circle" src="<%=root%>/images/ljm.jpg"
+							alt="Generic placeholder image"
+							style="width: 200px; height: 200px; padding: 10px">
+						<h4>Lee JongMin</h4>
+						<h5>DEVELOPER</h5>
+					</div>
+					<div class="col-lg-2" align="center">
+						<img class="img-circle" src="<%=root%>/images/hcl.jpg"
+							alt="Generic placeholder image"
+							style="width: 200px; height: 200px; padding: 10px">
+						<h4>Hwang ChaeLin</h4>
+						<h5>DEVELOPER</h5>
+					</div>
+				</div>
 				<hr>
-				<br>
 			</div>
 		</div>
 	</div>

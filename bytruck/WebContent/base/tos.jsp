@@ -31,6 +31,18 @@
 <title>tos.jsp</title>
 
 </head>
+<script>
+	$(function(){
+		$('a#ok').click(function(){
+			alert('동의하셨습니다. \n 회원가입을 계속 진행해주세요');
+			close();
+		});
+		
+		$('a#no').click(function(){
+			alert('회원가입을 계속 진행하려면 \n 동의해주세요');
+		});
+	});
+</script>
 <body>
 	<div class="col-sm-10 col-sm-offset-1">
 		<h1 align="center">
@@ -43,12 +55,10 @@
 					<div class="form-group">
 
 						<label class="fancy-checkbox"> <span>이용약관, 개인정보 수집
-								및 이용, 위치정보 이용약관(선택), 프로모션 안내에 모두 동의 합니다.</span>&nbsp;&nbsp; <input
-							type="checkbox">
+								및 이용, 위치정보 이용약관(선택), 프로모션 안내에 모두 동의하셔야 회원가입을 진행 할 수 있습니다.</span>&nbsp;&nbsp;
 						</label>
 						<hr>
-						<label class="fancy-checkbox"> <span>바이트럭 이용약관 동의<strong>(필수)</strong></span>&nbsp;&nbsp;
-							<input type="checkbox">
+						<label> <span>바이트럭 이용약관 동의<strong>(필수)</strong></span>&nbsp;&nbsp;
 						</label>
 						<div class="form-group">
 							<div class="col-md-10">
@@ -59,9 +69,9 @@
 							</div>
 						</div>
 						<hr>
-						<label class="fancy-checkbox"> <span>개인정보 수집 및 이용에
+						<label> <span>개인정보 수집 및 이용에
 								대한 안내<strong>(필수)</strong>
-						</span>&nbsp;&nbsp; <input type="checkbox">
+						</span>
 						</label>
 						<div class="form-group">
 							<div class="col-md-10">
@@ -125,8 +135,7 @@
 							</div>
 						</div>
 						<hr>
-						<label class="fancy-checkbox"> <span>위치정보 이용약관 동의<strong>(선택)</strong></span>&nbsp;&nbsp;
-							<input type="checkbox">
+						<label> <span>위치정보 이용약관 동의<strong>(필수)</strong></span>
 						</label>
 						<div class="form-group">
 							<div class="col-md-10">
@@ -195,8 +204,8 @@
 						</div>
 						<hr>
 						<label class="fancy-checkbox"> <span>이벤트 등 프로모션 알림
-								메일 수신<strong>(선택)</strong>
-						</span>&nbsp;&nbsp; <input type="checkbox">
+								메일 수신<strong>(필수)</strong>
+						</span>
 						</label>
 						<hr>
 					</div>
@@ -205,9 +214,9 @@
 		</div>
 		<div class="col-sm-8 col-sm-offset-2">
 			<div align="center">
-				<a href="#" type="button" class="btn btn-success" style="width: 45%"><strong>
+				<a href="#" type="button" id="ok" class="btn btn-success" style="width: 45%"><strong>
 						동 의 </strong></a>&nbsp;&nbsp;&nbsp; <a href="#" type="button"
-					class="btn btn-danger" style="width: 45%"><strong> 비 동
+					class="btn btn-danger" id="no" style="width: 45%"><strong> 비 동
 						의 </strong></a>
 			</div>
 		</div>

@@ -20,6 +20,27 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(function(){
+		$('a#bye').click(function(){
+			alert("정말 탈퇴하시겠습니까?");
+			$.ajax({
+				data:{},
+	            method:'POST',
+	            url:'<%=root%>/userdrop.bt',
+				success : function(data) {
+					if (data == 1) {
+						alert('탈퇴 되었습니다. 감사합니다.');
+						location.href="<%=root%>/index.jsp"
+					} else {		
+						alert('탈퇴 실패!');
+						location.href="<%=root%>/mypage/bye.jsp"
+					}
+				}
+			});
+		});
+	});
+	</script>
 	<div class="board">
 		<div class="container">
 			<!-- BREADCRUMBS -->
@@ -67,8 +88,7 @@
 										선택하시기 바랍니다.<br>감사합니다.
 									</span><br>
 									<hr>
-									<a type="button" class="btn btn-danger" align="center"
-										href="<%=root %>/index.jsp"> 탈 퇴 하 기 </a>
+									<a type="button" class="btn btn-danger" align="center" id="bye"> 탈 퇴 하 기 </a>
 								</div>
 							</div>
 						</div>

@@ -16,12 +16,14 @@ public class BoardDAOOracle implements BoardDAO {
 	public void insertboard(Board board) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String insertSQL = "insert into board(no, type, title, detail, posted) values(board_no_seq.nextval, 0, ?, ?, sysdate)";
+		String insertSQL = "insert into board(no, type, title, detail, posted, user_id) values(board_no_seq.nextval, ?, ?, ?, sysdate, ?)";
 		try {
 			con = sql.MyConnection.getConnection();
 			pstmt = con.prepareStatement(insertSQL);
-			pstmt.setString(1, board.getTitle());
-			pstmt.setString(2, board.getDetail());
+			pstmt.setInt(1, board.getType());
+			pstmt.setString(2, board.getTitle());
+			pstmt.setString(3, board.getDetail());
+			pstmt.setString(4, board.getUser_id());
 			pstmt.executeUpdate();
 		}finally {
 			MyConnection.close(pstmt, con);			
@@ -47,70 +49,36 @@ public class BoardDAOOracle implements BoardDAO {
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
-
-	@Override
-	public List<Board> selectAll(int page) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String selectAllSQL = "SELECT b.*" 
-				+" FROM ( SELECT rownum r, a.no, a.type, a.title, a.user_id, a.views, a.posted" 
-				+" 		  from board a" 
-				+"		  order by a.no desc)b" 
-				+" WHERE type = 0 and" 
-				+" r BETWEEN ? AND ?";
-		List<Board>list = new ArrayList<>();
-		
-		try {
-			con = sql.MyConnection.getConnection();
-			pstmt = con.prepareStatement(selectAllSQL);
-			int cntPerPage = 3; //한 페이지당 3개씩 보여줌
-			int endRow = cntPerPage * page;
-			int startRow = endRow-cntPerPage+1;
-			pstmt.setInt(1, startRow); pstmt.setInt(2, endRow);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				list.add(new Board(
-						 rs.getInt("no"),
-						 rs.getInt("type"),
-						 rs.getString("title"),
-						 rs.getString("posted"),
-						 rs.getInt("views")
-						 ));
-			}
-			return list;
-		}finally {
-			MyConnection.close(rs, pstmt, con);			
-		}
-	}
 	
-	@Override
-	public Board selectDetail(int boardNo) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Board b = null;
-		String selectDetailSQL = "SELECT no, type, title, detail, posted"
-								+" FROM board"
-								+" WHERE no = ? and type=0";
-		try {
-			con = sql.MyConnection.getConnection();
-			pstmt = con.prepareStatement(selectDetailSQL);
-			pstmt.setInt(1,boardNo);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				int no = rs.getInt("no");
-				int type = rs.getInt("type");
-				String title = rs.getString("title");
-				String detail = rs.getString("detail");
-				String pdate = rs.getString("posted");
-				b = new Board(no, type, title, detail, pdate);
-			}
-		} finally {
-			MyConnection.close(rs, pstmt, con);
-		}
-		return b;
-	}
+	 @Override
+	   public Board selectDetail(int boardNo,int btype) throws Exception {
+	      Connection con = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      Board b = null;
+	      String selectDetailSQL = "SELECT no, type, title, detail, posted"
+	                        +" FROM board"
+	                        +" WHERE no = ? and type=?";
+	      try {
+	         con = sql.MyConnection.getConnection();
+	         pstmt = con.prepareStatement(selectDetailSQL);
+	         pstmt.setInt(1,boardNo);
+	         pstmt.setInt(2, btype);
+	         rs = pstmt.executeQuery();
+	         if(rs.next()) {
+	            int no = boardNo;
+	            int t = btype;
+	            String title = rs.getString("title");
+	            String detail = rs.getString("detail");
+	            String pdate = rs.getString("posted");
+	            b = new Board(no, t, title, detail, pdate);
+	         }
+	      } finally {
+	         MyConnection.close(rs, pstmt, con);
+	      }
+	      return b;
+	   }
+	
 	public static void main(String[] args) {
 		BoardDAOOracle test = new BoardDAOOracle();
 		int page=1;
@@ -146,5 +114,117 @@ public class BoardDAOOracle implements BoardDAO {
 		} finally {
 			MyConnection.close(rs, pstmt, con);
 		}		
+	}
+
+	@Override
+	public void updateboard(Board board) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String insertSQL = "UPDATE board SET title=?, detail=? WHERE type=0 AND no=?";
+		try {
+			con = sql.MyConnection.getConnection();
+			pstmt = con.prepareStatement(insertSQL);
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getDetail());
+			pstmt.setInt(3, board.getNo());
+			pstmt.executeUpdate();
+		}finally {
+			MyConnection.close(pstmt, con);			
+		}
+	}
+	
+	public List<Board> selectAll(int type) throws Exception {
+		List<Board> list = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = sql.MyConnection.getConnection();
+			String selectAllSQL =
+					"SELECT no, title, posted, user_id "
+					+ " FROM Board"
+					+ " WHERE type = ?"		
+					+ " ORDER BY no desc";
+			pstmt = con.prepareStatement(selectAllSQL);
+			pstmt.setInt(1, type);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Board(
+					rs.getInt("no"),
+					rs.getString("title"),
+					rs.getString("posted"),
+					rs.getString("user_id")));
+			}
+		} finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+		return list;
+	}
+	
+	@Override
+	public List<Board> selectByTitle(String content, int type) throws Exception {
+		List<Board> list = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = sql.MyConnection.getConnection();
+			String selectByTitleSQL = 
+			"SELECT no, title, posted, user_id "
+			+ " FROM Board"
+			+ " WHERE title "
+			+ " LIKE ?"
+			+ " AND TYPE = ?"
+			+ " ORDER BY no desc";
+			pstmt = con.prepareStatement(selectByTitleSQL);
+			pstmt.setString(1, "%"+ content +"%");
+			pstmt.setInt(2, type);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Board(
+						rs.getInt("no"),
+						rs.getString("title"),
+						rs.getString("posted"),
+						rs.getString("user_id")));
+			}
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}	
+		return list;
+	}
+
+	@Override
+	public List<Board> selectByDetail(String content, int type) throws Exception {
+		List<Board> list = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = sql.MyConnection.getConnection();
+			String selectByDetailSQL = 
+			"SELECT no, title, posted, user_id "
+			+ " FROM Board"
+			+ " WHERE detail "
+			+ " LIKE ?"
+			+ " AND TYPE = ?"
+			+ " ORDER BY no desc";
+			pstmt = con.prepareStatement(selectByDetailSQL);
+			pstmt.setString(1, "%"+ content +"%");
+			pstmt.setInt(2, type);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Board(
+						rs.getInt("no"),
+						rs.getString("title"),
+						rs.getString("posted"),
+						rs.getString("user_id")));
+			}
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}	
+		return list;
 	}
 }

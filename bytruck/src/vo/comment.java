@@ -1,5 +1,5 @@
 package vo;
 
-public class comment {
+public class Comment {
 
 }
